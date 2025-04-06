@@ -47,7 +47,7 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">Noveloper</h3>
             <p className="text-sm text-gray-400">
-              An AI-driven maker collective creating tools for people who want to build without code.
+              An AI-driven creative studio transforming how businesses access custom software solutions at SaaS prices. No code. No fear. Just flow.
             </p>
           </div>
           
@@ -103,7 +103,7 @@ export function Footer() {
         
         <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center">
-            <Logo size="sm" textClassName="text-gray-400" />
+            <Logo size="sm" textClassName="text-gray-400" inverted={true} />
             <span className="text-sm text-gray-400 ml-3">© {new Date().getFullYear()} Noveloper. All rights reserved.</span>
           </div>
           

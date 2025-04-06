@@ -5,13 +5,15 @@ interface LogoProps {
   textClassName?: string;
   size?: "sm" | "md" | "lg";
   withText?: boolean;
+  inverted?: boolean;
 }
 
 export function Logo({ 
   className, 
   textClassName,
   size = "md", 
-  withText = true 
+  withText = true,
+  inverted = false
 }: LogoProps) {
   const sizeMap = {
     sm: "h-6 w-6",
@@ -21,20 +23,35 @@ export function Logo({
 
   return (
     <div className="flex items-center">
-      <div className={cn("bg-black rounded-lg flex items-center justify-center", sizeMap[size], className)}>
-        {/* SVG recreated from the exact description */}
+      <div className={cn(
+        inverted ? "bg-white rounded-lg flex items-center justify-center" : "bg-black rounded-lg flex items-center justify-center", 
+        sizeMap[size], 
+        className
+      )}>
+        {/* SVG recreated based on inverted or regular mode */}
         <svg width="80%" height="80%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <g>
-            {/* Left white vertical rectangle */}
-            <rect x="18" y="18" width="27" height="64" fill="white" />
+            {/* Left rectangle */}
+            <rect 
+              x="18" 
+              y="18" 
+              width="27" 
+              height="64" 
+              fill={inverted ? "black" : "white"} 
+            />
             
-            {/* Right triangle with vertical right side, extending longer vertically (85% height) */}
-            <path d="M45,18 L80,18 L80,73 L45,18" fill="white" />
+            {/* Right triangle */}
+            <path 
+              d="M45,18 L80,18 L80,73 L45,18" 
+              fill={inverted ? "black" : "white"} 
+            />
           </g>
         </svg>
       </div>
       {withText && (
-        <span className={cn("ml-3 text-xl font-extrabold", textClassName)}>NOVELOPER</span>
+        <span className={cn("ml-3 text-xl font-extrabold", textClassName)}>
+          NOVELOPER
+        </span>
       )}
     </div>
   );
