@@ -1,26 +1,10 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { useReveal } from "@/lib/hooks";
-import { FileSpreadsheet, ArrowRight, Lightbulb } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { FileSpreadsheet } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function InteractiveDemo() {
   const [ref, inView] = useReveal<HTMLHeadingElement>();
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [isGenerated, setIsGenerated] = useState(false);
-  const [ideaInput, setIdeaInput] = useState("Monthly expense tracking and approval process for our finance team");
-
-  const handleGenerate = () => {
-    setIsGenerating(true);
-    
-    // Simulate AI generation with a timeout
-    setTimeout(() => {
-      setIsGenerating(false);
-      setIsGenerated(true);
-    }, 1500);
-  };
 
   return (
     <section id="interactive-demo" className="py-16 px-4 sm:px-6 lg:px-8 overflow-hidden relative">
@@ -43,8 +27,8 @@ export function InteractiveDemo() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="max-w-2xl mx-auto text-lg text-gray-600"
           >
-            See how we transform your complex Excel processes into powerful custom applications
-            at just €10 per user per month.
+            See how we transform complex Excel processes into powerful custom applications
+            with our AI-driven approach
           </motion.p>
         </div>
         
@@ -59,31 +43,11 @@ export function InteractiveDemo() {
               <FileSpreadsheet className="h-5 w-5 text-purple-600 mr-2" />
               <div className="text-sm font-medium">Excel Process Transformation</div>
             </div>
-            <div className="text-xs text-gray-500">Just €10/user/month</div>
+            <div className="text-xs text-gray-500">Monthly Expense Tracking Example</div>
           </div>
           
           <div className="p-6">
             <div className="w-full">
-              <div className="text-center mb-6">
-                <div className="font-medium text-lg mb-2">Describe your Excel process</div>
-                <div className="flex mb-6">
-                  <Input
-                    type="text"
-                    placeholder="Describe what you're currently doing in Excel..."
-                    className="flex-grow px-4 py-3 rounded-l-md focus:ring-2 focus:ring-purple-600 text-base"
-                    value={ideaInput}
-                    onChange={(e) => setIdeaInput(e.target.value)}
-                  />
-                  <Button
-                    onClick={handleGenerate}
-                    className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-r-md hover:opacity-90 transition duration-300"
-                    disabled={isGenerating}
-                  >
-                    {isGenerating ? "Converting..." : "Transform"}
-                  </Button>
-                </div>
-              </div>
-              
               <Tabs defaultValue="before" className="w-full">
                 <TabsList className="grid w-full grid-cols-2 mb-6">
                   <TabsTrigger value="before">Before: Excel Process</TabsTrigger>
@@ -149,130 +113,113 @@ export function InteractiveDemo() {
                   </div>
                 </TabsContent>
                 
-                <TabsContent value="after">
-                  {isGenerating ? (
-                    <div className="flex justify-center items-center h-64">
-                      <div className="text-center">
-                        <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-600 mb-4"></div>
-                        <p>Transforming your Excel process into a custom application...</p>
-                      </div>
+                <TabsContent value="after" className="border rounded-lg p-4">
+                  <div className="bg-white shadow rounded-lg">
+                    <div className="p-4 border-b border-gray-200 flex justify-between items-center">
+                      <div className="font-medium">Expense Management Portal</div>
+                      <div className="text-xs px-2 py-1 bg-purple-100 text-purple-800 rounded">Built by Noveloper</div>
                     </div>
-                  ) : isGenerated ? (
-                    <div className="bg-white shadow rounded-lg">
-                      <div className="p-4 border-b border-gray-200 flex justify-between items-center">
-                        <div className="font-medium">Expense Management Portal</div>
-                        <div className="text-xs px-2 py-1 bg-purple-100 text-purple-800 rounded">Built by Noveloper</div>
+                    
+                    <div className="p-4">
+                      <div className="grid grid-cols-3 gap-4 mb-6">
+                        <div className="bg-white p-4 rounded-lg shadow border border-gray-100">
+                          <div className="text-sm text-gray-500 mb-1">Expenses This Month</div>
+                          <div className="font-bold text-2xl">€4,580</div>
+                          <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
+                            <div className="h-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full" style={{ width: '65%' }}></div>
+                          </div>
+                        </div>
+                        <div className="bg-white p-4 rounded-lg shadow border border-gray-100">
+                          <div className="text-sm text-gray-500 mb-1">Pending Approvals</div>
+                          <div className="font-bold text-2xl">8</div>
+                          <div className="text-xs text-green-600 mt-2">
+                            <span>↓ 12% from last month</span>
+                          </div>
+                        </div>
+                        <div className="bg-white p-4 rounded-lg shadow border border-gray-100">
+                          <div className="text-sm text-gray-500 mb-1">Quarterly Budget</div>
+                          <div className="font-bold text-2xl">€22,500</div>
+                          <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
+                            <div className="h-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full" style={{ width: '35%' }}></div>
+                          </div>
+                        </div>
                       </div>
                       
-                      <div className="p-4">
-                        <div className="grid grid-cols-3 gap-4 mb-6">
-                          <div className="bg-white p-4 rounded-lg shadow border border-gray-100">
-                            <div className="text-sm text-gray-500 mb-1">Expenses This Month</div>
-                            <div className="font-bold text-2xl">€4,580</div>
-                            <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
-                              <div className="h-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full" style={{ width: '65%' }}></div>
-                            </div>
-                          </div>
-                          <div className="bg-white p-4 rounded-lg shadow border border-gray-100">
-                            <div className="text-sm text-gray-500 mb-1">Pending Approvals</div>
-                            <div className="font-bold text-2xl">8</div>
-                            <div className="text-xs text-green-600 mt-2">
-                              <span>↓ 12% from last month</span>
-                            </div>
-                          </div>
-                          <div className="bg-white p-4 rounded-lg shadow border border-gray-100">
-                            <div className="text-sm text-gray-500 mb-1">Quarterly Budget</div>
-                            <div className="font-bold text-2xl">€22,500</div>
-                            <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
-                              <div className="h-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full" style={{ width: '35%' }}></div>
-                            </div>
-                          </div>
+                      <div className="border rounded-lg overflow-hidden mb-4">
+                        <div className="p-3 bg-gray-50 border-b flex justify-between items-center">
+                          <div className="font-medium">Recent Expenses</div>
+                          <div className="text-sm text-purple-600">View All</div>
                         </div>
-                        
-                        <div className="border rounded-lg overflow-hidden mb-4">
-                          <div className="p-3 bg-gray-50 border-b flex justify-between items-center">
-                            <div className="font-medium">Recent Expenses</div>
-                            <div className="text-sm text-purple-600">View All</div>
+                        <table className="min-w-full">
+                          <thead>
+                            <tr className="bg-gray-50">
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 tracking-wider">Date</th>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 tracking-wider">Description</th>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 tracking-wider">Amount</th>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 tracking-wider">Status</th>
+                              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 tracking-wider">Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-gray-200">
+                            <tr>
+                              <td className="px-4 py-3 text-sm">04/05/2025</td>
+                              <td className="px-4 py-3 text-sm">Office Supplies</td>
+                              <td className="px-4 py-3 text-sm">€245.00</td>
+                              <td className="px-4 py-3 text-sm">
+                                <span className="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800">Pending</span>
+                              </td>
+                              <td className="px-4 py-3 text-sm">
+                                <div className="flex space-x-2">
+                                  <button className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded">Approve</button>
+                                  <button className="text-xs px-2 py-1 bg-red-100 text-red-800 rounded">Reject</button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr className="bg-gray-50">
+                              <td className="px-4 py-3 text-sm">04/02/2025</td>
+                              <td className="px-4 py-3 text-sm">Software License</td>
+                              <td className="px-4 py-3 text-sm">€1,200.00</td>
+                              <td className="px-4 py-3 text-sm">
+                                <span className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Approved</span>
+                              </td>
+                              <td className="px-4 py-3 text-sm">
+                                <button className="text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded">View</button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      
+                      <div className="text-center mt-4 text-sm text-gray-500">
+                        <div className="font-medium mb-1">Benefits of your custom application:</div>
+                        <div className="grid grid-cols-2 gap-2 text-xs text-left">
+                          <div className="flex items-center">
+                            <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
+                            <span>Automated approval workflows</span>
                           </div>
-                          <table className="min-w-full">
-                            <thead>
-                              <tr className="bg-gray-50">
-                                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 tracking-wider">Date</th>
-                                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 tracking-wider">Description</th>
-                                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 tracking-wider">Amount</th>
-                                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 tracking-wider">Status</th>
-                                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 tracking-wider">Actions</th>
-                              </tr>
-                            </thead>
-                            <tbody className="divide-y divide-gray-200">
-                              <tr>
-                                <td className="px-4 py-3 text-sm">04/05/2025</td>
-                                <td className="px-4 py-3 text-sm">Office Supplies</td>
-                                <td className="px-4 py-3 text-sm">€245.00</td>
-                                <td className="px-4 py-3 text-sm">
-                                  <span className="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800">Pending</span>
-                                </td>
-                                <td className="px-4 py-3 text-sm">
-                                  <div className="flex space-x-2">
-                                    <button className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded">Approve</button>
-                                    <button className="text-xs px-2 py-1 bg-red-100 text-red-800 rounded">Reject</button>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr className="bg-gray-50">
-                                <td className="px-4 py-3 text-sm">04/02/2025</td>
-                                <td className="px-4 py-3 text-sm">Software License</td>
-                                <td className="px-4 py-3 text-sm">€1,200.00</td>
-                                <td className="px-4 py-3 text-sm">
-                                  <span className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Approved</span>
-                                </td>
-                                <td className="px-4 py-3 text-sm">
-                                  <button className="text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded">View</button>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        
-                        <div className="text-center mt-4 text-sm text-gray-500">
-                          <div className="font-medium mb-1">Benefits of your custom application:</div>
-                          <div className="grid grid-cols-2 gap-2 text-xs text-left">
-                            <div className="flex items-center">
-                              <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
-                              <span>Automated approval workflows</span>
-                            </div>
-                            <div className="flex items-center">
-                              <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
-                              <span>Real-time reporting dashboards</span>
-                            </div>
-                            <div className="flex items-center">
-                              <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
-                              <span>Mobile accessibility</span>
-                            </div>
-                            <div className="flex items-center">
-                              <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
-                              <span>Automated expense categorization</span>
-                            </div>
+                          <div className="flex items-center">
+                            <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
+                            <span>Real-time reporting dashboards</span>
+                          </div>
+                          <div className="flex items-center">
+                            <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
+                            <span>Mobile accessibility</span>
+                          </div>
+                          <div className="flex items-center">
+                            <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
+                            <span>Automated expense categorization</span>
                           </div>
                         </div>
                       </div>
                     </div>
-                  ) : (
-                    <div className="flex justify-center items-center h-72 border border-dashed border-gray-300 rounded-lg">
-                      <div className="text-center text-gray-400 p-8">
-                        <ArrowRight className="h-12 w-12 mx-auto mb-4 opacity-30" />
-                        <p className="text-lg font-medium">Click "Transform" to see your Excel process as a custom application</p>
-                        <p className="text-sm mt-2">We'll show you how we can turn your spreadsheets into powerful, user-friendly software at just €10/user/month</p>
-                      </div>
-                    </div>
-                  )}
+                  </div>
                 </TabsContent>
               </Tabs>
               
               <div className="mt-8 text-center">
                 <div className="text-sm text-gray-600 bg-purple-50 p-4 rounded-lg inline-block">
                   <p>This demo illustrates how we transform business processes into custom applications.</p>
-                  <p className="font-medium mt-1">All for just €10 per user per month (100 user minimum, 18-month commitment)</p>
+                  <p>Experience the power of AI-driven software development.</p>
                 </div>
               </div>
             </div>

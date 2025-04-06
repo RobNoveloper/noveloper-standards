@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { useReveal } from "@/lib/hooks";
-import { Zap, Smile, Fingerprint } from "lucide-react";
+import { Zap, Smile, Fingerprint, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const philosophyCards = [
   {
     title: "Human + AI Partnership",
-    description: "We combine human creativity and business understanding with AI's capabilities to create custom software solutions at accessible prices (€10/user/month).",
+    description: "We combine human creativity and business understanding with AI's capabilities to create custom software solutions at accessible subscription prices.",
     icon: Zap
   },
   {
@@ -79,15 +80,20 @@ export function PhilosophySection() {
               <div>
                 <h3 className="text-2xl font-bold mb-4">A New Kind of Studio</h3>
                 <p className="text-gray-600 mb-6">
-                  Noveloper is a fusion of "no developer" and "novel" — we build custom software without traditional coding, pioneering a creative approach to development that makes quality software accessible at subscription prices of just €10/user/month.
+                  Noveloper is a fusion of "no developer" and "novel" — we build custom software without traditional coding, pioneering a creative approach to development that makes quality software accessible at subscription prices.
                 </p>
-                <div className="font-mono text-sm bg-gray-100 p-4 rounded-md">
+                <div className="font-mono text-sm bg-gray-100 p-4 rounded-md mb-6">
                   <span className="text-purple-600">function</span>{" "}
                   <span className="text-gray-900">createWithoutCode</span>() {"{"}<br />
                   &nbsp;&nbsp;<span className="text-blue-600">return</span>{" "}
                   <span className="text-gray-700">"AI-powered creativity"</span>;<br />
                   {"}"}
                 </div>
+                <a href="#interactive-demo">
+                  <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:opacity-90">
+                    See it in Action <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </a>
               </div>
               <div className="flex justify-center">
                 <div className="relative w-full max-w-xs">

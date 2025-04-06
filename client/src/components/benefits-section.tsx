@@ -17,7 +17,7 @@ const benefits = [
   },
   {
     title: "Cost Predictability",
-    description: "Enterprise-grade custom solutions at just €10/user/month with subscription-based pricing model.",
+    description: "Enterprise-grade custom solutions with a predictable subscription-based pricing model.",
     icon: DollarSign
   },
   {
@@ -96,7 +96,7 @@ export function BenefitsSection() {
         >
           <div className="inline-block bg-gray-100 py-4 px-8 rounded-full">
             <div className="text-purple-600 font-medium">
-              Custom Software at SaaS Prices. Starting at €10/user/month (100 user minimum)
+              Custom Software at SaaS Prices. Enterprise quality, subscription affordability.
             </div>
           </div>
           

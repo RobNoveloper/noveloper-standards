@@ -5,7 +5,7 @@ import { LineChart, Lightbulb, PaintBucket, FileSpreadsheet } from "lucide-react
 const products = [
   {
     title: "Custom SaaS Applications",
-    description: "AI-driven software solutions tailor-made for your business needs, with the affordability of subscription pricing at just €10/user/month.",
+    description: "AI-driven software solutions tailor-made for your business needs, with the affordability of subscription pricing.",
     icon: LineChart
   },
   {
@@ -87,7 +87,7 @@ export function ProductsSection() {
         >
           <div className="text-center">
             <h3 className="text-2xl font-bold mb-4">A New Approach to Custom Software</h3>
-            <p className="text-lg text-gray-600 mb-6">We combine AI-powered creativity with SaaS-level pricing (€10/user/month).</p>
+            <p className="text-lg text-gray-600 mb-6">We combine AI-powered creativity with SaaS-level pricing for enterprise solutions.</p>
             <div className="relative inline-block group cursor-pointer">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
               <button className="relative px-8 py-4 bg-white rounded-lg flex items-center divide-x divide-gray-600">

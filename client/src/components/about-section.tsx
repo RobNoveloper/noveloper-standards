@@ -54,7 +54,7 @@ export function AboutSection() {
               We combine the magic of AI-driven creativity with the practicality of business solutions. Our approach transcends traditional development, creating intuitive applications that feel custom-crafted for your unique needs — all while making it financially accessible.
             </p>
             <p className="italic text-gray-600 text-center">
-              No code. No fear. Just flow. Custom software at SaaS prices. Just €10/user/month.
+              No code. No fear. Just flow. Custom software at SaaS prices.
             </p>
           </motion.div>
         </div>
@@ -78,21 +78,9 @@ export function AboutSection() {
               ))}
             </ul>
             
-            <div className="mt-8 grid grid-cols-3 gap-4">
-              <div className="bg-white p-4 rounded-lg shadow-md text-center">
-                <Euro className="h-8 w-8 mx-auto text-purple-600 mb-2" />
-                <div className="font-bold text-2xl">€10</div>
-                <div className="text-sm text-gray-500">per user/month</div>
-              </div>
-              <div className="bg-white p-4 rounded-lg shadow-md text-center">
-                <Target className="h-8 w-8 mx-auto text-purple-600 mb-2" />
-                <div className="font-bold text-2xl">100</div>
-                <div className="text-sm text-gray-500">user minimum</div>
-              </div>
-              <div className="bg-white p-4 rounded-lg shadow-md text-center">
-                <Clock className="h-8 w-8 mx-auto text-purple-600 mb-2" />
-                <div className="font-bold text-2xl">18</div>
-                <div className="text-sm text-gray-500">month commitment</div>
+            <div className="mt-8 text-center">
+              <div className="inline-block py-3 px-6 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg">
+                <span className="font-medium">Experience the creative difference</span>
               </div>
             </div>
           </motion.div>
@@ -138,7 +126,7 @@ export function AboutSection() {
             </div>
             <div>
               <h4 className="font-bold text-lg mb-2">Innovation + Affordability</h4>
-              <p className="text-gray-300">Our subscription model (€10/user/month) brings enterprise-grade custom software within reach while maintaining creative brilliance.</p>
+              <p className="text-gray-300">Our subscription model brings enterprise-grade custom software within reach while maintaining creative brilliance.</p>
             </div>
             <div>
               <h4 className="font-bold text-lg mb-2">Transformative Experience</h4>
