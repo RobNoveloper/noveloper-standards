@@ -14,7 +14,7 @@ const mailerSend = process.env.MAILERSEND_API_KEY
 const defaultSender = new Sender("hello@noveloper.ai", "Noveloper");
 
 // The email address that will receive contact form submissions
-const defaultRecipient = "rob@noveloper.ai";
+const defaultRecipient = "rob@sumxholding.nl";
 
 export interface ContactFormData {
   name: string;
@@ -74,13 +74,21 @@ export async function sendNewsletterConfirmation(email: string): Promise<boolean
   }
 
   try {
-    const recipients = [new Recipient(email)];
+    // Send to the subscriber and also to your email for tracking
+    const recipients = [
+      new Recipient(email),
+      new Recipient(defaultRecipient, "Noveloper Team")
+    ];
 
     // Structure the email
+    // Different subjects for subscriber vs admin
     const emailParams = new EmailParams()
       .setFrom(defaultSender)
       .setTo(recipients)
-      .setSubject("Welcome to the Noveloper Newsletter")
+      .setSubject(recipient => 
+        recipient.email === defaultRecipient 
+          ? "New Newsletter Subscription: " + email 
+          : "Welcome to the Noveloper Newsletter")
       .setText(`
 Thank you for subscribing to the Noveloper newsletter!
 
