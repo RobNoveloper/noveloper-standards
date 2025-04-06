@@ -23,13 +23,13 @@ export function Logo({
     <div className="flex items-center">
       <div className={cn("bg-black rounded-lg flex items-center justify-center", sizeMap[size], className)}>
         {/* SVG recreated from the exact description */}
-        <svg width="70%" height="70%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <svg width="85%" height="85%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <g>
             {/* Left white vertical rectangle */}
-            <rect x="20" y="20" width="25" height="60" fill="white" />
+            <rect x="15" y="15" width="30" height="70" fill="white" />
             
             {/* Right triangle with vertical right side, extending longer vertically (85% height) */}
-            <path d="M45,20 L75,20 L75,72 L45,20" fill="white" />
+            <path d="M45,15 L85,15 L85,75 L45,15" fill="white" />
           </g>
         </svg>
       </div>
