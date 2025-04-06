@@ -28,7 +28,7 @@ export function ContactSection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="max-w-2xl mx-auto text-lg text-gray-300"
           >
-            Ready to transform your ideas into reality without code? Get in touch with us.
+            Ready to transform your ideas into reality without breaking the bank?
           </motion.p>
         </div>
         

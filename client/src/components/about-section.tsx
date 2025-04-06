@@ -4,7 +4,7 @@ import { Check, Euro, Target, Clock } from "lucide-react";
 
 const features = [
   "AI-powered creative solutions that feel magical to use",
-  "Custom applications at subscription pricing (€10/user/month)",
+  "Custom applications at affordable subscription pricing",
   "Interactive experiences that transform business processes",
   "Visually stunning interfaces with intuitive user experiences"
 ];
@@ -13,7 +13,7 @@ const workflowSteps = [
   { number: "01", title: "Discovery", description: "We explore your vision and business challenges to identify opportunities for innovative digital solutions." },
   { number: "02", title: "Creative Design", description: "We design intuitive, engaging interfaces that capture your brand and enhance user experience." },
   { number: "03", title: "AI-Driven Development", description: "We leverage AI to build your custom software faster and with greater creativity than traditional methods." },
-  { number: "04", title: "Quality Assurance", description: "Our team ensures that your application meets the highest standards of performance, security, and usability." },
+  { number: "04", title: "Quality Assurance", description: "Our human senior developers review all code to ensure your application meets the highest standards of quality, security, and performance." },
   { number: "05", title: "Continuous Evolution", description: "We refine and enhance your solution over time, adding features and optimizing based on real user feedback." }
 ];
 
@@ -48,13 +48,13 @@ export function AboutSection() {
             className="mt-8 max-w-3xl mx-auto"
           >
             <p className="italic text-gray-600 text-center mb-4">
-              Noveloper represents the fusion of novel ideas and software development.
+              Born from curiosity and a desire to challenge the status quo.
             </p>
             <p className="text-gray-600 text-center mb-4">
-              We combine the magic of AI-driven creativity with the practicality of business solutions. Our approach transcends traditional development, creating intuitive applications that feel custom-crafted for your unique needs — all while making it financially accessible.
+              Noveloper emerged from a simple question: What if AI could transform how custom software is built? Our founders combined their expertise in AI and business solutions to create a new approach that merges advanced AI with human creativity. The result is a process that delivers tailored applications with unprecedented speed and innovation.
             </p>
             <p className="italic text-gray-600 text-center">
-              No code. No fear. Just flow. Custom software at SaaS prices.
+              No code. No fear. Just flow.
             </p>
           </motion.div>
         </div>

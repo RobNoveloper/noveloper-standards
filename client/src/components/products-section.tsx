@@ -79,24 +79,7 @@ export function ProductsSection() {
           ))}
         </div>
         
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8, delay: 0.4 }}  
-          className="mt-16 pt-8 border-t border-gray-200"
-        >
-          <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4">A New Approach to Custom Software</h3>
-            <p className="text-lg text-gray-600 mb-6">We combine AI-powered creativity with SaaS-level pricing for enterprise solutions.</p>
-            <div className="relative inline-block group cursor-pointer">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-              <button className="relative px-8 py-4 bg-white rounded-lg flex items-center divide-x divide-gray-600">
-                <span className="pr-6 text-gray-900 font-semibold">Discover our workflow</span>
-                <span className="pl-6 text-purple-600">See it in action</span>
-              </button>
-            </div>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   );

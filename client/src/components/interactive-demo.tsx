@@ -19,7 +19,7 @@ export function InteractiveDemo() {
             transition={{ duration: 0.8 }}
             className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4"
           >
-            Excel to Custom Application
+            Interactive Demo: Excel to Custom Application
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

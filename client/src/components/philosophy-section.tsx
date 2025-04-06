@@ -82,6 +82,15 @@ export function PhilosophySection() {
                 <p className="text-gray-600 mb-6">
                   Noveloper is a fusion of "no developer" and "novel" — we build custom software without traditional coding, pioneering a creative approach to development that makes quality software accessible at subscription prices.
                 </p>
+                <a 
+                  href="#interactive-demo" 
+                  className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-md hover:opacity-90 transition duration-300 font-medium mb-6"
+                >
+                  See it in Action
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </a>
                 <div className="font-mono text-sm bg-gray-100 p-4 rounded-md mb-6">
                   <span className="text-purple-600">function</span>{" "}
                   <span className="text-gray-900">createWithoutCode</span>() {"{"}<br />
@@ -89,11 +98,6 @@ export function PhilosophySection() {
                   <span className="text-gray-700">"AI-powered creativity"</span>;<br />
                   {"}"}
                 </div>
-                <a href="#interactive-demo">
-                  <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:opacity-90">
-                    See it in Action <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </a>
               </div>
               <div className="flex justify-center">
                 <div className="relative w-full max-w-xs">
