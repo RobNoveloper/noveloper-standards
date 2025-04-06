@@ -80,11 +80,13 @@ export async function sendNewsletterConfirmation(email: string): Promise<boolean
   console.log("Preparing to send newsletter confirmation to:", email);
   
   try {
-    // Send to the subscriber and also to your email for tracking
+    // Send only to the subscriber to avoid recipient limits
     const recipients = [
-      new Recipient(email),
-      new Recipient(defaultRecipient, "Noveloper Team")
+      new Recipient(email)
     ];
+    
+    // Log admin notification instead of sending a separate email
+    console.log(`ADMIN NOTIFICATION: New newsletter subscription from ${email}`);
 
     // Structure the email
     // Different subjects for subscriber vs admin
@@ -111,7 +113,7 @@ The Noveloper Team
       `);
 
     // Send the email
-    console.log("Attempting to send newsletter confirmation email to:", email, "and", defaultRecipient);
+    console.log("Attempting to send newsletter confirmation email to:", email);
     const response = await mailerSend.email.send(emailParams);
     console.log("MailerSend API response (newsletter):", response);
     return true;
