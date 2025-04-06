@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/hero-section";
 import { PhilosophySection } from "@/components/philosophy-section";
 import { ProductsSection } from "@/components/products-section";
 import { AboutSection } from "@/components/about-section";
+import { BenefitsSection } from "@/components/benefits-section";
 import { InteractiveDemo } from "@/components/interactive-demo";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
@@ -40,8 +41,9 @@ export default function Home() {
         <HeroSection />
         <PhilosophySection />
         <ProductsSection />
-        <AboutSection />
         <InteractiveDemo />
+        <BenefitsSection />
+        <AboutSection />
         <ContactSection />
       </main>
       <Footer />

@@ -1,22 +1,22 @@
 import { motion } from "framer-motion";
 import { useReveal } from "@/lib/hooks";
-import { LineChart, Lightbulb, PaintBucket } from "lucide-react";
+import { LineChart, Lightbulb, PaintBucket, FileSpreadsheet } from "lucide-react";
 
 const products = [
   {
+    title: "Excel Process Transformations",
+    description: "Replace your complex Excel spreadsheets with custom applications at just €10/user/month. Streamline workflows while keeping costs predictable.",
+    icon: FileSpreadsheet
+  },
+  {
     title: "Custom SaaS Applications",
-    description: "Tailored cloud-based software solutions for your business needs, deployed in weeks rather than months.",
+    description: "Enterprise-grade software built specifically for your business at subscription pricing that's a fraction of traditional custom development costs.",
     icon: LineChart
   },
   {
     title: "Business Intelligence Tools",
-    description: "Data visualization and analysis tools that help BI professionals extract more insights with less effort.",
+    description: "Turn your data into actionable insights without expensive BI platforms. Custom dashboards and reporting that fit your exact needs.",
     icon: Lightbulb
-  },
-  {
-    title: "Interactive Experiences",
-    description: "Engaging games and interactive applications that captivate users while solving real business challenges.",
-    icon: PaintBucket
   }
 ];
 
@@ -34,7 +34,7 @@ export function ProductsSection() {
             transition={{ duration: 0.8 }}
             className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4"
           >
-            Our Products
+            Our Solutions
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -42,7 +42,8 @@ export function ProductsSection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="max-w-2xl mx-auto text-lg text-gray-600"
           >
-            Custom software solutions we build for our clients, powered by AI and designed for real business impact.
+            Custom software that fits your exact needs, delivered at SaaS-level pricing. 
+            We make enterprise-level solutions accessible to businesses of all sizes.
           </motion.p>
         </div>
         
@@ -57,7 +58,7 @@ export function ProductsSection() {
             >
               <div className="h-48 bg-gray-100 relative">
                 <div className="absolute inset-0 flex items-center justify-center p-8">
-                  <div className="w-20 h-20 rounded-xl bg-black flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center">
                     <product.icon className="h-8 w-8 text-white" />
                   </div>
                 </div>
@@ -82,14 +83,18 @@ export function ProductsSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.4 }}  
-          className="mt-16 flex justify-center"
+          className="mt-16 pt-8 border-t border-gray-200"
         >
-          <div className="relative group cursor-pointer">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-            <button className="relative px-8 py-4 bg-white rounded-lg flex items-center divide-x divide-gray-600">
-              <span className="pr-6 text-gray-900 font-semibold">More coming soon</span>
-              <span className="pl-6 text-purple-600">Stay tuned</span>
-            </button>
+          <div className="text-center">
+            <h3 className="text-2xl font-bold mb-4">Simple, Transparent Pricing</h3>
+            <p className="text-lg text-gray-600 mb-6">Just €10 per user per month with a minimum of 100 users for 18 months.</p>
+            <div className="relative inline-block group cursor-pointer">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+              <button className="relative px-8 py-4 bg-white rounded-lg flex items-center divide-x divide-gray-600">
+                <span className="pr-6 text-gray-900 font-semibold">Contact us for details</span>
+                <span className="pl-6 text-purple-600">Get started</span>
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>

@@ -1,22 +1,22 @@
 import { motion } from "framer-motion";
 import { useReveal } from "@/lib/hooks";
-import { Zap, Smile, Fingerprint } from "lucide-react";
+import { Zap, Euro, Lock } from "lucide-react";
 
 const philosophyCards = [
   {
-    title: "Human + AI Partnership",
-    description: "We combine human creativity and business understanding with AI's speed to create custom software solutions that would take months using traditional methods.",
+    title: "Custom, Not Custom-Priced",
+    description: "We build truly custom solutions at fixed subscription prices (€10/user/month). No more six-figure price tags for software that fits your exact needs.",
+    icon: Euro
+  },
+  {
+    title: "Excel Liberation",
+    description: "Free your business from spreadsheet limitations. We transform your Excel processes into robust applications without the enterprise-level investment.",
     icon: Zap
   },
   {
-    title: "Client-Centric Approach",
-    description: "We listen and translate your business challenges into custom software solutions, maintaining the human touch in consulting, architecting, and collaboration.",
-    icon: Smile
-  },
-  {
-    title: "Accelerated Innovation",
-    description: "We build SaaS applications, BI tools, and games faster than ever before, letting you launch, test, and iterate at unprecedented speed.",
-    icon: Fingerprint
+    title: "Sustainable Partnership",
+    description: "Our 18-month minimum commitment (100 users) ensures we can invest in your solution while you gain predictable costs and ongoing improvements.",
+    icon: Lock
   }
 ];
 
@@ -34,7 +34,7 @@ export function PhilosophySection() {
             transition={{ duration: 0.8 }}
             className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4"
           >
-            Our Philosophy
+            No Code. No Fear. Just Flow.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -42,7 +42,8 @@ export function PhilosophySection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="max-w-2xl mx-auto text-lg text-gray-600"
           >
-            We're transforming how businesses get custom software built, combining human creativity with AI acceleration.
+            We're revolutionizing how businesses access custom software by combining 
+            the quality of bespoke solutions with the affordability of SaaS pricing.
           </motion.p>
         </div>
         
@@ -78,13 +79,13 @@ export function PhilosophySection() {
               <div>
                 <h3 className="text-2xl font-bold mb-4">A New Kind of Studio</h3>
                 <p className="text-gray-600 mb-6">
-                  Noveloper is a fusion of "no developer" and "novel" — we build custom software for clients without traditional coding, pioneering a faster, more creative approach to development that lets businesses launch solutions in weeks, not months.
+                  Noveloper emerged from a simple insight: businesses need custom software but can't afford traditional development costs. By harnessing AI and our business expertise, we've created a model where custom no longer means expensive.
                 </p>
                 <div className="font-mono text-sm bg-gray-100 p-4 rounded-md">
                   <span className="text-purple-600">function</span>{" "}
-                  <span className="text-gray-900">createWithoutCode</span>() {"{"}<br />
+                  <span className="text-gray-900">makeCustomAffordable</span>() {"{"}<br />
                   &nbsp;&nbsp;<span className="text-blue-600">return</span>{" "}
-                  <span className="text-gray-700">"AI-powered creativity"</span>;<br />
+                  <span className="text-gray-700">"€10/user/month"</span>;<br />
                   {"}"}
                 </div>
               </div>
@@ -94,9 +95,9 @@ export function PhilosophySection() {
                     <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
                       <div className="text-center p-8">
                         <div className="font-mono text-xs sm:text-sm text-gray-800 mb-2">
-                          no_code = true<br />
-                          no_fear = true<br />
-                          just_flow = true
+                          custom_software = true<br />
+                          saas_pricing = true<br />
+                          excel_replacement = true
                         </div>
                         <div className="font-bold text-lg">
                           NOVELOPER
