@@ -6,18 +6,19 @@ const features = [
   "Custom SaaS applications tailored to your business needs",
   "Business intelligence tools for data-driven decisions",
   "Interactive experiences and games with business impact",
-  "Rapid development that gets solutions to market faster"
+  "Software development that prioritizes quality and innovation"
 ];
 
 const workflowSteps = [
   { number: "01", title: "Consultation", description: "We work closely with you to understand your business needs and challenges." },
   { number: "02", title: "Solution Design", description: "Our human experts architect the solution, leveraging AI to accelerate the process." },
-  { number: "03", title: "Rapid Development", description: "We build your custom software using AI tools, cutting development time by 5-10x." },
-  { number: "04", title: "Launch & Support", description: "We deliver your solution and provide ongoing support for your business." }
+  { number: "03", title: "AI-Driven Development", description: "We build your custom software using AI tools to create innovative solutions." },
+  { number: "04", title: "Developer Validation", description: "Experienced developers review the solution to ensure quality, security, and best practices." },
+  { number: "05", title: "Launch & Support", description: "We deliver your solution and provide ongoing support for your business." }
 ];
 
 export function AboutSection() {
-  const [ref, inView] = useReveal();
+  const [ref, inView] = useReveal<HTMLHeadingElement>();
 
   return (
     <section id="about" className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
@@ -38,8 +39,25 @@ export function AboutSection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="max-w-2xl mx-auto text-lg text-gray-600"
           >
-            An AI-powered creative studio that builds custom software for businesses with unprecedented speed and innovation.
+            An AI-powered creative studio that builds custom software for businesses, reimagining how software is created.
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mt-8 max-w-3xl mx-auto"
+          >
+            <p className="italic text-gray-600 text-center mb-4">
+              Noveloper was born from curiosity.
+            </p>
+            <p className="text-gray-600 text-center mb-4">
+              We wondered what would happen if we stopped writing code… and started conducting it. We explored what AI could become in the hands of creators, not just engineers — and discovered a new rhythm of building.
+            </p>
+            <p className="italic text-gray-600 text-center">
+              Noveloper isn't just a name. It's a mindset. 
+              A new kind of builder. A new kind of studio.
+            </p>
+          </motion.div>
         </div>
         
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -70,7 +88,7 @@ export function AboutSection() {
             <div className="bg-white p-8 rounded-xl shadow-md">
               <h3 className="text-2xl font-bold mb-4">How We Work</h3>
               <p className="text-gray-600 mb-6">
-                We combine human expertise in consulting, design, and business understanding with AI-powered development tools to build custom software solutions 5-10x faster than traditional methods.
+                We combine human expertise in consulting, design, and business understanding with AI-powered development tools to build custom software solutions that balance innovation, quality, and efficiency.
               </p>
               <div className="space-y-4">
                 {workflowSteps.map((step) => (
@@ -99,7 +117,7 @@ export function AboutSection() {
           <div className="grid md:grid-cols-3 gap-6">
             <div>
               <h4 className="font-bold text-lg mb-2">No Code</h4>
-              <p className="text-gray-300">We build custom software without traditional coding—enabling faster development for our clients.</p>
+              <p className="text-gray-300">We build custom software without traditional coding—enabling a new approach to development for our clients.</p>
             </div>
             <div>
               <h4 className="font-bold text-lg mb-2">No Fear</h4>

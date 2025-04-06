@@ -21,7 +21,7 @@ const products = [
 ];
 
 export function ProductsSection() {
-  const [ref, inView] = useReveal();
+  const [ref, inView] = useReveal<HTMLHeadingElement>();
   
   return (
     <section id="products" className="py-16 px-4 sm:px-6 lg:px-8">

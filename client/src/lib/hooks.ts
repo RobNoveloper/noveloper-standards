@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 
 // Hook for revealing elements when they enter the viewport
-export function useReveal(threshold = 0.1) {
+export function useReveal<T extends HTMLElement = HTMLDivElement>(threshold = 0.1) {
   const [inView, setInView] = useState(false);
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<T>(null);
 
   useEffect(() => {
     const currentRef = ref.current;

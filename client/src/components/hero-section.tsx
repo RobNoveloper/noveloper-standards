@@ -4,7 +4,8 @@ import { Logo } from "./ui/logo";
 import { useReveal } from "@/lib/hooks";
 
 export function HeroSection() {
-  const [ref, inView] = useReveal();
+  const [ref1, inView1] = useReveal<HTMLDivElement>();
+  const [ref2, inView2] = useReveal<HTMLDivElement>();
   
   return (
     <section 
@@ -17,9 +18,9 @@ export function HeroSection() {
       
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
         <motion.div
-          ref={ref}
+          ref={ref1}
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          animate={inView1 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
@@ -56,9 +57,9 @@ export function HeroSection() {
         </motion.div>
         
         <motion.div
-          ref={ref}
+          ref={ref2}
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          animate={inView2 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex justify-center items-center"
         >

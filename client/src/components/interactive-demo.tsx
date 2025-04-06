@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 export function InteractiveDemo() {
-  const [ref, inView] = useReveal();
+  const [ref, inView] = useReveal<HTMLHeadingElement>();
   const [isGenerating, setIsGenerating] = useState(false);
   const [isGenerated, setIsGenerated] = useState(false);
   const [ideaInput, setIdeaInput] = useState("Need a finance dashboard to track our company's expenses and cash flow");
@@ -34,7 +34,7 @@ export function InteractiveDemo() {
             transition={{ duration: 0.8 }}
             className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4"
           >
-            Experience The Flow
+            Our Solutions in Action
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -42,7 +42,7 @@ export function InteractiveDemo() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="max-w-2xl mx-auto text-lg text-gray-600"
           >
-            See how we transform your business requirements into working software solutions rapidly.
+            Explore how we transform business requirements into innovative software solutions that drive real results.
           </motion.p>
         </div>
         
@@ -141,7 +141,7 @@ export function InteractiveDemo() {
                       </div>
                     </div>
                     <div className="text-center text-sm text-gray-500">
-                      This prototype represents how quickly we can build custom solutions for your business.
+                      This prototype represents the type of custom solutions we can build to address your unique business needs.
                     </div>
                   </div>
                 ) : (
