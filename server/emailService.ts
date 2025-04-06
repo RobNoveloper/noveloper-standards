@@ -10,7 +10,8 @@ const mailerSend = process.env.MAILERSEND_API_KEY
   : null;
 
 // The email address that will be shown as the sender
-const defaultSender = new Sender("no-reply@noveloper.ai", "Noveloper");
+// Using a MailerSend-provided email for the 'from' domain since it's pre-verified
+const defaultSender = new Sender("info@mailersend.com", "Noveloper");
 
 // The email address that will receive contact form submissions
 const defaultRecipient = "rob@noveloper.ai";
