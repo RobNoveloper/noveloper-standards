@@ -22,7 +22,7 @@ export function Logo({
   };
 
   // Different rounded corners for inverted vs regular
-  const roundedStyle = inverted ? "rounded-md" : "rounded-lg";
+  const roundedStyle = inverted ? "rounded" : "rounded-lg";
 
   return (
     <div className="flex items-center">
@@ -54,7 +54,7 @@ export function Logo({
       </div>
       {withText && (
         <span className={cn("ml-3 text-xl font-extrabold", 
-          inverted ? "text-gray-300" : "text-black",
+          inverted ? "text-gray-400" : "text-black",
           textClassName)}>
           NOVELOPER
         </span>
