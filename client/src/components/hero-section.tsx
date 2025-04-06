@@ -24,12 +24,12 @@ export function HeroSection() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
-            <span className="block">Custom software.</span>
-            <span className="block">SaaS pricing.</span>
-            <span className="block bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Beyond Excel.</span>
+            <span className="block">No code.</span>
+            <span className="block">No fear.</span>
+            <span className="block bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Just flow.</span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-lg">
-            We transform your Excel processes into powerful custom applications at subscription prices that won't break the bank.
+            We're an AI-powered creative studio building custom software solutions at SaaS prices. Enterprise-grade applications without enterprise price tags.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Button

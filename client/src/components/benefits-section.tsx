@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useReveal } from "@/lib/hooks";
 import { 
   DollarSign, 
-  FileSpreadsheet, 
+  Lightbulb, 
   LineChart, 
   Timer,
   Code,
@@ -11,33 +11,33 @@ import {
 
 const benefits = [
   {
+    title: "Creative Innovation",
+    description: "AI-powered creativity that pushes the boundaries of what's possible in custom software development.",
+    icon: Lightbulb
+  },
+  {
     title: "Cost Predictability",
-    description: "Fixed subscription pricing at €10/user/month, instead of unpredictable six-figure development costs.",
+    description: "Enterprise-grade custom solutions at just €10/user/month with subscription-based pricing model.",
     icon: DollarSign
   },
   {
-    title: "Excel Liberation",
-    description: "Move beyond spreadsheet limitations to powerful, dedicated applications that fit your exact business processes.",
-    icon: FileSpreadsheet
-  },
-  {
-    title: "Business Intelligence",
-    description: "Gain real-time insights and reporting that static spreadsheets can't provide.",
+    title: "Real-Time Intelligence",
+    description: "Interactive dashboards and analytics that transform your data into actionable business insights.",
     icon: LineChart
   },
   {
-    title: "Rapid Development",
-    description: "Get your custom application in weeks, not months or years, with our AI-driven approach.",
+    title: "Accelerated Development",
+    description: "Custom applications delivered in weeks instead of months thanks to our AI-augmented development process.",
     icon: Timer
   },
   {
-    title: "No Technical Debt",
-    description: "We handle all maintenance, updates, and improvements as part of your subscription.",
+    title: "Future-Proof Technology",
+    description: "Continuously updated and maintained software that evolves with your business needs.",
     icon: Code
   },
   {
-    title: "Business-Focused Solutions",
-    description: "Applications designed around your specific business needs, not generic templates.",
+    title: "Human-Centered Design",
+    description: "Intuitive interfaces designed around how your team works, not how computers process data.",
     icon: Heart
   }
 ];

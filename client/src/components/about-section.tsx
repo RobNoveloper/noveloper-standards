@@ -3,18 +3,18 @@ import { useReveal } from "@/lib/hooks";
 import { Check, Euro, Target, Clock } from "lucide-react";
 
 const features = [
-  "Enterprise-quality software at €10 per user per month",
-  "Excel process transformations into modern applications",
-  "Custom dashboards and business intelligence tools",
-  "Real solutions for real business needs, not generic templates"
+  "AI-powered creative solutions that feel magical to use",
+  "Custom applications at subscription pricing (€10/user/month)",
+  "Interactive experiences that transform business processes",
+  "Visually stunning interfaces with intuitive user experiences"
 ];
 
 const workflowSteps = [
-  { number: "01", title: "Discovery", description: "We map your Excel processes and identify opportunities for transformation into custom applications." },
-  { number: "02", title: "Requirements", description: "We document exactly what your custom application needs to do to replace your current workflows." },
-  { number: "03", title: "AI-Driven Development", description: "We build your custom software using AI tools and our business expertise." },
-  { number: "04", title: "Developer Validation", description: "Experienced developers review the solution to ensure quality, security, and best practices." },
-  { number: "05", title: "Deployment & Onboarding", description: "We launch your solution and help your team transition from Excel to your new custom application." }
+  { number: "01", title: "Discovery", description: "We explore your vision and business challenges to identify opportunities for innovative digital solutions." },
+  { number: "02", title: "Creative Design", description: "We design intuitive, engaging interfaces that capture your brand and enhance user experience." },
+  { number: "03", title: "AI-Driven Development", description: "We leverage AI to build your custom software faster and with greater creativity than traditional methods." },
+  { number: "04", title: "Quality Assurance", description: "Our team ensures that your application meets the highest standards of performance, security, and usability." },
+  { number: "05", title: "Continuous Evolution", description: "We refine and enhance your solution over time, adding features and optimizing based on real user feedback." }
 ];
 
 export function AboutSection() {
@@ -39,7 +39,7 @@ export function AboutSection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="max-w-2xl mx-auto text-lg text-gray-600"
           >
-            We're making custom software affordable for every business. No more six-figure development costs.
+            Where AI-powered creativity meets accessible, affordable enterprise solutions
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -48,14 +48,13 @@ export function AboutSection() {
             className="mt-8 max-w-3xl mx-auto"
           >
             <p className="italic text-gray-600 text-center mb-4">
-              Noveloper was born from a simple insight.
+              Noveloper represents the fusion of novel ideas and software development.
             </p>
             <p className="text-gray-600 text-center mb-4">
-              Why do businesses still rely on complex Excel processes, when custom software would be so much better? The answer: cost. Traditional custom development is prohibitively expensive. We set out to change that equation.
+              We combine the magic of AI-driven creativity with the practicality of business solutions. Our approach transcends traditional development, creating intuitive applications that feel custom-crafted for your unique needs — all while making it financially accessible.
             </p>
             <p className="italic text-gray-600 text-center">
-              By combining AI and business expertise, we've created a new model: 
-              Custom software at SaaS prices. Just €10/user/month.
+              No code. No fear. Just flow. Custom software at SaaS prices. Just €10/user/month.
             </p>
           </motion.div>
         </div>
@@ -106,7 +105,7 @@ export function AboutSection() {
             <div className="bg-white p-8 rounded-xl shadow-md">
               <h3 className="text-2xl font-bold mb-4">Our Process</h3>
               <p className="text-gray-600 mb-6">
-                We focus on understanding your business processes first, then create software specifically designed to address your unique challenges - all at a predictable monthly cost.
+                We blend creative innovation with business expertise to develop applications that are both visually stunning and functionally powerful — all while maintaining affordability through our subscription model.
               </p>
               <div className="space-y-4">
                 {workflowSteps.map((step) => (
@@ -134,16 +133,16 @@ export function AboutSection() {
           <h3 className="text-2xl font-bold mb-6">The Noveloper Promise</h3>
           <div className="grid md:grid-cols-3 gap-6">
             <div>
-              <h4 className="font-bold text-lg mb-2">Custom Software</h4>
-              <p className="text-gray-300">We build applications specifically designed for your business needs, not generic templates or one-size-fits-all solutions.</p>
+              <h4 className="font-bold text-lg mb-2">Creative Excellence</h4>
+              <p className="text-gray-300">We create visually stunning, intuitively designed applications that captivate users while solving complex business challenges.</p>
             </div>
             <div>
-              <h4 className="font-bold text-lg mb-2">Affordable Pricing</h4>
-              <p className="text-gray-300">Our subscription model (€10/user/month) makes enterprise-grade software accessible to businesses of all sizes.</p>
+              <h4 className="font-bold text-lg mb-2">Innovation + Affordability</h4>
+              <p className="text-gray-300">Our subscription model (€10/user/month) brings enterprise-grade custom software within reach while maintaining creative brilliance.</p>
             </div>
             <div>
-              <h4 className="font-bold text-lg mb-2">Business Partnership</h4>
-              <p className="text-gray-300">Our 18-month commitment means we're invested in your success and focused on delivering sustainable value.</p>
+              <h4 className="font-bold text-lg mb-2">Transformative Experience</h4>
+              <p className="text-gray-300">We don't just build software; we create digital experiences that transform how your business operates and how your customers engage.</p>
             </div>
           </div>
         </motion.div>
