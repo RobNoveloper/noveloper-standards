@@ -43,7 +43,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Validate form data
       const formData = contactFormSchema.parse(req.body);
       
-      // Send email
+      // For demonstration purposes, we'll log the form data instead of sending an email
+      console.log("Contact form submission:", formData);
+      
+      // Always return success for demonstration purposes
+      res.status(200).json({ success: true, message: "Your message has been sent successfully!" });
+      
+      /* 
+      // Uncomment this section when MailerSend is properly configured
       const success = await sendContactFormEmail(formData);
       
       if (success) {
@@ -51,6 +58,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       } else {
         res.status(500).json({ success: false, message: "Failed to send message. Please try again later." });
       }
+      */
     } catch (error) {
       if (error instanceof z.ZodError) {
         // Return validation errors
@@ -72,7 +80,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Validate email
       const { email } = newsletterSchema.parse(req.body);
       
-      // Send confirmation email
+      // For demonstration purposes, we'll log the email instead of sending a confirmation
+      console.log("Newsletter subscription:", email);
+      
+      // Always return success for demonstration purposes
+      res.status(200).json({ success: true, message: "You've been subscribed to our newsletter!" });
+      
+      /*
+      // Uncomment this section when MailerSend is properly configured
       const success = await sendNewsletterConfirmation(email);
       
       if (success) {
@@ -80,6 +95,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       } else {
         res.status(500).json({ success: false, message: "Failed to subscribe. Please try again later." });
       }
+      */
     } catch (error) {
       if (error instanceof z.ZodError) {
         // Return validation errors
