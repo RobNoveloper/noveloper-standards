@@ -8,10 +8,10 @@
       <rect x="10.8" y="10.8" width="16.2" height="38.4" fill="black" />
       
       <!-- Right triangle with vertical right side filled with black -->
-      <path d="M27,10.8 L48,10.8 L48,43.8 L27,10.8" fill="black" />
+      <path d="M 32.4,10.8 L 49.2,10.8 L 49.2,43.2 L 32.4,10.8 Z" fill="black" />
     </g>
-    
-    <!-- Company Name -->
-    <text x="70" y="37" font-family="Arial, sans-serif" font-size="20" font-weight="800" fill="black">NOVELOPER</text>
   </g>
+  
+  <!-- Text "NOVELOPER" -->
+  <text x="70" y="36" font-family="Arial, sans-serif" font-weight="bold" font-size="24" fill="black">NOVELOPER</text>
 </svg>
