@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useState, FormEvent, ChangeEvent } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
 
 interface FormState {
   name: string;
@@ -20,6 +19,12 @@ interface FormErrors {
   email?: string;
   message?: string;
   general?: string;
+}
+
+interface ApiResponse {
+  success: boolean;
+  message?: string;
+  errors?: Array<{ field: string, message: string }>;
 }
 
 export function ContactSection() {
@@ -77,15 +82,15 @@ export function ContactSection() {
     
     setIsSubmitting(true);
     try {
-      const response = await apiRequest('/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        body: JSON.stringify(formState),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState)
       });
       
-      if (response.success) {
+      const data = await response.json() as ApiResponse;
+      
+      if (data.success) {
         toast({
           title: "Success!",
           description: "Your message has been sent successfully.",
@@ -96,10 +101,10 @@ export function ContactSection() {
         setFormState({ name: "", email: "", message: "" });
       } else {
         // Show error message from server
-        setErrors({ general: response.message || "Failed to send message" });
+        setErrors({ general: data.message || "Failed to send message" });
         toast({
           title: "Error",
-          description: response.message || "Something went wrong. Please try again.",
+          description: data.message || "Something went wrong. Please try again.",
           variant: "destructive"
         });
       }
@@ -141,15 +146,15 @@ export function ContactSection() {
     
     setIsSubscribing(true);
     try {
-      const response = await apiRequest('/api/newsletter', {
+      const response = await fetch('/api/newsletter', {
         method: 'POST',
-        body: JSON.stringify({ email: newsletter }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: newsletter })
       });
       
-      if (response.success) {
+      const data = await response.json() as ApiResponse;
+      
+      if (data.success) {
         toast({
           title: "Success!",
           description: "You've been subscribed to our newsletter.",
@@ -161,7 +166,7 @@ export function ContactSection() {
       } else {
         toast({
           title: "Error",
-          description: response.message || "Failed to subscribe. Please try again.",
+          description: data.message || "Failed to subscribe. Please try again.",
           variant: "destructive"
         });
       }
