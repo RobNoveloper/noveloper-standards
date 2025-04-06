@@ -21,7 +21,7 @@ export function Logo({
 
   return (
     <div className="flex items-center">
-      <div className={cn("bg-black rounded-2xl flex items-center justify-center", sizeMap[size], className)}>
+      <div className={cn("bg-black rounded-lg flex items-center justify-center", sizeMap[size], className)}>
         {/* SVG recreated from the exact description */}
         <svg width="70%" height="70%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <g>
