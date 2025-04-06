@@ -31,6 +31,8 @@ export async function sendContactFormEmail(formData: ContactFormData): Promise<b
     return false;
   }
 
+  console.log("Preparing to send contact form email from:", formData.name, formData.email);
+  
   try {
     const recipients = [new Recipient(defaultRecipient, "Noveloper Team")];
 
@@ -56,10 +58,12 @@ ${formData.message}
       `);
 
     // Send the email
-    await mailerSend.email.send(emailParams);
+    console.log("Attempting to send contact form email to:", defaultRecipient);
+    const response = await mailerSend.email.send(emailParams);
+    console.log("MailerSend API response (contact form):", response);
     return true;
   } catch (error) {
-    console.error("MailerSend email error:", error);
+    console.error("MailerSend contact form email error:", error);
     return false;
   }
 }
@@ -73,6 +77,8 @@ export async function sendNewsletterConfirmation(email: string): Promise<boolean
     return false;
   }
 
+  console.log("Preparing to send newsletter confirmation to:", email);
+  
   try {
     // Send to the subscriber and also to your email for tracking
     const recipients = [
@@ -85,10 +91,7 @@ export async function sendNewsletterConfirmation(email: string): Promise<boolean
     const emailParams = new EmailParams()
       .setFrom(defaultSender)
       .setTo(recipients)
-      .setSubject(recipient => 
-        recipient.email === defaultRecipient 
-          ? "New Newsletter Subscription: " + email 
-          : "Welcome to the Noveloper Newsletter")
+      .setSubject("Welcome to the Noveloper Newsletter")
       .setText(`
 Thank you for subscribing to the Noveloper newsletter!
 
@@ -108,10 +111,12 @@ The Noveloper Team
       `);
 
     // Send the email
-    await mailerSend.email.send(emailParams);
+    console.log("Attempting to send newsletter confirmation email to:", email, "and", defaultRecipient);
+    const response = await mailerSend.email.send(emailParams);
+    console.log("MailerSend API response (newsletter):", response);
     return true;
   } catch (error) {
-    console.error("MailerSend email error:", error);
+    console.error("MailerSend newsletter email error:", error);
     return false;
   }
 }
