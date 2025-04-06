@@ -28,8 +28,8 @@ export function Logo({
             {/* Left white vertical rectangle */}
             <rect x="20" y="20" width="25" height="60" fill="white" />
             
-            {/* Right triangle with vertical right side, ending at 70% height */}
-            <path d="M45,20 L75,20 L75,62 L45,20" fill="white" />
+            {/* Right triangle with vertical right side, extending longer vertically (85% height) */}
+            <path d="M45,20 L75,20 L75,72 L45,20" fill="white" />
           </g>
         </svg>
       </div>
