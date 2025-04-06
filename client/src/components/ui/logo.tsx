@@ -22,12 +22,14 @@ export function Logo({
   return (
     <div className="flex items-center">
       <div className={cn("bg-black rounded-xl flex items-center justify-center", sizeMap[size], className)}>
-        <svg width="60%" height="60%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path 
-            d="M4 4h8v8h-8V4zm0 0h8v8L4 4z" 
-            fill="white" 
-            fillRule="evenodd"
-          />
+        <svg width="70%" height="70%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          {/* Updated logo to match the exact design */}
+          <g>
+            {/* Left rectangle */}
+            <rect x="4" y="4" width="7" height="16" fill="white" />
+            {/* Triangle */}
+            <polygon points="11,4 20,4 11,20" fill="white" />
+          </g>
         </svg>
       </div>
       {withText && (
