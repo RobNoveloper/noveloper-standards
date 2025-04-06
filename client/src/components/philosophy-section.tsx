@@ -35,7 +35,7 @@ export function PhilosophySection() {
             transition={{ duration: 0.8 }}
             className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4"
           >
-            No Code. No Fear. Just Flow.
+            Our Philosophy
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

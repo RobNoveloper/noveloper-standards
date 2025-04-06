@@ -47,11 +47,11 @@ export function AboutSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mt-8 max-w-3xl mx-auto"
           >
-            <p className="italic text-gray-600 text-center mb-4">
-              Born from curiosity and a desire to challenge the status quo.
+            <p className="font-bold text-gray-700 text-center mb-4">
+              Noveloper was born from curiosity and a drive to rethink how we build.
             </p>
             <p className="text-gray-600 text-center mb-4">
-              Noveloper emerged from a simple question: What if AI could transform how custom software is built? Our founders combined their expertise in AI and business solutions to create a new approach that merges advanced AI with human creativity. The result is a process that delivers tailored applications with unprecedented speed and innovation.
+              We explored what AI could become in the hands of creators — not just engineers — and uncovered a new rhythm of building: faster, freer, and more intuitive. Our founders combined their expertise in AI and business solutions to create a new approach that merges advanced AI with human creativity. The result is a process that delivers tailored applications with unprecedented speed and innovation.
             </p>
             <p className="italic text-gray-600 text-center">
               No code. No fear. Just flow.
