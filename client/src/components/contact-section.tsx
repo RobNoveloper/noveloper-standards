@@ -1,13 +1,181 @@
 import { motion } from "framer-motion";
 import { useReveal } from "@/lib/hooks";
-import { Mail, MapPin, MessageSquare } from "lucide-react";
+import { Mail, MapPin, MessageSquare, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { useState, FormEvent, ChangeEvent } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/queryClient";
+
+interface FormState {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  message?: string;
+  general?: string;
+}
 
 export function ContactSection() {
   const [ref, inView] = useReveal();
+  const { toast } = useToast();
+  
+  // Form state
+  const [formState, setFormState] = useState<FormState>({
+    name: "",
+    email: "",
+    message: ""
+  });
+  
+  // Newsletter state
+  const [newsletter, setNewsletter] = useState("");
+  
+  // Loading states
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  
+  // Errors
+  const [errors, setErrors] = useState<FormErrors>({});
+  
+  // Handle input changes for contact form
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormState(prev => ({ ...prev, [name]: value }));
+    
+    // Clear error when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[name as keyof FormErrors];
+        return newErrors;
+      });
+    }
+  };
+  
+  // Handle contact form submission
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    
+    // Validate form
+    const newErrors: FormErrors = {};
+    if (!formState.name) newErrors.name = "Name is required";
+    if (!formState.email) newErrors.email = "Email is required";
+    else if (!/\S+@\S+\.\S+/.test(formState.email)) newErrors.email = "Please enter a valid email";
+    if (!formState.message) newErrors.message = "Message is required";
+    else if (formState.message.length < 10) newErrors.message = "Message is too short";
+    
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    
+    setIsSubmitting(true);
+    try {
+      const response = await apiRequest('/api/contact', {
+        method: 'POST',
+        body: JSON.stringify(formState),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (response.success) {
+        toast({
+          title: "Success!",
+          description: "Your message has been sent successfully.",
+          variant: "default"
+        });
+        
+        // Reset form
+        setFormState({ name: "", email: "", message: "" });
+      } else {
+        // Show error message from server
+        setErrors({ general: response.message || "Failed to send message" });
+        toast({
+          title: "Error",
+          description: response.message || "Something went wrong. Please try again.",
+          variant: "destructive"
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again later.",
+        variant: "destructive"
+      });
+      setErrors({ general: "Failed to send message. Please try again later." });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  
+  // Handle newsletter subscription
+  const handleSubscribe = async (e: FormEvent) => {
+    e.preventDefault();
+    
+    // Validate email
+    if (!newsletter) {
+      toast({
+        title: "Error",
+        description: "Please enter your email address.",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    if (!/\S+@\S+\.\S+/.test(newsletter)) {
+      toast({
+        title: "Error",
+        description: "Please enter a valid email address.",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    setIsSubscribing(true);
+    try {
+      const response = await apiRequest('/api/newsletter', {
+        method: 'POST',
+        body: JSON.stringify({ email: newsletter }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (response.success) {
+        toast({
+          title: "Success!",
+          description: "You've been subscribed to our newsletter.",
+          variant: "default"
+        });
+        
+        // Reset form
+        setNewsletter("");
+      } else {
+        toast({
+          title: "Error",
+          description: response.message || "Failed to subscribe. Please try again.",
+          variant: "destructive"
+        });
+      }
+    } catch (error) {
+      console.error("Error subscribing to newsletter:", error);
+      toast({
+        title: "Error",
+        description: "There was a problem subscribing. Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubscribing(false);
+    }
+  };
 
   return (
     <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white">
@@ -32,21 +200,30 @@ export function ContactSection() {
           </motion.p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <form className="space-y-6">
+            {errors.general && (
+              <div className="mb-4 p-3 bg-red-900/40 border border-red-500 rounded-md text-red-200">
+                {errors.general}
+              </div>
+            )}
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <Label htmlFor="name" className="text-gray-300">Name</Label>
                 <Input
                   type="text"
                   id="name"
                   name="name"
-                  className="mt-1 block w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  value={formState.name}
+                  onChange={handleInputChange}
+                  className={`mt-1 block w-full px-4 py-3 bg-gray-800 border ${errors.name ? 'border-red-500' : 'border-gray-700'} rounded-md text-white focus:ring-2 focus:ring-purple-600 focus:border-transparent`}
                 />
+                {errors.name && <p className="mt-1 text-sm text-red-400">{errors.name}</p>}
               </div>
               
               <div>
@@ -55,8 +232,11 @@ export function ContactSection() {
                   type="email"
                   id="email"
                   name="email"
-                  className="mt-1 block w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  value={formState.email}
+                  onChange={handleInputChange}
+                  className={`mt-1 block w-full px-4 py-3 bg-gray-800 border ${errors.email ? 'border-red-500' : 'border-gray-700'} rounded-md text-white focus:ring-2 focus:ring-purple-600 focus:border-transparent`}
                 />
+                {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
               </div>
               
               <div>
@@ -65,16 +245,25 @@ export function ContactSection() {
                   id="message"
                   name="message"
                   rows={4}
-                  className="mt-1 block w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  value={formState.message}
+                  onChange={handleInputChange}
+                  className={`mt-1 block w-full px-4 py-3 bg-gray-800 border ${errors.message ? 'border-red-500' : 'border-gray-700'} rounded-md text-white focus:ring-2 focus:ring-purple-600 focus:border-transparent`}
                 />
+                {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message}</p>}
               </div>
               
               <div>
                 <Button 
                   type="submit" 
                   className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-md hover:opacity-90 transition duration-300 font-medium"
+                  disabled={isSubmitting}
                 >
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : "Send Message"}
                 </Button>
               </div>
             </form>
@@ -121,16 +310,24 @@ export function ContactSection() {
               <div className="mt-8 pt-8 border-t border-gray-700">
                 <h4 className="font-bold text-lg mb-4">Newsletter</h4>
                 <p className="text-gray-400 mb-4">Stay updated with our latest innovations and product launches.</p>
-                <div className="flex">
+                <form onSubmit={handleSubscribe} className="flex">
                   <Input
                     type="email"
                     placeholder="Your email"
+                    value={newsletter}
+                    onChange={(e) => setNewsletter(e.target.value)}
                     className="flex-grow px-4 py-2 bg-gray-700 border border-gray-600 rounded-l-md text-white focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   />
-                  <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-r-md hover:opacity-90 transition duration-300">
-                    Subscribe
+                  <Button 
+                    type="submit"
+                    className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-r-md hover:opacity-90 transition duration-300"
+                    disabled={isSubscribing}
+                  >
+                    {isSubscribing ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : "Subscribe"}
                   </Button>
-                </div>
+                </form>
               </div>
             </div>
           </motion.div>
