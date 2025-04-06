@@ -93,7 +93,7 @@ export function ContactSection() {
                   <Mail className="h-6 w-6 text-purple-600 mr-3 flex-shrink-0" />
                   <div>
                     <h4 className="font-bold text-gray-200">Email</h4>
-                    <p className="text-gray-400">hello@noveloper.com</p>
+                    <p className="text-gray-400">rob@noveloper.ai</p>
                   </div>
                 </div>
                 
@@ -101,7 +101,7 @@ export function ContactSection() {
                   <MapPin className="h-6 w-6 text-purple-600 mr-3 flex-shrink-0" />
                   <div>
                     <h4 className="font-bold text-gray-200">Location</h4>
-                    <p className="text-gray-400">Amsterdam, Netherlands</p>
+                    <p className="text-gray-400">Rotterdam, Netherlands</p>
                   </div>
                 </div>
                 

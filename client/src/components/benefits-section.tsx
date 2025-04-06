@@ -3,10 +3,10 @@ import { useReveal } from "@/lib/hooks";
 import { 
   DollarSign, 
   Lightbulb, 
-  LineChart, 
   Timer,
-  Code,
-  Heart
+  Heart,
+  Shield,
+  Headphones
 } from "lucide-react";
 
 const benefits = [
@@ -21,24 +21,24 @@ const benefits = [
     icon: DollarSign
   },
   {
-    title: "Real-Time Intelligence",
-    description: "Interactive dashboards and analytics that transform your data into actionable business insights.",
-    icon: LineChart
-  },
-  {
     title: "Accelerated Development",
     description: "Custom applications delivered in weeks instead of months thanks to our AI-augmented development process.",
     icon: Timer
   },
   {
-    title: "Future-Proof Technology",
-    description: "Continuously updated and maintained software that evolves with your business needs.",
-    icon: Code
-  },
-  {
     title: "Human-Centered Design",
     description: "Intuitive interfaces designed around how your team works, not how computers process data.",
     icon: Heart
+  },
+  {
+    title: "Security & Privacy",
+    description: "Enterprise-level security that protects your data while ensuring compliance with industry standards.",
+    icon: Shield
+  },
+  {
+    title: "Dedicated Support",
+    description: "Continuous assistance and guidance from our team of experts to ensure your software evolves with your business.",
+    icon: Headphones
   }
 ];
 
