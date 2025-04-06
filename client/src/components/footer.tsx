@@ -103,7 +103,7 @@ export function Footer() {
         
         <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center">
-            <Logo size="sm" textClassName="text-gray-400" inverted={true} />
+            <Logo size="sm" inverted={true} />
             <span className="text-sm text-gray-400 ml-3">© {new Date().getFullYear()} Noveloper. All rights reserved.</span>
           </div>
           
