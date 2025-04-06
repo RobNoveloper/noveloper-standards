@@ -24,7 +24,7 @@ export function Logo({
   return (
     <div className="flex items-center">
       <div className={cn(
-        "flex items-center justify-center", 
+        "rounded-lg flex items-center justify-center", 
         inverted ? "bg-gray-400" : "bg-black", 
         sizeMap[size], 
         className
