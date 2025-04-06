@@ -4,18 +4,18 @@ import { Zap, Smile, Fingerprint } from "lucide-react";
 
 const philosophyCards = [
   {
-    title: "Curiosity-Driven",
-    description: "Noveloper was born from curiosity. We wondered what would happen if we stopped writing code... and started conducting it.",
+    title: "Human + AI Partnership",
+    description: "We combine human creativity and business understanding with AI's speed to create custom software solutions that would take months using traditional methods.",
     icon: Zap
   },
   {
-    title: "Creators First",
-    description: "We explored what AI could become in the hands of creators, not just engineers — and discovered a new rhythm of building.",
+    title: "Client-Centric Approach",
+    description: "We listen and translate your business challenges into custom software solutions, maintaining the human touch in consulting, architecting, and collaboration.",
     icon: Smile
   },
   {
-    title: "Boundary Breakers",
-    description: "We're not just building tools. We're creating new possibilities for those who want to create without the traditional limitations of code.",
+    title: "Accelerated Innovation",
+    description: "We build SaaS applications, BI tools, and games faster than ever before, letting you launch, test, and iterate at unprecedented speed.",
     icon: Fingerprint
   }
 ];
@@ -42,7 +42,7 @@ export function PhilosophySection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="max-w-2xl mx-auto text-lg text-gray-600"
           >
-            We're reimagining what it means to create software in an AI-driven world.
+            We're transforming how businesses get custom software built, combining human creativity with AI acceleration.
           </motion.p>
         </div>
         
@@ -76,9 +76,9 @@ export function PhilosophySection() {
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-5 diagonal-bg"></div>
             <div className="p-8 sm:p-12 grid md:grid-cols-2 gap-8 items-center relative">
               <div>
-                <h3 className="text-2xl font-bold mb-4">A New Kind of Builder</h3>
+                <h3 className="text-2xl font-bold mb-4">A New Kind of Studio</h3>
                 <p className="text-gray-600 mb-6">
-                  Noveloper is a fusion of "no developer" and "novel" — representing our commitment to enabling creation without traditional coding while pioneering new, original approaches to software development.
+                  Noveloper is a fusion of "no developer" and "novel" — we build custom software for clients without traditional coding, pioneering a faster, more creative approach to development that lets businesses launch solutions in weeks, not months.
                 </p>
                 <div className="font-mono text-sm bg-gray-100 p-4 rounded-md">
                   <span className="text-purple-600">function</span>{" "}

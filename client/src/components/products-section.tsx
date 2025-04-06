@@ -4,18 +4,18 @@ import { LineChart, Lightbulb, PaintBucket } from "lucide-react";
 
 const products = [
   {
-    title: "DataFlow",
-    description: "Transform complex data into actionable insights without writing a single line of code.",
+    title: "Custom SaaS Applications",
+    description: "Tailored cloud-based software solutions for your business needs, deployed in weeks rather than months.",
     icon: LineChart
   },
   {
-    title: "IdeaMaker",
-    description: "Generate, refine, and collaborate on ideas with AI-powered brainstorming tools.",
+    title: "Business Intelligence Tools",
+    description: "Data visualization and analysis tools that help BI professionals extract more insights with less effort.",
     icon: Lightbulb
   },
   {
-    title: "VisualFlow",
-    description: "Create stunning visual content and interactive designs without design experience.",
+    title: "Interactive Experiences",
+    description: "Engaging games and interactive applications that captivate users while solving real business challenges.",
     icon: PaintBucket
   }
 ];
@@ -42,7 +42,7 @@ export function ProductsSection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="max-w-2xl mx-auto text-lg text-gray-600"
           >
-            Tools built with AI, designed for humans. No coding required.
+            Custom software solutions we build for our clients, powered by AI and designed for real business impact.
           </motion.p>
         </div>
         

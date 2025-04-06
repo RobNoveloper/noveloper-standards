@@ -28,7 +28,7 @@ export function HeroSection() {
             <span className="block bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Just flow.</span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-lg">
-            Noveloper isn't just a name. It's a mindset. A new kind of builder. A new kind of studio.
+            We're an AI-powered creative studio building custom software solutions for businesses with unprecedented speed and creativity.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Button

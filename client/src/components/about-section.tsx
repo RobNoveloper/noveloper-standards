@@ -3,17 +3,17 @@ import { useReveal } from "@/lib/hooks";
 import { Check } from "lucide-react";
 
 const features = [
-  "Data visualization and insights",
-  "Planning and productivity tools",
-  "Interactive dashboards and experiences",
-  "Creative content and gaming experiences"
+  "Custom SaaS applications tailored to your business needs",
+  "Business intelligence tools for data-driven decisions",
+  "Interactive experiences and games with business impact",
+  "Rapid development that gets solutions to market faster"
 ];
 
 const workflowSteps = [
-  { number: "01", title: "Ideation", description: "We start with a vision and refine it through AI-powered exploration." },
-  { number: "02", title: "Prototyping", description: "Rapid AI-driven prototyping that brings concepts to life quickly." },
-  { number: "03", title: "Refinement", description: "Human-guided AI iteration to perfect the product experience." },
-  { number: "04", title: "Deployment", description: "Bringing innovative tools to users across platforms." }
+  { number: "01", title: "Consultation", description: "We work closely with you to understand your business needs and challenges." },
+  { number: "02", title: "Solution Design", description: "Our human experts architect the solution, leveraging AI to accelerate the process." },
+  { number: "03", title: "Rapid Development", description: "We build your custom software using AI tools, cutting development time by 5-10x." },
+  { number: "04", title: "Launch & Support", description: "We deliver your solution and provide ongoing support for your business." }
 ];
 
 export function AboutSection() {
@@ -38,7 +38,7 @@ export function AboutSection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="max-w-2xl mx-auto text-lg text-gray-600"
           >
-            An AI-driven maker collective building tools for people who want to create without code.
+            An AI-powered creative studio that builds custom software for businesses with unprecedented speed and innovation.
           </motion.p>
         </div>
         
@@ -50,7 +50,7 @@ export function AboutSection() {
           >
             <h3 className="text-2xl font-bold mb-4">What We Do</h3>
             <p className="text-gray-600 mb-6">
-              Noveloper is not a software company in the traditional sense. We are an AI-driven creative studio that builds intelligent applications for various purposes:
+              Noveloper is an AI-powered creative studio that builds custom software solutions for clients. We work with businesses to create:
             </p>
             <ul className="space-y-4">
               {features.map((feature, index) => (
@@ -70,7 +70,7 @@ export function AboutSection() {
             <div className="bg-white p-8 rounded-xl shadow-md">
               <h3 className="text-2xl font-bold mb-4">How We Work</h3>
               <p className="text-gray-600 mb-6">
-                Instead of traditional programming, we use AI as a designer, builder, and executor. We translate ideas into working digital products without writing code.
+                We combine human expertise in consulting, design, and business understanding with AI-powered development tools to build custom software solutions 5-10x faster than traditional methods.
               </p>
               <div className="space-y-4">
                 {workflowSteps.map((step) => (
@@ -99,15 +99,15 @@ export function AboutSection() {
           <div className="grid md:grid-cols-3 gap-6">
             <div>
               <h4 className="font-bold text-lg mb-2">No Code</h4>
-              <p className="text-gray-300">Breaking free from traditional development limitations.</p>
+              <p className="text-gray-300">We build custom software without traditional coding—enabling faster development for our clients.</p>
             </div>
             <div>
               <h4 className="font-bold text-lg mb-2">No Fear</h4>
-              <p className="text-gray-300">Embracing the creative process without technical barriers.</p>
+              <p className="text-gray-300">We tackle complex software challenges with confidence, helping businesses innovate without technical barriers.</p>
             </div>
             <div>
               <h4 className="font-bold text-lg mb-2">Just Flow</h4>
-              <p className="text-gray-300">Finding a new rhythm of creation with AI as your partner.</p>
+              <p className="text-gray-300">We deliver a seamless development experience from consultation to launch, powered by human expertise and AI tools.</p>
             </div>
           </div>
         </motion.div>
