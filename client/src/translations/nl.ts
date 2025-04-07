@@ -12,8 +12,8 @@ export const nl = {
   // Hero Section
   hero: {
     title: 'Software op Maat tegen SaaS Prijzen',
-    subtitle: 'Geen code. Geen angst. Alleen flow.',
-    description: 'Een door AI gedreven creatieve studio die software op maat bouwt voor de exacte oplossing die je nodig hebt, met voorspelbare kosten.',
+    subtitle: 'No code. No fear. Just flow.',
+    description: 'Wij zijn een AI-gedreven creatieve studio die maatwerksoftware bouwt tegen SaaS-prijzen. Enterprise-applicaties zonder enterprise-prijskaartje.',
     cta: 'Neem Contact Op',
     scrollDown: 'Meer informatie',
   },
@@ -28,7 +28,7 @@ export const nl = {
       content1: 'Noveloper is ontstaan uit nieuwsgierigheid en een drive om te heroverwegen hoe we bouwen.',
       content2: 'We onderzochten wat AI zou kunnen worden in handen van creators — niet alleen engineers — en ontdekten een nieuw ritme van bouwen: sneller, vrijer en meer intuïtief. Onze oprichters combineerden hun expertise in AI, BI en bedrijfsoplossingen om een nieuwe aanpak te creëren die geavanceerde AI combineert met menselijke creativiteit. Het resultaat is een proces dat op maat gemaakte applicaties in weken in plaats van maanden levert, waardoor uw oplossingen sneller tot leven kunnen komen.',
     },
-    slogan: 'Geen code. Geen angst. Alleen flow.',
+    slogan: 'No code. No fear. Just flow.',
     founders: {
       title: 'Onze Oprichters',
       content: 'Twee technologische leiders die 20+ jaar ervaring in software engineering, design thinking en BI-expertise samenbrachten om een hardnekkig probleem op te lossen: waarom vertrouwen bedrijven nog steeds op complexe workarounds terwijl aangepaste oplossingen te duur en complex blijven?',
@@ -96,7 +96,7 @@ export const nl = {
   // Philosophy Section
   philosophy: {
     title: 'Onze Filosofie',
-    content: 'In het AI-tijdperk hebben we het idee doorbroken dat maatwerksoftware complex, duur of traag moet zijn om te bouwen. Door AI-augmented development te omarmen als een creatieve krachtvermenigvuldiger, leveren we oplossingen die traditionele methoden simpelweg niet kunnen bieden—wat de mogelijkheden transformeert voor bedrijven van elke omvang.',
+    content: 'In het AI-tijdperk hebben we afgerekend met het idee dat maatwerksoftware per definitie complex, traag of duur is. Door AI in te zetten als creatieve versneller bouwen we oplossingen die met traditionele methoden simpelweg niet haalbaar zijn — en verschuiven we de grenzen van wat mogelijk is, voor organisaties van elke omvang.',
     cta: 'Leer Over Onze Aanpak',
     cards: [
       {
