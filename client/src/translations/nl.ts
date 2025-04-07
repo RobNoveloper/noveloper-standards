@@ -183,7 +183,7 @@ export const nl = {
     title: 'Neem Contact Op',
     subtitle: 'Klaar om je bedrijf te transformeren?',
     getStarted: 'Begin Nu',
-    readyTransform: 'Maak je klaar om jouw ideeën werkelijkheid te maken zonder je budget te overschrijden?',
+    readyTransform: 'Klaar om jouw ideeën werkelijkheid te maken zonder veel geld kwijt te zijn?',
     form: {
       name: 'Naam',
       email: 'E-mail',
@@ -209,7 +209,7 @@ export const nl = {
       }
     },
     connect: {
-      title: 'Kom In Contact',
+      title: 'Neem contact op',
       email: 'E-mail',
       location: 'Locatie',
       social: 'Social',
