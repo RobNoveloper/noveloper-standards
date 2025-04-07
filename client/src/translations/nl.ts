@@ -5,6 +5,7 @@ export const nl = {
     about: 'Over ons',
     products: 'Oplossingen',
     philosophy: 'Filosofie',
+    workflow: 'Werkwijze',
     benefits: 'Voordelen',
     contact: 'Contact',
   },
@@ -117,6 +118,34 @@ export const nl = {
       description: 'Noveloper is een fusie van "geen ontwikkelaar" en "vernieuwend" — we bouwen aangepaste software zonder traditionele codering, en zijn pioniers van een creatieve aanpak die het ontwikkelingsproces transformeert tot een intuïtieve, vloeiende ervaring.',
       cta: 'Zie het in actie',
     },
+  },
+  
+  // Workflow Section
+  workflow: {
+    title: 'Onze Oneindigheidsworkflow',
+    description: 'Ons agile proces creëert een naadloze stroom tussen menselijke creativiteit en AI-mogelijkheden, waardoor continue verbetering en innovatie mogelijk is in elk project.',
+    steps: {
+      discovery: {
+        title: 'Ontdekking',
+        description: 'We verkennen uw visie en zakelijke uitdagingen om kansen voor innovatieve digitale oplossingen te identificeren.'
+      },
+      design: {
+        title: 'Ontwerp',
+        description: 'We maken intuïtieve, boeiende interfaces die uw meridentiteit vastleggen en de gebruikerservaring verbeteren.'
+      },
+      build: {
+        title: 'Bouwen',
+        description: 'Ons door AI verbeterde ontwikkelingsproces creëert uw maatwerksoftware met ongekende snelheid en creativiteit.'
+      },
+      test: {
+        title: 'Testen',
+        description: 'Menselijke experts beoordelen alle code om ervoor te zorgen dat uw applicatie voldoet aan de hoogste normen van kwaliteit en prestaties.'
+      },
+      launch: {
+        title: 'Lancering',
+        description: 'We implementeren uw oplossing en blijven deze verfijnen op basis van echte gebruikersfeedback en veranderende zakelijke behoeften.'
+      }
+    }
   },
 
   // Benefits Section

@@ -5,6 +5,7 @@ export const en = {
     about: 'About',
     products: 'Solutions',
     philosophy: 'Philosophy',
+    workflow: 'Workflow',
     benefits: 'Benefits',
     contact: 'Contact',
   },
@@ -117,6 +118,34 @@ export const en = {
       description: 'Noveloper is a fusion of "no developer" and "novel" — we build custom software without traditional coding, pioneering a creative approach that transforms the development process into an intuitive, flowing experience.',
       cta: 'See it in Action',
     },
+  },
+  
+  // Workflow Section
+  workflow: {
+    title: 'Our Infinity Workflow',
+    description: 'Our agile process creates a seamless flow between human creativity and AI capabilities, enabling continuous improvement and innovation in every project.',
+    steps: {
+      discovery: {
+        title: 'Discovery',
+        description: 'We explore your vision and business challenges to identify opportunities for innovative digital solutions.'
+      },
+      design: {
+        title: 'Design',
+        description: 'We craft intuitive, engaging interfaces that capture your brand identity and enhance user experience.'
+      },
+      build: {
+        title: 'Build',
+        description: 'Our AI-augmented development process creates your custom software with unprecedented speed and creativity.'
+      },
+      test: {
+        title: 'Test',
+        description: 'Human experts review all code to ensure your application meets the highest standards of quality and performance.'
+      },
+      launch: {
+        title: 'Launch',
+        description: 'We deploy your solution and continue to refine it based on real user feedback and evolving business needs.'
+      }
+    }
   },
 
   // Benefits Section

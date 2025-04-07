@@ -18,6 +18,7 @@ export function Header() {
     { key: "nav.home", href: "#home" },
     { key: "nav.philosophy", href: "#philosophy" },
     { key: "nav.products", href: "#products" },
+    { key: "nav.workflow", href: "#workflow" },
     { key: "nav.benefits", href: "#benefits" },
     { key: "nav.about", href: "#about" },
     { key: "nav.contact", href: "#contact" }

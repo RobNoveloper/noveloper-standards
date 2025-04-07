@@ -23,6 +23,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // use storage to perform CRUD operations on the storage interface
   // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
   
+  // Serve files from public/assets directory
+  app.use('/assets', (req, res, next) => {
+    const filePath = path.join(process.cwd(), 'public', 'assets', req.path);
+    res.sendFile(filePath, err => {
+      if (err) next();
+    });
+  });
+  
   // Add route to serve SVG logo files
   app.get('/api/logo/:variant', (req: Request, res: Response) => {
     const variant = req.params.variant;

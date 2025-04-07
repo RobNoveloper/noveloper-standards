@@ -3,7 +3,29 @@ import { nl } from './nl';
 import { Language } from '@/contexts/language-context';
 
 // Define a type for our translations
-type TranslationSet = typeof en;
+// We manually define this to avoid type issues with dynamically modified translation objects
+type TranslationSet = {
+  nav: {
+    home: string;
+    about: string;
+    products: string;
+    philosophy: string;
+    workflow: string;
+    benefits: string;
+    contact: string;
+  };
+  hero: typeof en.hero;
+  about: typeof en.about;
+  products: typeof en.products;
+  philosophy: typeof en.philosophy;
+  workflow: typeof en.workflow;
+  benefits: typeof en.benefits;
+  contact: typeof en.contact;
+  footer: typeof en.footer;
+  languageToggle: typeof en.languageToggle;
+  notFound: typeof en.notFound;
+  legal: typeof en.legal;
+};
 type NestedObject = { [key: string]: NestedObject | string };
 
 export const translations: Record<Language, TranslationSet> = {
@@ -37,6 +59,18 @@ export function useTranslation(language: Language) {
       }
       
       return translation;
-    }
+    },
+    workflow: translations[language].workflow,
+    hero: translations[language].hero,
+    nav: translations[language].nav,
+    about: translations[language].about,
+    products: translations[language].products,
+    philosophy: translations[language].philosophy,
+    benefits: translations[language].benefits,
+    contact: translations[language].contact,
+    footer: translations[language].footer,
+    languageToggle: translations[language].languageToggle,
+    notFound: translations[language].notFound,
+    legal: translations[language].legal,
   };
 }
