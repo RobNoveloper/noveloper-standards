@@ -79,18 +79,18 @@ export const nl = {
     title: 'Onze Oplossingen',
     subtitle: 'Intelligente software die meegroeit met je bedrijf',
     saas: {
-      title: 'SaaS Applicaties op Maat',
-      content: 'Webapplicaties op maat gebouwd specifiek voor de behoeften van je bedrijf, met voorspelbare abonnementsprijzen die meegroeien met je groei.',
+      title: 'Maatwerk SaaS-applicaties',
+      content: 'Webapplicaties die volledig zijn afgestemd op jouw organisatie — met een voorspelbaar abonnementsmodel dat meegroeit met je bedrijf.',
     },
     excel: {
-      title: 'Excel Proces Transformaties',
-      content: 'Transformeer foutgevoelige spreadsheetprocessen naar robuuste, veilige webapplicaties met verbeterde workflow, validatie en samenwerking.',
+      title: 'Van Excel naar efficiëntie',
+      content: 'Vervang foutgevoelige spreadsheets door veilige, krachtige webapplicaties met betere workflows, validatie en samenwerking.',
     },
     interactive: {
-      title: 'Interactieve Ervaringen',
-      content: 'Creëer boeiende, interactieve ervaringen voor klanten, medewerkers of belanghebbenden met rijke interfaces en datavisualisatie.',
+      title: 'Interactieve experiences',
+      content: 'Creëer boeiende, interactieve ervaringen voor klanten, medewerkers of stakeholders — met rijke interfaces en datavisualisatie.',
     },
-    cta: 'Bespreek Je Project',
+    cta: 'Bespreek je project',
   },
 
   // Philosophy Section
