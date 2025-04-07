@@ -34,23 +34,27 @@ export function LanguageToggle({ className, variant = "default" }: LanguageToggl
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <Button
-        variant={language === "en" ? "default" : "outline"}
+        variant="outline"
         size="sm"
         onClick={() => setLanguage("en")}
         className={cn(
           "rounded-full px-3 transition-colors",
-          language === "en" ? "hover:bg-primary/90" : "text-gray-800 bg-white hover:bg-gray-100 hover:text-gray-900"
+          language === "en" 
+            ? "bg-primary text-primary-foreground hover:bg-primary" 
+            : "text-gray-800 bg-white hover:bg-gray-100 hover:text-gray-900"
         )}
       >
         {t("languageToggle.en")}
       </Button>
       <Button
-        variant={language === "nl" ? "default" : "outline"}
+        variant="outline"
         size="sm"
         onClick={() => setLanguage("nl")}
         className={cn(
           "rounded-full px-3 transition-colors",
-          language === "nl" ? "hover:bg-primary/90" : "text-gray-800 bg-white hover:bg-gray-100 hover:text-gray-900"
+          language === "nl" 
+            ? "bg-primary text-primary-foreground hover:bg-primary" 
+            : "text-gray-800 bg-white hover:bg-gray-100 hover:text-gray-900"
         )}
       >
         {t("languageToggle.nl")}
