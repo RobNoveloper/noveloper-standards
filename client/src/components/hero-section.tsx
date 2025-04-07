@@ -29,7 +29,7 @@ export function HeroSection() {
             <span className="block bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Just flow.</span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-lg">
-            We're an AI-powered creative studio reimagining software development. Bringing intuitive, enterprise-grade applications to life with a creative twist.
+            We're an AI-powered creative studio building custom software solutions at SaaS prices. Enterprise-grade applications without enterprise price tags.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Button
