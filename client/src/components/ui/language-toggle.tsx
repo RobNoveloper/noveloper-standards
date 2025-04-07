@@ -39,7 +39,7 @@ export function LanguageToggle({ className, variant = "default" }: LanguageToggl
         onClick={() => setLanguage("en")}
         className={cn(
           "rounded-full px-3 transition-colors",
-          language !== "en" && "text-gray-800 bg-white hover:bg-gray-100 hover:text-gray-900"
+          language === "en" ? "hover:bg-primary/90" : "text-gray-800 bg-white hover:bg-gray-100 hover:text-gray-900"
         )}
       >
         {t("languageToggle.en")}
@@ -50,7 +50,7 @@ export function LanguageToggle({ className, variant = "default" }: LanguageToggl
         onClick={() => setLanguage("nl")}
         className={cn(
           "rounded-full px-3 transition-colors",
-          language !== "nl" && "text-gray-800 bg-white hover:bg-gray-100 hover:text-gray-900"
+          language === "nl" ? "hover:bg-primary/90" : "text-gray-800 bg-white hover:bg-gray-100 hover:text-gray-900"
         )}
       >
         {t("languageToggle.nl")}
