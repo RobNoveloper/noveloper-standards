@@ -51,25 +51,21 @@ export function AboutSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="max-w-3xl mx-auto mt-16"
+            className="max-w-6xl mx-auto mt-16"
           >
             <div className="bg-white p-8 rounded-xl shadow-md">
               <h3 className="text-2xl font-bold mb-4 text-center">{t("about.workflow.title")}</h3>
               <p className="text-gray-600 mb-6 text-center">
                 {t("about.workflow.subtitle")}
               </p>
-              <div className="space-y-6">
-                {workflowSteps.map((step) => (
-                  <div key={step.number} className="flex items-start">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center mr-4 flex-shrink-0 text-white">
-                      <span className="font-bold">{step.number}</span>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg">{step.title}</h4>
-                      <p className="text-gray-600">{step.description}</p>
-                    </div>
-                  </div>
-                ))}
+              
+              {/* Infinity Workflow Diagram */}
+              <div className="mt-8 mb-8 flex justify-center">
+                <img 
+                  src="/assets/infinity-workflow.svg" 
+                  alt="Noveloper Workflow" 
+                  className="w-full max-w-5xl" 
+                />
               </div>
             </div>
           </motion.div>
