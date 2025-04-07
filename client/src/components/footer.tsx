@@ -1,5 +1,8 @@
 import { Link } from "wouter";
 import { Logo } from "./ui/logo";
+import { useLanguage } from "@/contexts/language-context";
+import { useTranslation } from "@/translations";
+import { LanguageToggle } from "./ui/language-toggle";
 
 const solutions = [
   { name: "Custom SaaS Applications", href: "#products" },
@@ -41,6 +44,32 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const { language } = useLanguage();
+  const { t } = useTranslation(language);
+
+  // Define solution items with translation
+  const solutionItems = [
+    { key: "products.saas.title", href: "#products" },
+    { key: "products.excel.title", href: "#products" },
+    { key: "products.interactive.title", href: "#products" }
+  ];
+
+  // Define company items with translation
+  const companyItems = [
+    { key: "nav.philosophy", href: "#philosophy" },
+    { key: "nav.products", href: "#products" },
+    { key: "nav.benefits", href: "#benefits" },
+    { key: "nav.about", href: "#about" },
+    { key: "nav.contact", href: "#contact" }
+  ];
+
+  // Define legal items with translation
+  const legalItems = [
+    { key: "footer.privacyPolicy", href: "/privacy-policy" },
+    { key: "footer.termsOfService", href: "/terms-of-service" },
+    { key: "footer.cookiePolicy", href: "/cookie-policy" }
+  ];
+
   return (
     <footer className="bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -48,15 +77,18 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">Noveloper</h3>
             <p className="text-sm text-gray-400">
-              An AI-driven creative studio transforming how businesses access custom software solutions at SaaS prices. No code. No fear. Just flow.
+              {t("hero.subtitle")} {t("hero.description")}
             </p>
+            <div className="mt-6">
+              <LanguageToggle />
+            </div>
           </div>
           
           <div>
-            <h3 className="text-lg font-bold mb-4">Solutions</h3>
+            <h3 className="text-lg font-bold mb-4">{t("footer.solutions")}</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              {solutions.map((item) => (
-                <li key={item.name}>
+              {solutionItems.map((item) => (
+                <li key={item.key}>
                   <a href={item.href} className="hover:text-white transition duration-300"
                      onClick={(e) => {
                       if (item.href.startsWith('#')) {
@@ -66,7 +98,7 @@ export function Footer() {
                       }
                     }}
                   >
-                    {item.name}
+                    {t(item.key)}
                   </a>
                 </li>
               ))}
@@ -74,10 +106,10 @@ export function Footer() {
           </div>
           
           <div>
-            <h3 className="text-lg font-bold mb-4">Company</h3>
+            <h3 className="text-lg font-bold mb-4">{t("footer.company")}</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              {company.map((item) => (
-                <li key={item.name}>
+              {companyItems.map((item) => (
+                <li key={item.key}>
                   <a 
                     href={item.href} 
                     className="hover:text-white transition duration-300"
@@ -89,7 +121,7 @@ export function Footer() {
                       }
                     }}
                   >
-                    {item.name}
+                    {t(item.key)}
                   </a>
                 </li>
               ))}
@@ -97,12 +129,12 @@ export function Footer() {
           </div>
           
           <div>
-            <h3 className="text-lg font-bold mb-4">Legal</h3>
+            <h3 className="text-lg font-bold mb-4">{t("footer.legal")}</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              {legal.map((item) => (
-                <li key={item.name}>
+              {legalItems.map((item) => (
+                <li key={item.key}>
                   <Link href={item.href} className="hover:text-white transition duration-300">
-                    {item.name}
+                    {t(item.key)}
                   </Link>
                 </li>
               ))}
@@ -113,7 +145,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center">
             <Logo size="sm" inverted={true} />
-            <span className="text-sm text-gray-400 ml-3">© {new Date().getFullYear()} Noveloper. All rights reserved.</span>
+            <span className="text-sm text-gray-400 ml-3">© {new Date().getFullYear()} Noveloper. {t("footer.rights")}</span>
           </div>
           
           <div className="flex space-x-6 mt-4 md:mt-0">

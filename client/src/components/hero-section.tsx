@@ -2,10 +2,14 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Logo } from "./ui/logo";
 import { useReveal } from "@/lib/hooks";
+import { useLanguage } from "@/contexts/language-context";
+import { useTranslation } from "@/translations";
 
 export function HeroSection() {
   const [ref1, inView1] = useReveal<HTMLDivElement>();
   const [ref2, inView2] = useReveal<HTMLDivElement>();
+  const { language } = useLanguage();
+  const { t } = useTranslation(language);
   
   return (
     <section 
@@ -24,34 +28,35 @@ export function HeroSection() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
-            <span className="block">No code.</span>
-            <span className="block">No fear.</span>
-            <span className="block bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Just flow.</span>
+            <span className="block text-3xl sm:text-4xl mb-2 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              {t("hero.title")}
+            </span>
+            <span className="block">{t("hero.subtitle")}</span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-lg">
-            We're an AI-powered creative studio building custom software solutions at SaaS prices. Enterprise-grade applications without enterprise price tags.
+            {t("hero.description")}
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Button
               size="lg"
               className="bg-gradient-to-r from-purple-600 to-blue-600 hover:opacity-90 transition duration-300"
               onClick={() => {
-                const element = document.querySelector("#philosophy");
+                const element = document.querySelector("#contact");
                 if (element) element.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              Discover Our Philosophy
+              {t("hero.cta")}
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="border-gray-300 text-gray-700 hover:bg-gray-50 transition duration-300"
               onClick={() => {
-                const element = document.querySelector("#products");
+                const element = document.querySelector("#philosophy");
                 if (element) element.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              View Products
+              {t("hero.scrollDown")}
             </Button>
           </div>
         </motion.div>

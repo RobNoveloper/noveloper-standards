@@ -1,0 +1,150 @@
+export const en = {
+  // Header Navigation
+  nav: {
+    home: 'Home',
+    about: 'About',
+    products: 'Solutions',
+    philosophy: 'Philosophy',
+    benefits: 'Benefits',
+    contact: 'Contact',
+  },
+
+  // Hero Section
+  hero: {
+    title: 'Custom Software at SaaS Prices',
+    subtitle: 'No code. No fear. Just flow.',
+    description: 'An AI-driven creative studio that builds custom software for the exact solution you need, with predictable costs.',
+    cta: 'Get in Touch',
+    scrollDown: 'Learn more',
+  },
+
+  // About Section
+  about: {
+    title: 'About Noveloper',
+    subtitle: 'Transforming how businesses access custom software solutions',
+    origin: {
+      title: 'Our Origin',
+      content: 'Noveloper was born from curiosity and a drive to rethink how we build. We explored what AI could become in the hands of creators — not just engineers — and uncovered a new rhythm of building: faster, freer, and more intuitive.',
+    },
+    founders: {
+      title: 'Our Founders',
+      content: 'Two tech leaders who merged 20+ years of software engineering, design thinking, and BI expertise to solve a persistent problem: why do businesses still rely on complex workarounds when custom solutions remain too expensive and complex?',
+    },
+    process: {
+      title: 'How We Work',
+      content: 'We turned the traditional development model inside out. By leveraging AI as a force multiplier, we\'ve removed the conventional cost and complexity barriers to custom software, delivering enterprise-grade solutions in weeks instead of months.',
+    },
+  },
+
+  // Products Section
+  products: {
+    title: 'Our Solutions',
+    subtitle: 'Intelligent software that grows with your business',
+    saas: {
+      title: 'Custom SaaS Applications',
+      content: 'Tailored web applications built specifically for your business needs, with predictable subscription pricing that scales with your growth.',
+    },
+    excel: {
+      title: 'Excel Process Transformations',
+      content: 'Transform error-prone spreadsheet processes into robust, secure web applications with improved workflow, validation, and collaboration.',
+    },
+    interactive: {
+      title: 'Interactive Experiences',
+      content: 'Create engaging, interactive experiences for customers, employees, or stakeholders with rich interfaces and data visualization.',
+    },
+    cta: 'Discuss Your Project',
+  },
+
+  // Philosophy Section
+  philosophy: {
+    title: 'Our Philosophy',
+    content: 'In the AI era, we\'ve shattered the belief that custom software must be complex, expensive, or slow to build. By embracing AI-augmented development as a creative force multiplier, we deliver solutions that traditional methods simply cannot—transforming what\'s possible for businesses of any size.',
+    cta: 'Learn About Our Approach',
+  },
+
+  // Benefits Section
+  benefits: {
+    title: 'Benefits',
+    subtitle: 'Why choose Noveloper?',
+    items: [
+      {
+        title: 'Fixed Monthly Cost',
+        content: 'Predictable subscription pricing with no large upfront investments or unexpected fees.',
+      },
+      {
+        title: 'Continuous Improvement',
+        content: 'Your software evolves with your business needs through regular updates and enhancements.',
+      },
+      {
+        title: 'Rapid Development',
+        content: 'From concept to production in weeks, not months, thanks to our AI-augmented approach.',
+      },
+      {
+        title: 'Focus on Business Value',
+        content: 'Spend your time defining what matters, not managing technical complexities.',
+      },
+      {
+        title: 'Seamless Integration',
+        content: 'Connect with your existing tools and systems for a unified workflow.',
+      },
+      {
+        title: 'Future-Proof Technology',
+        content: 'Built on modern tech stacks that evolve with industry advancements.',
+      },
+    ],
+  },
+
+  // Contact Section
+  contact: {
+    title: 'Get in Touch',
+    subtitle: 'Ready to transform your business?',
+    form: {
+      name: 'Name',
+      email: 'Email',
+      message: 'Message',
+      submit: 'Send Message',
+      namePlaceholder: 'Your name',
+      emailPlaceholder: 'Your email',
+      messagePlaceholder: 'Tell us about your project or ask a question',
+      success: 'Thank you! Your message has been sent. We\'ll get back to you soon.',
+      error: 'Sorry, there was a problem sending your message. Please try again.',
+    },
+    newsletter: {
+      title: 'Subscribe to our newsletter',
+      placeholder: 'Your email',
+      button: 'Subscribe',
+      success: 'Thank you for subscribing!',
+      error: 'Sorry, there was a problem. Please try again.',
+    },
+  },
+
+  // Footer
+  footer: {
+    solutions: 'Solutions',
+    company: 'Company',
+    legal: 'Legal',
+    rights: 'All rights reserved.',
+    privacyPolicy: 'Privacy Policy',
+    termsOfService: 'Terms of Service',
+    cookiePolicy: 'Cookie Policy',
+  },
+
+  // Language Toggle
+  languageToggle: {
+    en: 'English',
+    nl: 'Dutch',
+  },
+
+  // Not Found Page
+  notFound: {
+    title: 'Page Not Found',
+    message: 'Sorry, the page you are looking for does not exist.',
+    button: 'Back to Home',
+  },
+
+  // Legal Pages - Common
+  legal: {
+    lastUpdated: 'Last updated',
+    contactUs: 'Contact Us',
+  },
+};

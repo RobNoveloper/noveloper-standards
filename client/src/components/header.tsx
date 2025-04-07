@@ -3,20 +3,25 @@ import { Link } from "wouter";
 import { Logo } from "./ui/logo";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-
-const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "Philosophy", href: "#philosophy" },
-  { name: "Solutions", href: "#products" },
-  { name: "Demo", href: "#interactive-demo" },
-  { name: "Benefits", href: "#benefits" },
-  { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" }
-];
+import { useLanguage } from "@/contexts/language-context";
+import { useTranslation } from "@/translations";
+import { LanguageToggle } from "./ui/language-toggle";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { language } = useLanguage();
+  const { t } = useTranslation(language);
+
+  // Navigation items with translation keys
+  const navItems = [
+    { key: "nav.home", href: "#home" },
+    { key: "nav.philosophy", href: "#philosophy" },
+    { key: "nav.products", href: "#products" },
+    { key: "nav.benefits", href: "#benefits" },
+    { key: "nav.about", href: "#about" },
+    { key: "nav.contact", href: "#contact" }
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,7 +56,7 @@ export function Header() {
           <nav className="hidden md:flex space-x-10">
             {navItems.map((item) => (
               <a
-                key={item.name}
+                key={item.key}
                 href={item.href}
                 onClick={(e) => {
                   e.preventDefault();
@@ -59,12 +64,13 @@ export function Header() {
                 }}
                 className="text-base font-medium text-gray-700 hover:text-gray-900 transition duration-300"
               >
-                {item.name}
+                {t(item.key)}
               </a>
             ))}
           </nav>
           
-          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-3">
+            <LanguageToggle variant="minimal" />
             <a 
               href="#contact" 
               onClick={(e) => {
@@ -73,7 +79,7 @@ export function Header() {
               }}
               className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:opacity-90 transition duration-300"
             >
-              Get Started
+              {t("hero.cta")}
             </a>
           </div>
           
@@ -99,7 +105,7 @@ export function Header() {
                 <nav className="grid gap-y-8">
                   {navItems.map((item) => (
                     <a
-                      key={item.name}
+                      key={item.key}
                       href={item.href}
                       onClick={(e) => {
                         e.preventDefault();
@@ -107,9 +113,10 @@ export function Header() {
                       }}
                       className="text-base font-medium text-gray-900 hover:text-gray-700 transition duration-300"
                     >
-                      {item.name}
+                      {t(item.key)}
                     </a>
                   ))}
+                  <LanguageToggle />
                 </nav>
               </div>
             </div>
@@ -122,7 +129,7 @@ export function Header() {
                 }}
                 className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:opacity-90 transition duration-300"
               >
-                Get Started
+                {t("hero.cta")}
               </a>
             </div>
           </div>

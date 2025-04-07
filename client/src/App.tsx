@@ -8,6 +8,7 @@ import TermsOfService from "@/pages/legal/terms-of-service";
 import CookiePolicy from "@/pages/legal/cookie-policy";
 import { queryClient } from "./lib/queryClient";
 import { useEffect } from "react";
+import { LanguageProvider } from "@/contexts/language-context";
 
 function Router() {
   const [location] = useLocation();
@@ -31,8 +32,10 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router />
-      <Toaster />
+      <LanguageProvider>
+        <Router />
+        <Toaster />
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }
