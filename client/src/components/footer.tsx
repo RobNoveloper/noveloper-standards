@@ -80,7 +80,7 @@ export function Footer() {
               {t("hero.subtitle")} {t("hero.description")}
             </p>
             <div className="mt-6">
-              <LanguageToggle className="[&_button.text-gray-800]:text-gray-200 [&_button.bg-white]:bg-transparent" />
+              <LanguageToggle className="[&_button.text-gray-800]:text-gray-300 [&_button.bg-white]:bg-transparent [&_button.hover\:bg-gray-200]:hover:bg-gray-700" />
             </div>
           </div>
           
