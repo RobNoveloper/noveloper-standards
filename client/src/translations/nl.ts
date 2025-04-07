@@ -147,13 +147,7 @@ export const nl = {
       title: 'Toegewijde Ondersteuning',
       content: 'Continue assistentie en begeleiding van ons team van experts om ervoor te zorgen dat je software evolueert met je bedrijf.',
     },
-    tagline: 'Disruptieve Innovatie. Enterprise Kwaliteit. Prachtig Ontwerp.',
-    comparison: {
-      title: 'Vergeleken met Traditionele Software op Maat:',
-      cost: 'Bespaar 80-90% op totale kosten',
-      upfront: 'Geen vooraf ontwikkelingskosten',
-      speed: 'Snellere time-to-market',
-    },
+
   },
 
   // Contact Section

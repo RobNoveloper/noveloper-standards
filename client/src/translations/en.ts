@@ -147,13 +147,7 @@ export const en = {
       title: 'Dedicated Support',
       content: 'Continuous assistance and guidance from our team of experts to ensure your software evolves with your business.',
     },
-    tagline: 'Disruptive Innovation. Enterprise Quality. Beautiful Design.',
-    comparison: {
-      title: 'Compared to Traditional Custom Software:',
-      cost: 'Save 80-90% on total cost',
-      upfront: 'No upfront development costs',
-      speed: 'Faster time-to-market',
-    },
+
   },
 
   // Contact Section

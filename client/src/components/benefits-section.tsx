@@ -139,29 +139,7 @@ export function BenefitsSection() {
           </motion.div>
         </div>
         
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="mt-16 text-center"
-        >
-          <div className="inline-block bg-gray-100 py-4 px-8 rounded-full">
-            <div className="text-purple-600 font-medium">
-              {t("benefits.tagline")}
-            </div>
-          </div>
-          
-          <div className="mt-8 inline-block bg-gradient-to-r from-purple-600 to-blue-600 py-1 px-1 rounded-lg">
-            <div className="bg-white px-8 py-4 rounded-lg flex items-center space-x-6">
-              <div className="font-bold">{t("benefits.comparison.title")}</div>
-              <div className="text-purple-600 font-medium">{t("benefits.comparison.cost")}</div>
-              <div className="text-gray-600">|</div>
-              <div className="text-purple-600 font-medium">{t("benefits.comparison.upfront")}</div>
-              <div className="text-gray-600">|</div>
-              <div className="text-purple-600 font-medium">{t("benefits.comparison.speed")}</div>
-            </div>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   );
