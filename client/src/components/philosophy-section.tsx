@@ -64,16 +64,12 @@ export function PhilosophySection() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-12 text-center"
         >
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-purple-600 to-blue-600 hover:opacity-90 transition duration-300"
-            onClick={() => {
-              const element = document.querySelector("#workflow");
-              if (element) element.scrollIntoView({ behavior: "smooth" });
-            }}
+          <a 
+            href="#workflow"
+            className="inline-flex items-center justify-center px-5 py-3 rounded-md text-base font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:opacity-90 transition duration-300"
           >
             {t("philosophy.cta")} <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          </a>
         </motion.div>
         
         <motion.div 
