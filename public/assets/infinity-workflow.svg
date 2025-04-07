@@ -2,67 +2,85 @@
 <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#9333ea;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#b388ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9e74ff;stop-opacity:1" />
     </linearGradient>
-    <!-- Define glow effect -->
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="6" result="glow"/>
-      <feMerge>
-        <feMergeNode in="glow"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
   
-  <!-- Main infinity path - 50% bigger -->
-  <path d="M 200,200 C 200,100 280,100 340,160 C 400,220 480,220 540,160 C 600,100 680,100 680,200 C 680,300 600,300 540,240 C 480,180 400,180 340,240 C 280,300 200,300 200,200 Z" 
+  <!-- Main infinity path -->
+  <path d="M 200,200 C 200,120 280,120 340,165 C 400,210 480,210 540,165 C 600,120 680,120 680,200 C 680,280 600,280 540,235 C 480,190 400,190 340,235 C 280,280 200,280 200,200 Z" 
         fill="none" 
         stroke="url(#purpleGradient)" 
-        stroke-width="8"
-        stroke-linecap="round"
-        filter="url(#glow)" />
+        stroke-width="20"
+        stroke-linecap="round" />
   
-  <!-- Human symbol in left opening -->
-  <svg x="150" y="150" width="100" height="100" viewBox="0 0 100 100" fill="none">
-    <circle cx="50" cy="30" r="15" fill="#9333ea" opacity="0.8"/>
-    <path d="M 25,100 L 40,50 L 60,50 L 75,100" stroke="#9333ea" stroke-width="4" opacity="0.8"/>
-    <path d="M 40,50 L 60,50" stroke="#9333ea" stroke-width="4" opacity="0.8"/>
-    <path d="M 50,45 L 50,70" stroke="#9333ea" stroke-width="4" opacity="0.8"/>
-  </svg>
+  <!-- Human silhouette in left opening -->
+  <path d="M 315,195 a 30,30 0 1 0 0,1 Z" fill="#0e1c36" />
+  <path d="M 315,225 c -5,0 -20,10 -20,30 c 0,10 5,20 20,20 c 15,0 20,-10 20,-20 c 0,-20 -15,-30 -20,-30 Z" fill="#0e1c36" />
   
-  <!-- AI/Robot symbol in right opening -->
-  <svg x="550" y="150" width="100" height="100" viewBox="0 0 100 100" fill="none">
-    <rect x="25" y="25" width="50" height="50" rx="5" fill="#4f46e5" opacity="0.8"/>
-    <circle cx="40" cy="40" r="5" fill="white"/>
-    <circle cx="60" cy="40" r="5" fill="white"/>
-    <path d="M 35,60 L 65,60" stroke="white" stroke-width="3" stroke-linecap="round"/>
-    <path d="M 25,45 L 15,35 M 25,55 L 15,65" stroke="#4f46e5" stroke-width="3" stroke-linecap="round"/>
-    <path d="M 75,45 L 85,35 M 75,55 L 85,65" stroke="#4f46e5" stroke-width="3" stroke-linecap="round"/>
-  </svg>
+  <!-- Robot in right opening -->
+  <g transform="translate(550, 195)">
+    <rect x="-25" y="-10" width="50" height="45" rx="5" fill="#b388ff" />
+    <circle cx="-10" cy="5" r="5" fill="white" />
+    <circle cx="10" cy="5" r="5" fill="white" />
+    <rect x="-15" y="20" width="30" height="5" rx="2" fill="white" />
+    <circle cx="0" cy="-20" r="5" fill="#b388ff" />
+    <rect x="-20" y="-30" width="40" height="15" rx="7" fill="#b388ff" />
+  </g>
   
-  <!-- Markers for the 5 stages -->
-  <!-- Stage 1: Discovery -->
-  <circle cx="200" cy="200" r="12" fill="#9333ea" filter="url(#glow)" />
-  <text x="200" y="265" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#333">DISCOVERY</text>
+  <!-- Stage 1: Discovery with icon -->
+  <g transform="translate(150, 90)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start">01</text>
+    <text x="30" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start">Discovery</text>
+    <circle cx="0" cy="20" r="18" stroke="#000" stroke-width="2" fill="none" />
+    <path d="M -5,15 a 10,10 0 1 1 10,10 M 5,25 L 10,30" stroke="#000" stroke-width="2" fill="none" />
+  </g>
   
-  <!-- Stage 2: Design -->
-  <circle cx="340" cy="160" r="12" fill="#9333ea" filter="url(#glow)" />
-  <text x="340" y="120" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#333">DESIGN</text>
+  <!-- Stage 2: Creative Design with icon -->
+  <g transform="translate(90, 260)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start">02</text>
+    <text x="30" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start">Creative Design</text>
+    <circle cx="0" cy="20" r="16" stroke="#000" stroke-width="2" fill="none" />
+    <path d="M 0,10 L 0,16 M -8,20 L 8,20 M -6,26 L 6,26 M 0,30 L 0,34" stroke="#000" stroke-width="2" fill="none" />
+    <path d="M -10,10 L 10,10" stroke="#000" stroke-width="1" fill="none" />
+    <path d="M -12,6 L 12,6" stroke="#000" stroke-width="1" fill="none" />
+  </g>
   
-  <!-- Stage 3: Build -->
-  <circle cx="440" cy="200" r="12" fill="#9333ea" filter="url(#glow)" />
-  <text x="440" y="265" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#333">BUILD</text>
+  <!-- Stage 3: AI-Driven Development with icon -->
+  <g transform="translate(570, 90)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start">03</text>
+    <text x="30" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start">AI-Driven</text>
+    <text x="30" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start">Development</text>
+    <rect x="-15" y="15" width="30" height="30" stroke="#000" stroke-width="2" fill="none" />
+    <path d="M -10,20 L -5,20 M -10,25 L -5,25 M -10,30 L -5,30 M -10,35 L -5,35
+             M 5,20 L 10,20 M 5,25 L 10,25 M 5,30 L 10,30 M 5,35 L 10,35
+             M -5,15 L -5,40 M 5,15 L 5,40" stroke="#000" stroke-width="1" fill="none" />
+  </g>
   
-  <!-- Stage 4: Test -->
-  <circle cx="540" cy="160" r="12" fill="#4f46e5" filter="url(#glow)" />
-  <text x="540" y="120" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#333">TEST</text>
+  <!-- Stage 4: Quality Assurance with icon -->
+  <g transform="translate(600, 260)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start">04</text>
+    <text x="30" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start">Quality</text>
+    <text x="30" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start">Assurance</text>
+    <path d="M 0,10 L 13,25 L -13,25 Z" stroke="#000" stroke-width="2" fill="none" />
+    <path d="M 0,17 L 0,33" stroke="#000" stroke-width="2" fill="none" />
+    <path d="M -7,33 L 7,33" stroke="#000" stroke-width="2" fill="none" />
+  </g>
   
-  <!-- Stage 5: Launch -->
-  <circle cx="680" cy="200" r="12" fill="#4f46e5" filter="url(#glow)" />
-  <text x="680" y="265" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#333">LAUNCH</text>
+  <!-- Stage 5: Continuous Evolution with icon -->
+  <g transform="translate(730, 200)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start">05</text>
+    <text x="30" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start">Continuous</text>
+    <text x="30" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start">Evolution</text>
+    <circle cx="0" cy="30" r="15" stroke="#000" stroke-width="2" fill="none" />
+    <path d="M 0,15 L 0,30 M 0,30 L 8,22" stroke="#000" stroke-width="2" fill="none" />
+    <path d="M 11,42 C 15,38 15,22 11,18 M -11,42 C -15,38 -15,22 -11,18" stroke="#000" stroke-width="2" fill="none" />
+  </g>
   
-  <!-- Workflow title -->
-  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold" fill="#4f46e5">INFINITY WORKFLOW</text>
-  <text x="400" y="70" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#9333ea">HUMAN + AI PARTNERSHIP</text>
+  <!-- Connecting lines from infinity to stages -->
+  <path d="M 200,150 L 200,110" stroke="#9e74ff" stroke-width="1" fill="none" />
+  <path d="M 200,250 L 200,290" stroke="#9e74ff" stroke-width="1" fill="none" />
+  <path d="M 680,150 L 680,110" stroke="#9e74ff" stroke-width="1" fill="none" />
+  <path d="M 680,250 L 680,290" stroke="#9e74ff" stroke-width="1" fill="none" />
+  <path d="M 440,210 L 440,250" stroke="#9e74ff" stroke-width="1" fill="none" />
 </svg>

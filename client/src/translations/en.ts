@@ -130,19 +130,19 @@ export const en = {
         description: 'We explore your vision and business challenges to identify opportunities for innovative digital solutions.'
       },
       design: {
-        title: 'Design',
+        title: 'Creative Design',
         description: 'We craft intuitive, engaging interfaces that capture your brand identity and enhance user experience.'
       },
       build: {
-        title: 'Build',
+        title: 'AI-Driven Development',
         description: 'Our AI-augmented development process creates your custom software with unprecedented speed and creativity.'
       },
       test: {
-        title: 'Test',
+        title: 'Quality Assurance',
         description: 'Human experts review all code to ensure your application meets the highest standards of quality and performance.'
       },
       launch: {
-        title: 'Launch',
+        title: 'Continuous Evolution',
         description: 'We deploy your solution and continue to refine it based on real user feedback and evolving business needs.'
       }
     }

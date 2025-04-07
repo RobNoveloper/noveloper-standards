@@ -130,19 +130,19 @@ export const nl = {
         description: 'We verkennen uw visie en zakelijke uitdagingen om kansen voor innovatieve digitale oplossingen te identificeren.'
       },
       design: {
-        title: 'Ontwerp',
+        title: 'Creatief Ontwerp',
         description: 'We maken intuïtieve, boeiende interfaces die uw meridentiteit vastleggen en de gebruikerservaring verbeteren.'
       },
       build: {
-        title: 'Bouwen',
+        title: 'AI-Gestuurde Ontwikkeling',
         description: 'Ons door AI verbeterde ontwikkelingsproces creëert uw maatwerksoftware met ongekende snelheid en creativiteit.'
       },
       test: {
-        title: 'Testen',
+        title: 'Kwaliteitsborging',
         description: 'Menselijke experts beoordelen alle code om ervoor te zorgen dat uw applicatie voldoet aan de hoogste normen van kwaliteit en prestaties.'
       },
       launch: {
-        title: 'Lancering',
+        title: 'Continue Evolutie',
         description: 'We implementeren uw oplossing en blijven deze verfijnen op basis van echte gebruikersfeedback en veranderende zakelijke behoeften.'
       }
     }
