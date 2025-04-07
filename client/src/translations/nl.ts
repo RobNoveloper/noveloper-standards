@@ -114,7 +114,7 @@ export const nl = {
     ],
     studioSection: {
       title: 'Een Nieuw Soort Studio',
-      description: 'Noveloper is een fusie van "geen ontwikkelaar" en "vernieuwend" — we bouwen aangepaste software zonder traditionele codering, en zijn pioniers van een creatieve aanpak die het ontwikkelingsproces transformeert tot een intuïtieve, vloeiende ervaring.',
+      description: 'Noveloper is een fusie van "no developer" en "novel" — we bouwen maatwerk software zonder traditionele codering, en zijn pioniers van een creatieve aanpak die het ontwikkelingsproces transformeert tot een intuïtieve, vloeiende ervaring.',
       cta: 'Zie het in actie',
     },
   },
