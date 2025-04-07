@@ -6,6 +6,7 @@ import Home from "@/pages/home";
 import PrivacyPolicy from "@/pages/legal/privacy-policy";
 import TermsOfService from "@/pages/legal/terms-of-service";
 import CookiePolicy from "@/pages/legal/cookie-policy";
+import LogoExport from "@/pages/logo-export";
 import { queryClient } from "./lib/queryClient";
 import { useEffect } from "react";
 import { LanguageProvider } from "@/contexts/language-context";
@@ -24,6 +25,7 @@ function Router() {
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/terms-of-service" component={TermsOfService} />
       <Route path="/cookie-policy" component={CookiePolicy} />
+      <Route path="/logo-export" component={LogoExport} />
       <Route component={NotFound} />
     </Switch>
   );
