@@ -75,7 +75,7 @@ export function HeroSection() {
               <div className="flex flex-col items-center justify-center h-full p-8 text-center relative z-10">
                 <Logo size="lg" withText={false} className="mb-6" />
                 <div className="font-mono text-sm sm:text-base text-gray-800 overflow-hidden whitespace-nowrap border-r-2 border-gray-800 typing-animation">
-                  AI-driven creativity in motion
+                  {language === "nl" ? "AI-gedreven creativiteit in beweging" : "AI-driven creativity in motion"}
                 </div>
               </div>
               
