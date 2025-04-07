@@ -1,13 +1,5 @@
 import { motion } from "framer-motion";
 import { useReveal } from "@/lib/hooks";
-import { Check, Euro, Target, Clock } from "lucide-react";
-
-const features = [
-  "AI-powered creative solutions that feel magical to use",
-  "Digital experiences that solve real business problems",
-  "Interactive interfaces that transform business processes",
-  "Visually stunning designs with intuitive user experiences"
-];
 
 const workflowSteps = [
   { number: "01", title: "Discovery", description: "We explore your vision and business challenges to identify opportunities for innovative digital solutions." },
@@ -51,58 +43,32 @@ export function AboutSection() {
           </motion.div>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h3 className="text-2xl font-bold mb-4">Our Value Proposition</h3>
-            <p className="text-gray-600 mb-6">
-              We're redefining the creative development process to deliver exceptional digital solutions that provide lasting business value:
-            </p>
-            <ul className="space-y-4">
-              {features.map((feature, index) => (
-                <li key={index} className="flex items-start">
-                  <Check className="h-6 w-6 text-purple-600 mr-2 flex-shrink-0" />
-                  <span className="text-gray-700">{feature}</span>
-                </li>
-              ))}
-            </ul>
-            
-            <div className="mt-8 text-center">
-              <div className="inline-block py-3 px-6 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg">
-                <span className="font-medium">Experience the creative difference</span>
-              </div>
-            </div>
-          </motion.div>
-          
-          <motion.div
+        <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.3 }}
+            className="max-w-3xl mx-auto mt-16"
           >
             <div className="bg-white p-8 rounded-xl shadow-md">
-              <h3 className="text-2xl font-bold mb-4">Our Process</h3>
-              <p className="text-gray-600 mb-6">
+              <h3 className="text-2xl font-bold mb-4 text-center">How We Work</h3>
+              <p className="text-gray-600 mb-6 text-center">
                 We blend creative innovation with business expertise to develop applications that are both visually stunning and functionally powerful — creating exceptional user experiences that drive real business results.
               </p>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {workflowSteps.map((step) => (
-                  <div key={step.number} className="flex items-center">
+                  <div key={step.number} className="flex items-start">
                     <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center mr-4 flex-shrink-0 text-white">
                       <span className="font-bold">{step.number}</span>
                     </div>
                     <div>
-                      <h4 className="font-bold">{step.title}</h4>
-                      <p className="text-sm text-gray-600">{step.description}</p>
+                      <h4 className="font-bold text-lg">{step.title}</h4>
+                      <p className="text-gray-600">{step.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
           </motion.div>
-        </div>
         
         <motion.div
           initial={{ opacity: 0, y: 20 }}
