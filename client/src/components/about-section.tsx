@@ -33,25 +33,17 @@ export function AboutSection() {
           >
             About Noveloper
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="max-w-2xl mx-auto text-lg text-gray-600"
-          >
-            Where AI-powered creativity meets accessible, affordable enterprise solutions
-          </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mt-8 max-w-3xl mx-auto"
           >
-            <p className="font-bold text-gray-700 text-center mb-4">
+            <p className="text-gray-600 text-center mb-4">
               Noveloper was born from curiosity and a drive to rethink how we build.
             </p>
             <p className="text-gray-600 text-center mb-4">
-              We explored what AI could become in the hands of creators — not just engineers — and uncovered a new rhythm of building: faster, freer, and more intuitive. Our founders combined their expertise in AI and business solutions to create a new approach that merges advanced AI with human creativity. The result is a process that delivers tailored applications with unprecedented speed and innovation.
+              We explored what AI could become in the hands of creators — not just engineers — and uncovered a new rhythm of building: faster, freer, and more intuitive. Our founders combined their expertise in AI, BI, and business solutions to create a new approach that merges advanced AI with human creativity. The result is a process that delivers tailored applications in weeks instead of months, transforming how quickly your solutions can come to life.
             </p>
             <p className="italic text-gray-600 text-center">
               No code. No fear. Just flow.
