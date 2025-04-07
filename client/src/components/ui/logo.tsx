@@ -56,7 +56,7 @@ export function Logo({
         <span className={cn("ml-3 text-xl font-extrabold", 
           inverted ? "text-gray-400" : "",
           textClassName)}>
-          <span className={inverted ? "" : "bg-gradient-to-r from-black via-purple-600 to-blue-600 bg-clip-text text-transparent"}>
+          <span className={inverted ? "" : "bg-gradient-to-r from-black to-purple-700 bg-clip-text text-transparent"}>
             NOVELOPER
           </span>
         </span>
