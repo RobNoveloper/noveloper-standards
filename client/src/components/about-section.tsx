@@ -62,7 +62,7 @@ export function AboutSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="max-w-6xl mx-auto mt-16"
           >
-            <div className="bg-white p-8 rounded-xl shadow-md">
+            <div id="workflow-steps" className="bg-white p-8 rounded-xl shadow-md">
               <h3 className="text-2xl font-bold mb-4 text-center">{t("about.workflow.title")}</h3>
               <p className="text-gray-600 mb-6 text-center">
                 {t("about.workflow.subtitle")}

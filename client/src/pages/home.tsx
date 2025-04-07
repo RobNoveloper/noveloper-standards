@@ -20,7 +20,7 @@ export default function Home() {
         e.preventDefault();
         const element = document.querySelector(anchor.hash);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
           // Update URL without page reload
           window.history.pushState(null, '', anchor.hash);
         }

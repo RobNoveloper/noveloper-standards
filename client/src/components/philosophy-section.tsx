@@ -65,7 +65,7 @@ export function PhilosophySection() {
           className="mt-12 text-center"
         >
           <a 
-            href="#about"
+            href="#workflow-steps"
             className="inline-flex items-center justify-center px-5 py-3 rounded-md text-base font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:opacity-90 transition duration-300"
           >
             {t("philosophy.cta")} <ArrowRight className="ml-2 h-4 w-4" />
