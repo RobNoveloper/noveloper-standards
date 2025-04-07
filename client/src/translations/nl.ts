@@ -125,23 +125,23 @@ export const nl = {
     description: 'Ons agile proces creëert een naadloze stroom tussen menselijke creativiteit en AI-mogelijkheden, waardoor continue verbetering en innovatie mogelijk is in elk project.',
     steps: {
       discovery: {
-        title: '01  Verkenning',
+        title: 'Verkenning',
         description: 'We verkennen jouw visie en zakelijke uitdagingen om kansen te ontdekken voor slimme digitale oplossingen.'
       },
       design: {
-        title: '02  Creatief ontwerp',
+        title: 'Creatief ontwerp',
         description: 'We ontwerpen intuïtieve en aantrekkelijke interfaces, in jouw huisstijl, die de ervaring voor de gebruiker optimaliseren.'
       },
       build: {
-        title: '03  AI-gedreven ontwikkeling',
+        title: 'AI-gedreven ontwikkeling',
         description: 'Onze AI-ondersteunde aanpak levert maatwerksoftware met ongekende snelheid en creativiteit.'
       },
       test: {
-        title: '04  Kwaliteitscontrole',
+        title: 'Kwaliteitscontrole',
         description: 'Menselijke experts controleren alle code om te zorgen dat jouw applicatie voldoet aan de hoogste eisen op het gebied van kwaliteit en performance.'
       },
       launch: {
-        title: '05  Continue doorontwikkeling',
+        title: 'Continue doorontwikkeling',
         description: 'We lanceren je oplossing en blijven die verfijnen op basis van echte gebruikersfeedback en veranderende behoeften.'
       }
     }
