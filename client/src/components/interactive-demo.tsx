@@ -193,24 +193,14 @@ export function InteractiveDemo() {
                       </div>
                       
                       <div className="text-center mt-4 text-sm text-gray-500">
-                        <div className="font-medium mb-1">Benefits of your custom application:</div>
+                        <div className="font-medium mb-1">{t.interactiveDemo.benefitsTitle}</div>
                         <div className="grid grid-cols-2 gap-2 text-xs text-left">
-                          <div className="flex items-center">
-                            <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
-                            <span>Automated approval workflows</span>
-                          </div>
-                          <div className="flex items-center">
-                            <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
-                            <span>Real-time reporting dashboards</span>
-                          </div>
-                          <div className="flex items-center">
-                            <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
-                            <span>Mobile accessibility</span>
-                          </div>
-                          <div className="flex items-center">
-                            <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
-                            <span>Automated expense categorization</span>
-                          </div>
+                          {t.interactiveDemo.benefitsList.map((benefit, index) => (
+                            <div key={index} className="flex items-center">
+                              <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
+                              <span>{benefit}</span>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>

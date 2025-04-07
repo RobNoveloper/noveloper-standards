@@ -275,6 +275,13 @@ export const en = {
       'Version control problems',
       'Complex formulas for reporting'
     ],
+    benefitsTitle: 'Benefits of your custom application:',
+    benefitsList: [
+      'Automated approval workflows',
+      'Real-time reporting dashboards',
+      'Mobile accessibility',
+      'Automated expense categorization'
+    ],
     demoFooter: [
       'This demo illustrates how we transform business processes into custom applications.',
       'Experience the power of AI-driven software development.'

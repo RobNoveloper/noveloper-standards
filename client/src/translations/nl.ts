@@ -275,6 +275,13 @@ export const nl = {
       'Problemen met versiebeheer',
       'Complexe formules voor rapportages'
     ],
+    benefitsTitle: 'Voordelen van jouw maatwerkapplicatie:',
+    benefitsList: [
+      'Geautomatiseerde goedkeuringsprocessen',
+      'Realtime rapportagedashboards',
+      'Toegankelijk via mobiel',
+      'Automatische categorisatie van uitgaven'
+    ],
     demoFooter: [
       'Deze demo laat zien hoe we bedrijfsprocessen omzetten in maatwerkapplicaties.',
       'Ervaar de kracht van AI-gedreven softwareontwikkeling.'
