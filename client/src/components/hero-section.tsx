@@ -28,10 +28,10 @@ export function HeroSection() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
-            <span className="block">{language === "nl" ? t("hero.title") : "No code."}</span>
-            <span className="block">{language === "nl" ? "" : "No fear."}</span>
+            <span className="block">{language === "nl" ? "No code." : "No code."}</span>
+            <span className="block">{language === "nl" ? "No fear." : "No fear."}</span>
             <span className="block bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-              {language === "nl" ? t("hero.subtitle") : "Just flow."}
+              {language === "nl" ? "Just flow." : "Just flow."}
             </span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-lg">
