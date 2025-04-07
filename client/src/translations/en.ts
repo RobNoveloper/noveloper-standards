@@ -83,34 +83,39 @@ export const en = {
 
   // Benefits Section
   benefits: {
-    title: 'Benefits',
-    subtitle: 'Why choose Noveloper?',
-    items: [
-      {
-        title: 'Fixed Monthly Cost',
-        content: 'Predictable subscription pricing with no large upfront investments or unexpected fees.',
-      },
-      {
-        title: 'Continuous Improvement',
-        content: 'Your software evolves with your business needs through regular updates and enhancements.',
-      },
-      {
-        title: 'Rapid Development',
-        content: 'From concept to production in weeks, not months, thanks to our AI-augmented approach.',
-      },
-      {
-        title: 'Focus on Business Value',
-        content: 'Spend your time defining what matters, not managing technical complexities.',
-      },
-      {
-        title: 'Seamless Integration',
-        content: 'Connect with your existing tools and systems for a unified workflow.',
-      },
-      {
-        title: 'Future-Proof Technology',
-        content: 'Built on modern tech stacks that evolve with industry advancements.',
-      },
-    ],
+    title: 'Why Choose Noveloper?',
+    subtitle: 'Transform your business with custom software that\'s finally affordable and accessible',
+    innovation: {
+      title: 'Creative Innovation',
+      content: 'AI-powered creativity that pushes the boundaries of what\'s possible in custom software development.',
+    },
+    cost: {
+      title: 'Cost Predictability',
+      content: 'Enterprise-grade custom solutions with a predictable subscription-based pricing model.',
+    },
+    speed: {
+      title: 'Accelerated Development',
+      content: 'Custom applications delivered in weeks instead of months thanks to our AI-augmented development process.',
+    },
+    design: {
+      title: 'Human-Centered Design',
+      content: 'Intuitive interfaces designed around how your team works, not how computers process data.',
+    },
+    security: {
+      title: 'Security & Privacy',
+      content: 'Enterprise-level security that protects your data while ensuring compliance with industry standards.',
+    },
+    support: {
+      title: 'Dedicated Support',
+      content: 'Continuous assistance and guidance from our team of experts to ensure your software evolves with your business.',
+    },
+    tagline: 'Disruptive Innovation. Enterprise Quality. Beautiful Design.',
+    comparison: {
+      title: 'Compared to Traditional Custom Software:',
+      cost: 'Save 80-90% on total cost',
+      upfront: 'No upfront development costs',
+      speed: 'Faster time-to-market',
+    },
   },
 
   // Contact Section

@@ -83,34 +83,39 @@ export const nl = {
 
   // Benefits Section
   benefits: {
-    title: 'Voordelen',
-    subtitle: 'Waarom kiezen voor Noveloper?',
-    items: [
-      {
-        title: 'Vaste Maandelijkse Kosten',
-        content: 'Voorspelbare abonnementsprijzen zonder grote voorinvesteringen of onverwachte kosten.',
-      },
-      {
-        title: 'Continue Verbetering',
-        content: 'Je software evolueert met de behoeften van je bedrijf door regelmatige updates en verbeteringen.',
-      },
-      {
-        title: 'Snelle Ontwikkeling',
-        content: 'Van concept naar productie in weken, niet maanden, dankzij onze door AI versterkte aanpak.',
-      },
-      {
-        title: 'Focus op Bedrijfswaarde',
-        content: 'Besteed je tijd aan het definiëren van wat belangrijk is, niet aan het beheren van technische complexiteiten.',
-      },
-      {
-        title: 'Naadloze Integratie',
-        content: 'Verbind met je bestaande tools en systemen voor een geünificeerde workflow.',
-      },
-      {
-        title: 'Toekomstbestendige Technologie',
-        content: 'Gebouwd op moderne technologiestacks die meegroeien met ontwikkelingen in de industrie.',
-      },
-    ],
+    title: 'Waarom Kiezen voor Noveloper?',
+    subtitle: 'Transformeer je bedrijf met software op maat die eindelijk betaalbaar en toegankelijk is',
+    innovation: {
+      title: 'Creatieve Innovatie',
+      content: 'Door AI aangedreven creativiteit die de grenzen verlegt van wat mogelijk is in softwareontwikkeling op maat.',
+    },
+    cost: {
+      title: 'Voorspelbare Kosten',
+      content: 'Enterprise-grade oplossingen op maat met een voorspelbaar abonnementsmodel.',
+    },
+    speed: {
+      title: 'Versnelde Ontwikkeling',
+      content: 'Applicaties op maat geleverd in weken in plaats van maanden dankzij ons door AI versterkte ontwikkelingsproces.',
+    },
+    design: {
+      title: 'Mensgerichte Ontwerp',
+      content: 'Intuïtieve interfaces ontworpen rond hoe je team werkt, niet hoe computers gegevens verwerken.',
+    },
+    security: {
+      title: 'Beveiliging & Privacy',
+      content: 'Enterprise-level beveiliging die je gegevens beschermt en tegelijkertijd voldoet aan industrienormen.',
+    },
+    support: {
+      title: 'Toegewijde Ondersteuning',
+      content: 'Continue assistentie en begeleiding van ons team van experts om ervoor te zorgen dat je software evolueert met je bedrijf.',
+    },
+    tagline: 'Disruptieve Innovatie. Enterprise Kwaliteit. Prachtig Ontwerp.',
+    comparison: {
+      title: 'Vergeleken met Traditionele Software op Maat:',
+      cost: 'Bespaar 80-90% op totale kosten',
+      upfront: 'Geen vooraf ontwikkelingskosten',
+      speed: 'Snellere time-to-market',
+    },
   },
 
   // Contact Section
