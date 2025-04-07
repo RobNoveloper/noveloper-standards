@@ -25,15 +25,53 @@ export const en = {
     origin: {
       title: 'Our Origin',
       content: 'Noveloper was born from curiosity and a drive to rethink how we build. We explored what AI could become in the hands of creators — not just engineers — and uncovered a new rhythm of building: faster, freer, and more intuitive.',
+      content1: 'Noveloper was born from curiosity and a drive to rethink how we build.',
+      content2: 'We explored what AI could become in the hands of creators — not just engineers — and uncovered a new rhythm of building: faster, freer, and more intuitive. Our founders combined their expertise in AI, BI, and business solutions to create a new approach that merges advanced AI with human creativity. The result is a process that delivers tailored applications in weeks instead of months, transforming how quickly your solutions can come to life.',
     },
+    slogan: 'No code. No fear. Just flow.',
     founders: {
       title: 'Our Founders',
       content: 'Two tech leaders who merged 20+ years of software engineering, design thinking, and BI expertise to solve a persistent problem: why do businesses still rely on complex workarounds when custom solutions remain too expensive and complex?',
     },
-    process: {
+    workflow: {
       title: 'How We Work',
-      content: 'We turned the traditional development model inside out. By leveraging AI as a force multiplier, we\'ve removed the conventional cost and complexity barriers to custom software, delivering enterprise-grade solutions in weeks instead of months.',
+      subtitle: 'We blend creative innovation with business expertise to develop applications that are both visually stunning and functionally powerful — creating exceptional user experiences that drive real business results.',
+      step1: {
+        title: 'Discovery',
+        content: 'We explore your vision and business challenges to identify opportunities for innovative digital solutions.'
+      },
+      step2: {
+        title: 'Creative Design',
+        content: 'We design intuitive, engaging interfaces that capture your brand and enhance user experience.'
+      },
+      step3: {
+        title: 'AI-Driven Development',
+        content: 'We leverage AI to build your custom software faster and with greater creativity than traditional methods.'
+      },
+      step4: {
+        title: 'Quality Assurance',
+        content: 'Our human senior developers review all code to ensure your application meets the highest standards of quality, security, and performance.'
+      },
+      step5: {
+        title: 'Continuous Evolution',
+        content: 'We refine and enhance your solution over time, adding features and optimizing based on real user feedback.'
+      }
     },
+    promise: {
+      title: 'The Noveloper Promise',
+      excellence: {
+        title: 'Creative Excellence',
+        content: 'We create visually stunning, intuitively designed applications that captivate users while solving complex business challenges.'
+      },
+      innovation: {
+        title: 'Innovation + Affordability',
+        content: 'Our subscription model brings enterprise-grade custom software within reach while maintaining creative brilliance.'
+      },
+      experience: {
+        title: 'Transformative Experience',
+        content: 'We don\'t just build software; we create digital experiences that transform how your business operates and how your customers engage.'
+      }
+    }
   },
 
   // Products Section

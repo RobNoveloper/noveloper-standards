@@ -25,15 +25,53 @@ export const nl = {
     origin: {
       title: 'Onze Oorsprong',
       content: 'Noveloper is ontstaan uit nieuwsgierigheid en een drive om te heroverwegen hoe we bouwen. We onderzochten wat AI zou kunnen worden in handen van creators — niet alleen engineers — en ontdekten een nieuw ritme van bouwen: sneller, vrijer en meer intuïtief.',
+      content1: 'Noveloper is ontstaan uit nieuwsgierigheid en een drive om te heroverwegen hoe we bouwen.',
+      content2: 'We onderzochten wat AI zou kunnen worden in handen van creators — niet alleen engineers — en ontdekten een nieuw ritme van bouwen: sneller, vrijer en meer intuïtief. Onze oprichters combineerden hun expertise in AI, BI en bedrijfsoplossingen om een nieuwe aanpak te creëren die geavanceerde AI combineert met menselijke creativiteit. Het resultaat is een proces dat op maat gemaakte applicaties in weken in plaats van maanden levert, waardoor uw oplossingen sneller tot leven kunnen komen.',
     },
+    slogan: 'Geen code. Geen angst. Alleen flow.',
     founders: {
       title: 'Onze Oprichters',
       content: 'Twee technologische leiders die 20+ jaar ervaring in software engineering, design thinking en BI-expertise samenbrachten om een hardnekkig probleem op te lossen: waarom vertrouwen bedrijven nog steeds op complexe workarounds terwijl aangepaste oplossingen te duur en complex blijven?',
     },
-    process: {
+    workflow: {
       title: 'Hoe We Werken',
-      content: 'We hebben het traditionele ontwikkelingsmodel binnenstebuiten gekeerd. Door AI als krachtvermenigvuldiger te gebruiken, hebben we de conventionele kosten- en complexiteitsbarrières voor maatwerksoftware weggenomen, en leveren we enterprise-grade oplossingen in weken in plaats van maanden.',
+      subtitle: 'We combineren creatieve innovatie met zakelijke expertise om applicaties te ontwikkelen die visueel aantrekkelijk en functioneel krachtig zijn — waardoor uitzonderlijke gebruikerservaringen ontstaan die echte bedrijfsresultaten opleveren.',
+      step1: {
+        title: 'Ontdekking',
+        content: 'We verkennen uw visie en zakelijke uitdagingen om kansen voor innovatieve digitale oplossingen te identificeren.'
+      },
+      step2: {
+        title: 'Creatief Ontwerp',
+        content: 'We ontwerpen intuïtieve, boeiende interfaces die uw merk vastleggen en de gebruikerservaring verbeteren.'
+      },
+      step3: {
+        title: 'AI-Gestuurde Ontwikkeling',
+        content: 'We gebruiken AI om uw maatwerksoftware sneller en met grotere creativiteit te bouwen dan traditionele methoden.'
+      },
+      step4: {
+        title: 'Kwaliteitsborging',
+        content: 'Onze menselijke senior ontwikkelaars beoordelen alle code om ervoor te zorgen dat uw applicatie voldoet aan de hoogste normen van kwaliteit, veiligheid en prestaties.'
+      },
+      step5: {
+        title: 'Continue Evolutie',
+        content: 'We verfijnen en verbeteren uw oplossing in de loop van de tijd, voegen functies toe en optimaliseren op basis van echte gebruikersfeedback.'
+      }
     },
+    promise: {
+      title: 'De Noveloper Belofte',
+      excellence: {
+        title: 'Creatieve Excellentie',
+        content: 'We creëren visueel verbluffende, intuïtief ontworpen applicaties die gebruikers boeien terwijl ze complexe zakelijke uitdagingen oplossen.'
+      },
+      innovation: {
+        title: 'Innovatie + Betaalbaarheid',
+        content: 'Ons abonnementsmodel brengt enterprise-grade maatwerksoftware binnen bereik terwijl we creatieve brilliantie behouden.'
+      },
+      experience: {
+        title: 'Transformatieve Ervaring',
+        content: 'We bouwen niet alleen software; we creëren digitale ervaringen die transformeren hoe uw bedrijf functioneert en hoe uw klanten betrokken raken.'
+      }
+    }
   },
 
   // Products Section
