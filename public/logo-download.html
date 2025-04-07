@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noveloper Logo Download</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    .logo-container {
+      margin: 2rem 0;
+      padding: 2rem;
+      border: 1px solid #eaeaea;
+      border-radius: 8px;
+      background-color: white;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem 0;
+      background-color: #4f46e5;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    h1 {
+      background: linear-gradient(to right, black, #4f46e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Noveloper Logo Download</h1>
+  <p>Here are the different versions of your logo. Right-click on any logo and select "Save Image As..." to download it.</p>
+  
+  <div class="logo-container">
+    <h2>Default Logo</h2>
+    <img src="/api/logo/default" alt="Noveloper Default Logo" width="300">
+    <br>
+    <a href="/api/logo/default" download="noveloper-default-logo.svg" class="btn">Download SVG</a>
+  </div>
+  
+  <div class="logo-container">
+    <h2>Gradient Logo</h2>
+    <svg xmlns="http://www.w3.org/2000/svg" width="360" height="80" viewBox="0 0 360 80">
+      <defs>
+        <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#000000" />
+          <stop offset="100%" stop-color="#4f46e5" />
+        </linearGradient>
+      </defs>
+      <g>
+        <!-- Logo mark -->
+        <rect x="10" y="10" width="20" height="60" rx="2" fill="black" />
+        <path d="M 30,10 L 57,10 L 57,54 L 30,10" fill="black" />
+        
+        <!-- Logo text with gradient -->
+        <text x="80" y="50" font-family="Arial, sans-serif" font-weight="800" font-size="28" fill="url(#textGradient)">NOVELOPER</text>
+      </g>
+    </svg>
+    <br>
+    <a href="#" id="download-gradient" class="btn">Download Gradient SVG</a>
+  </div>
+  
+  <div class="logo-container">
+    <h2>Logo with Transparent Background</h2>
+    <div style="background-color: #f3f4f6; padding: 1rem; border-radius: 4px;">
+      <img src="/api/logo/transparent" alt="Noveloper Transparent Logo" width="300">
+    </div>
+    <br>
+    <a href="/api/logo/transparent" download="noveloper-transparent-logo.svg" class="btn">Download SVG</a>
+  </div>
+
+  <script>
+    // Function to convert SVG to data URL and trigger download
+    document.getElementById('download-gradient').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Get the SVG content
+      const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="360" height="80" viewBox="0 0 360 80">
+        <defs>
+          <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#000000" />
+            <stop offset="100%" stop-color="#4f46e5" />
+          </linearGradient>
+        </defs>
+        <g>
+          <!-- Logo mark -->
+          <rect x="10" y="10" width="20" height="60" rx="2" fill="black" />
+          <path d="M 30,10 L 57,10 L 57,54 L 30,10" fill="black" />
+          
+          <!-- Logo text with gradient -->
+          <text x="80" y="50" font-family="Arial, sans-serif" font-weight="800" font-size="28" fill="url(#textGradient)">NOVELOPER</text>
+        </g>
+      </svg>`;
+      
+      // Convert to data URL
+      const svgBlob = new Blob([svgContent], {type: 'image/svg+xml'});
+      const url = URL.createObjectURL(svgBlob);
+      
+      // Create download link
+      const downloadLink = document.createElement('a');
+      downloadLink.href = url;
+      downloadLink.download = 'noveloper-gradient-logo.svg';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+      
+      // Clean up
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>

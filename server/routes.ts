@@ -1,4 +1,4 @@
-import type { Express, Request, Response } from "express";
+import express, { type Express, type Request, type Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import path from "path";
 import { storage } from "./storage";
@@ -22,6 +22,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // use storage to perform CRUD operations on the storage interface
   // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
+  
+  // Add route to serve the logo download page
+  app.get('/logo-download', (req: Request, res: Response) => {
+    const filePath = path.join(process.cwd(), 'public', 'logo-download.html');
+    res.sendFile(filePath);
+  });
   
   // Serve files from public/assets directory
   app.use('/assets', (req, res, next) => {
