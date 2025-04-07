@@ -11,7 +11,7 @@ export const nl = {
 
   // Hero Section
   hero: {
-    title: 'Software op Maat tegen SaaS Prijzen',
+    title: '',
     subtitle: 'No code. No fear. Just flow.',
     description: 'Wij zijn een AI-gedreven creatieve studio die maatwerksoftware bouwt tegen SaaS-prijzen. Enterprise-applicaties zonder enterprise-prijskaartje.',
     cta: 'Neem Contact Op',
@@ -100,16 +100,16 @@ export const nl = {
     cta: 'Leer Over Onze Aanpak',
     cards: [
       {
-        title: 'Mens + AI Partnerschap',
-        description: 'We combineren menselijke creativiteit en bedrijfsinzicht met de mogelijkheden van AI om oplossingen te creëren die kunst en technologie samenbrengen.',
+        title: 'Mens + AI, een krachtig duo',
+        description: 'We combineren menselijke creativiteit en zakelijk inzicht met de kracht van AI. Zo ontstaan oplossingen waarin technologie en verbeelding naadloos samensmelten.',
       },
       {
-        title: 'Klantgerichte Aanpak',
-        description: 'We luisteren en vertalen uw zakelijke uitdagingen naar doordachte digitale oplossingen, met behoud van de menselijke aanraking in advies, architectuur en samenwerking.',
+        title: 'Altijd klantgericht',
+        description: 'We luisteren, denken mee en vertalen jouw uitdagingen naar doordachte digitale oplossingen — met behoud van menselijk contact in advies, ontwerp en samenwerking.',
       },
       {
-        title: 'Versnelde Innovatie',
-        description: 'We bouwen SaaS-toepassingen, BI-tools en interactieve ervaringen sneller dan ooit tevoren, waardoor uw visie met ongekende snelheid tot leven komt.',
+        title: 'Versnelling van innovatie',
+        description: 'We ontwikkelen SaaS-applicaties, BI-tools en interactieve experiences sneller dan ooit. Zo brengen we jouw visie razendsnel tot leven.',
       },
     ],
     studioSection: {
