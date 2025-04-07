@@ -43,8 +43,9 @@ export function PhilosophySection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="max-w-2xl mx-auto text-lg text-gray-600"
           >
-            We're transforming how businesses get custom software built by blending 
-            human creativity and AI acceleration to make enterprise-grade solutions accessible to all.
+            In the AI era, we've shattered the belief that custom software must be complex, expensive, or slow to build. 
+            By embracing AI-augmented development as a creative force multiplier, we deliver solutions that traditional 
+            methods simply cannot—transforming what's possible for businesses of any size.
           </motion.p>
         </div>
         
