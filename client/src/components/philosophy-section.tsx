@@ -68,7 +68,7 @@ export function PhilosophySection() {
             size="lg"
             className="bg-gradient-to-r from-purple-600 to-blue-600 hover:opacity-90 transition duration-300"
             onClick={() => {
-              const element = document.querySelector("#products");
+              const element = document.querySelector("#workflow");
               if (element) element.scrollIntoView({ behavior: "smooth" });
             }}
           >
