@@ -35,26 +35,26 @@ export const nl = {
     },
     workflow: {
       title: 'Hoe We Werken',
-      subtitle: 'We combineren creatieve innovatie met zakelijke expertise om applicaties te ontwikkelen die visueel aantrekkelijk en functioneel krachtig zijn — waardoor uitzonderlijke gebruikerservaringen ontstaan die echte bedrijfsresultaten opleveren.',
+      subtitle: 'Wij combineren creatieve innovatie met zakelijk inzicht om applicaties te onwikkelen die visueel aantrekkelijk én functioneel krachtig zijn — en zorgen voor uitzonderlijke gebruikerservaringen die echte resultaten opleveren.',
       step1: {
-        title: 'Ontdekking',
-        content: 'We verkennen uw visie en zakelijke uitdagingen om kansen voor innovatieve digitale oplossingen te identificeren.'
+        title: 'Verkenning',
+        content: 'We verkennen jouw visie en zakelijke uitdagingen om kansen te ontdekken voor slimme digitale oplossingen.'
       },
       step2: {
-        title: 'Creatief Ontwerp',
-        content: 'We ontwerpen intuïtieve, boeiende interfaces die uw merk vastleggen en de gebruikerservaring verbeteren.'
+        title: 'Creatief ontwerp',
+        content: 'We ontwerpen intuïtieve en aantrekkelijke interfaces, in jouw huisstijl, die de ervaring voor de gebruiker optimaliseren.'
       },
       step3: {
-        title: 'AI-Gestuurde Ontwikkeling',
-        content: 'We gebruiken AI om uw maatwerksoftware sneller en met grotere creativiteit te bouwen dan traditionele methoden.'
+        title: 'AI-gedreven ontwikkeling',
+        content: 'Onze AI-ondersteunde aanpak levert maatwerksoftware met ongekende snelheid en creativiteit.'
       },
       step4: {
-        title: 'Kwaliteitsborging',
-        content: 'Onze menselijke senior ontwikkelaars beoordelen alle code om ervoor te zorgen dat uw applicatie voldoet aan de hoogste normen van kwaliteit, veiligheid en prestaties.'
+        title: 'Kwaliteitscontrole',
+        content: 'Menselijke experts controleren alle code om te zorgen dat jouw applicatie voldoet aan de hoogste eisen op het gebied van kwaliteit en performance.'
       },
       step5: {
-        title: 'Continue Evolutie',
-        content: 'We verfijnen en verbeteren uw oplossing in de loop van de tijd, voegen functies toe en optimaliseren op basis van echte gebruikersfeedback.'
+        title: 'Continue doorontwikkeling',
+        content: 'We lanceren je oplossing en blijven die verfijnen op basis van echte gebruikersfeedback en veranderende behoeften.'
       }
     },
     promise: {
@@ -125,24 +125,24 @@ export const nl = {
     description: 'Ons agile proces creëert een naadloze stroom tussen menselijke creativiteit en AI-mogelijkheden, waardoor continue verbetering en innovatie mogelijk is in elk project.',
     steps: {
       discovery: {
-        title: 'Ontdekking',
-        description: 'We verkennen uw visie en zakelijke uitdagingen om kansen voor innovatieve digitale oplossingen te identificeren.'
+        title: '01  Verkenning',
+        description: 'We verkennen jouw visie en zakelijke uitdagingen om kansen te ontdekken voor slimme digitale oplossingen.'
       },
       design: {
-        title: 'Creatief Ontwerp',
-        description: 'We maken intuïtieve, boeiende interfaces die uw meridentiteit vastleggen en de gebruikerservaring verbeteren.'
+        title: '02  Creatief ontwerp',
+        description: 'We ontwerpen intuïtieve en aantrekkelijke interfaces, in jouw huisstijl, die de ervaring voor de gebruiker optimaliseren.'
       },
       build: {
-        title: 'AI-Gestuurde Ontwikkeling',
-        description: 'Ons door AI verbeterde ontwikkelingsproces creëert uw maatwerksoftware met ongekende snelheid en creativiteit.'
+        title: '03  AI-gedreven ontwikkeling',
+        description: 'Onze AI-ondersteunde aanpak levert maatwerksoftware met ongekende snelheid en creativiteit.'
       },
       test: {
-        title: 'Kwaliteitsborging',
-        description: 'Menselijke experts beoordelen alle code om ervoor te zorgen dat uw applicatie voldoet aan de hoogste normen van kwaliteit en prestaties.'
+        title: '04  Kwaliteitscontrole',
+        description: 'Menselijke experts controleren alle code om te zorgen dat jouw applicatie voldoet aan de hoogste eisen op het gebied van kwaliteit en performance.'
       },
       launch: {
-        title: 'Continue Evolutie',
-        description: 'We implementeren uw oplossing en blijven deze verfijnen op basis van echte gebruikersfeedback en veranderende zakelijke behoeften.'
+        title: '05  Continue doorontwikkeling',
+        description: 'We lanceren je oplossing en blijven die verfijnen op basis van echte gebruikersfeedback en veranderende behoeften.'
       }
     }
   },
