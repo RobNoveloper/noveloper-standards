@@ -11,9 +11,9 @@ export const en = {
 
   // Hero Section
   hero: {
-    title: 'Custom Software at SaaS Prices',
+    title: '',
     subtitle: 'No code. No fear. Just flow.',
-    description: 'An AI-driven creative studio that builds custom software for the exact solution you need, with predictable costs.',
+    description: 'We\'re an AI-powered creative studio building custom software solutions at SaaS prices. Enterprise-grade applications without enterprise price tags.',
     cta: 'Get in Touch',
     scrollDown: 'Learn more',
   },
@@ -60,6 +60,25 @@ export const en = {
     title: 'Our Philosophy',
     content: 'In the AI era, we\'ve shattered the belief that custom software must be complex, expensive, or slow to build. By embracing AI-augmented development as a creative force multiplier, we deliver solutions that traditional methods simply cannot—transforming what\'s possible for businesses of any size.',
     cta: 'Learn About Our Approach',
+    cards: [
+      {
+        title: 'Human + AI Partnership',
+        description: 'We combine human creativity and business understanding with AI\'s capabilities to create solutions that blend artistry with technology.',
+      },
+      {
+        title: 'Client-Centric Approach',
+        description: 'We listen and translate your business challenges into thoughtful digital solutions, maintaining the human touch in consulting, architecting, and collaboration.',
+      },
+      {
+        title: 'Accelerated Innovation',
+        description: 'We build SaaS applications, BI tools, and interactive experiences faster than ever before, bringing your vision to life with unprecedented speed.',
+      },
+    ],
+    studioSection: {
+      title: 'A New Kind of Studio',
+      description: 'Noveloper is a fusion of "no developer" and "novel" — we build custom software without traditional coding, pioneering a creative approach that transforms the development process into an intuitive, flowing experience.',
+      cta: 'See it in Action',
+    },
   },
 
   // Benefits Section

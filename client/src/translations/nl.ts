@@ -60,6 +60,25 @@ export const nl = {
     title: 'Onze Filosofie',
     content: 'In het AI-tijdperk hebben we het idee doorbroken dat maatwerksoftware complex, duur of traag moet zijn om te bouwen. Door AI-augmented development te omarmen als een creatieve krachtvermenigvuldiger, leveren we oplossingen die traditionele methoden simpelweg niet kunnen bieden—wat de mogelijkheden transformeert voor bedrijven van elke omvang.',
     cta: 'Leer Over Onze Aanpak',
+    cards: [
+      {
+        title: 'Mens + AI Partnerschap',
+        description: 'We combineren menselijke creativiteit en bedrijfsinzicht met de mogelijkheden van AI om oplossingen te creëren die kunst en technologie samenbrengen.',
+      },
+      {
+        title: 'Klantgerichte Aanpak',
+        description: 'We luisteren en vertalen uw zakelijke uitdagingen naar doordachte digitale oplossingen, met behoud van de menselijke aanraking in advies, architectuur en samenwerking.',
+      },
+      {
+        title: 'Versnelde Innovatie',
+        description: 'We bouwen SaaS-toepassingen, BI-tools en interactieve ervaringen sneller dan ooit tevoren, waardoor uw visie met ongekende snelheid tot leven komt.',
+      },
+    ],
+    studioSection: {
+      title: 'Een Nieuw Soort Studio',
+      description: 'Noveloper is een fusie van "geen ontwikkelaar" en "vernieuwend" — we bouwen aangepaste software zonder traditionele codering, en zijn pioniers van een creatieve aanpak die het ontwikkelingsproces transformeert tot een intuïtieve, vloeiende ervaring.',
+      cta: 'Zie het in actie',
+    },
   },
 
   // Benefits Section
