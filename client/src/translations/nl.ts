@@ -236,5 +236,9 @@ export const nl = {
   interactiveDemo: {
     title: 'Interactieve demo: van Excel naar maatwerkapplicatie',
     description: 'Ontdek hoe we complexe Excel-processen omzetten in een intuitieve webapplicaties — met behulp van onze AI-gedreven aanpak',
+    processTitle: 'Van Excel naar efficiëntie',
+    trackingExample: 'Maandelijkse kosten tracker voorbeeld',
+    beforeTab: 'Before: Excel',
+    afterTab: 'After: Maatwerkapplicatie',
   },
 };

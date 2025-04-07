@@ -236,5 +236,9 @@ export const en = {
   interactiveDemo: {
     title: 'Interactive Demo: Excel to Custom Application',
     description: 'See how we transform complex Excel processes into powerful custom applications with our AI-driven approach',
+    processTitle: 'Excel Process Transformation',
+    trackingExample: 'Monthly Expense Tracking Example',
+    beforeTab: 'Before: Excel Process',
+    afterTab: 'After: Custom Application',
   },
 };

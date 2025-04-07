@@ -44,17 +44,17 @@ export function InteractiveDemo() {
           <div className="p-4 bg-purple-50 border-b border-gray-200 flex items-center justify-between">
             <div className="flex items-center">
               <FileSpreadsheet className="h-5 w-5 text-purple-600 mr-2" />
-              <div className="text-sm font-medium">Excel Process Transformation</div>
+              <div className="text-sm font-medium">{t.interactiveDemo.processTitle}</div>
             </div>
-            <div className="text-xs text-gray-500">Monthly Expense Tracking Example</div>
+            <div className="text-xs text-gray-500">{t.interactiveDemo.trackingExample}</div>
           </div>
           
           <div className="p-6">
             <div className="w-full">
               <Tabs defaultValue="before" className="w-full">
                 <TabsList className="grid w-full grid-cols-2 mb-6">
-                  <TabsTrigger value="before">Before: Excel Process</TabsTrigger>
-                  <TabsTrigger value="after">After: Custom Application</TabsTrigger>
+                  <TabsTrigger value="before">{t.interactiveDemo.beforeTab}</TabsTrigger>
+                  <TabsTrigger value="after">{t.interactiveDemo.afterTab}</TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="before" className="border rounded-lg p-4">
