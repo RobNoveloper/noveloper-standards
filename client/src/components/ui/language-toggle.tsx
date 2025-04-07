@@ -37,7 +37,10 @@ export function LanguageToggle({ className, variant = "default" }: LanguageToggl
         variant={language === "en" ? "default" : "outline"}
         size="sm"
         onClick={() => setLanguage("en")}
-        className="rounded-full px-3"
+        className={cn(
+          "rounded-full px-3",
+          language !== "en" && "text-gray-800 hover:text-gray-900 bg-white hover:bg-gray-100"
+        )}
       >
         {t("languageToggle.en")}
       </Button>
@@ -45,7 +48,10 @@ export function LanguageToggle({ className, variant = "default" }: LanguageToggl
         variant={language === "nl" ? "default" : "outline"}
         size="sm"
         onClick={() => setLanguage("nl")}
-        className="rounded-full px-3"
+        className={cn(
+          "rounded-full px-3",
+          language !== "nl" && "text-gray-800 hover:text-gray-900 bg-white hover:bg-gray-100"
+        )}
       >
         {t("languageToggle.nl")}
       </Button>
