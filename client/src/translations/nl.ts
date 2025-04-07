@@ -182,6 +182,8 @@ export const nl = {
   contact: {
     title: 'Neem Contact Op',
     subtitle: 'Klaar om je bedrijf te transformeren?',
+    getStarted: 'Begin Nu',
+    readyTransform: 'Maak je klaar om jouw ideeën werkelijkheid te maken zonder je budget te overschrijden?',
     form: {
       name: 'Naam',
       email: 'E-mail',
@@ -192,13 +194,39 @@ export const nl = {
       messagePlaceholder: 'Vertel ons over je project of stel een vraag',
       success: 'Bedankt! Je bericht is verzonden. We nemen binnenkort contact met je op.',
       error: 'Sorry, er is een probleem opgetreden bij het verzenden van je bericht. Probeer het opnieuw.',
+      sending: 'Versturen...',
+      validationError: {
+        required: {
+          name: 'Naam is verplicht',
+          email: 'E-mail is verplicht',
+          message: 'Bericht is verplicht'
+        },
+        invalid: {
+          email: 'Voer een geldig e-mailadres in',
+          message: 'Bericht is te kort'
+        },
+        general: 'Bericht verzenden mislukt. Probeer het later nog eens.'
+      }
+    },
+    connect: {
+      title: 'Kom In Contact',
+      email: 'E-mail',
+      location: 'Locatie',
+      social: 'Social',
+      rotterdam: 'Rotterdam, Nederland',
     },
     newsletter: {
-      title: 'Abonneer je op onze nieuwsbrief',
+      title: 'Nieuwsbrief',
+      description: 'Blijf op de hoogte van onze nieuwste innovaties en productlanceringen.',
       placeholder: 'Jouw e-mail',
       button: 'Abonneren',
       success: 'Bedankt voor je aanmelding!',
       error: 'Sorry, er is een probleem opgetreden. Probeer het opnieuw.',
+      validationError: {
+        required: 'Vul je e-mailadres in.',
+        invalid: 'Vul een geldig e-mailadres in.',
+        general: 'Er is een probleem opgetreden bij het abonneren. Probeer het later nog eens.'
+      }
     },
   },
 

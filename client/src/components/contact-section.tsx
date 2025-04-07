@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useState, FormEvent, ChangeEvent } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/language-context";
+import { useTranslation } from "@/translations";
 
 interface FormState {
   name: string;
@@ -30,6 +32,8 @@ interface ApiResponse {
 export function ContactSection() {
   const [ref, inView] = useReveal();
   const { toast } = useToast();
+  const { language } = useLanguage();
+  const { contact } = useTranslation(language);
   
   // Form state
   const [formState, setFormState] = useState<FormState>({
@@ -69,11 +73,11 @@ export function ContactSection() {
     
     // Validate form
     const newErrors: FormErrors = {};
-    if (!formState.name) newErrors.name = "Name is required";
-    if (!formState.email) newErrors.email = "Email is required";
-    else if (!/\S+@\S+\.\S+/.test(formState.email)) newErrors.email = "Please enter a valid email";
-    if (!formState.message) newErrors.message = "Message is required";
-    else if (formState.message.length < 10) newErrors.message = "Message is too short";
+    if (!formState.name) newErrors.name = contact.form.validationError.required.name;
+    if (!formState.email) newErrors.email = contact.form.validationError.required.email;
+    else if (!/\S+@\S+\.\S+/.test(formState.email)) newErrors.email = contact.form.validationError.invalid.email;
+    if (!formState.message) newErrors.message = contact.form.validationError.required.message;
+    else if (formState.message.length < 10) newErrors.message = contact.form.validationError.invalid.message;
     
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -93,7 +97,7 @@ export function ContactSection() {
       if (data.success) {
         toast({
           title: "Success!",
-          description: "Your message has been sent successfully.",
+          description: contact.form.success,
           variant: "default"
         });
         
@@ -101,10 +105,10 @@ export function ContactSection() {
         setFormState({ name: "", email: "", message: "" });
       } else {
         // Show error message from server
-        setErrors({ general: data.message || "Failed to send message" });
+        setErrors({ general: data.message || contact.form.error });
         toast({
           title: "Error",
-          description: data.message || "Something went wrong. Please try again.",
+          description: data.message || contact.form.error,
           variant: "destructive"
         });
       }
@@ -112,10 +116,10 @@ export function ContactSection() {
       console.error("Error submitting form:", error);
       toast({
         title: "Error",
-        description: "There was a problem sending your message. Please try again later.",
+        description: contact.form.error,
         variant: "destructive"
       });
-      setErrors({ general: "Failed to send message. Please try again later." });
+      setErrors({ general: contact.form.validationError.general });
     } finally {
       setIsSubmitting(false);
     }
@@ -129,7 +133,7 @@ export function ContactSection() {
     if (!newsletter) {
       toast({
         title: "Error",
-        description: "Please enter your email address.",
+        description: contact.newsletter.validationError.required,
         variant: "destructive"
       });
       return;
@@ -138,7 +142,7 @@ export function ContactSection() {
     if (!/\S+@\S+\.\S+/.test(newsletter)) {
       toast({
         title: "Error",
-        description: "Please enter a valid email address.",
+        description: contact.newsletter.validationError.invalid,
         variant: "destructive"
       });
       return;
@@ -157,7 +161,7 @@ export function ContactSection() {
       if (data.success) {
         toast({
           title: "Success!",
-          description: "You've been subscribed to our newsletter.",
+          description: contact.newsletter.success,
           variant: "default"
         });
         
@@ -166,7 +170,7 @@ export function ContactSection() {
       } else {
         toast({
           title: "Error",
-          description: data.message || "Failed to subscribe. Please try again.",
+          description: data.message || contact.newsletter.error,
           variant: "destructive"
         });
       }
@@ -174,7 +178,7 @@ export function ContactSection() {
       console.error("Error subscribing to newsletter:", error);
       toast({
         title: "Error",
-        description: "There was a problem subscribing. Please try again later.",
+        description: contact.newsletter.validationError.general,
         variant: "destructive"
       });
     } finally {
@@ -193,7 +197,7 @@ export function ContactSection() {
             transition={{ duration: 0.8 }}
             className="text-3xl sm:text-4xl font-extrabold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
           >
-            Get Started
+            {contact.getStarted}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -201,7 +205,7 @@ export function ContactSection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="max-w-2xl mx-auto text-lg text-gray-300"
           >
-            Ready to transform your ideas into reality without breaking the bank?
+            {contact.readyTransform}
           </motion.p>
         </div>
         
@@ -219,7 +223,7 @@ export function ContactSection() {
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <Label htmlFor="name" className="text-gray-300">Name</Label>
+                <Label htmlFor="name" className="text-gray-300">{contact.form.name}</Label>
                 <Input
                   type="text"
                   id="name"
@@ -232,7 +236,7 @@ export function ContactSection() {
               </div>
               
               <div>
-                <Label htmlFor="email" className="text-gray-300">Email</Label>
+                <Label htmlFor="email" className="text-gray-300">{contact.form.email}</Label>
                 <Input
                   type="email"
                   id="email"
@@ -245,7 +249,7 @@ export function ContactSection() {
               </div>
               
               <div>
-                <Label htmlFor="message" className="text-gray-300">Message</Label>
+                <Label htmlFor="message" className="text-gray-300">{contact.form.message}</Label>
                 <Textarea
                   id="message"
                   name="message"
@@ -266,9 +270,9 @@ export function ContactSection() {
                   {isSubmitting ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Sending...
+                      {contact.form.sending}
                     </>
-                  ) : "Send Message"}
+                  ) : contact.form.submit}
                 </Button>
               </div>
             </form>
@@ -280,13 +284,13 @@ export function ContactSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className="bg-gray-800 rounded-xl p-8">
-              <h3 className="text-2xl font-bold mb-6">Connect With Us</h3>
+              <h3 className="text-2xl font-bold mb-6">{contact.connect.title}</h3>
               
               <div className="space-y-4">
                 <div className="flex items-start">
                   <Mail className="h-6 w-6 text-purple-600 mr-3 flex-shrink-0" />
                   <div>
-                    <h4 className="font-bold text-gray-200">Email</h4>
+                    <h4 className="font-bold text-gray-200">{contact.connect.email}</h4>
                     <p className="text-gray-400">rob@noveloper.ai</p>
                   </div>
                 </div>
@@ -294,15 +298,15 @@ export function ContactSection() {
                 <div className="flex items-start">
                   <MapPin className="h-6 w-6 text-purple-600 mr-3 flex-shrink-0" />
                   <div>
-                    <h4 className="font-bold text-gray-200">Location</h4>
-                    <p className="text-gray-400">Rotterdam, Netherlands</p>
+                    <h4 className="font-bold text-gray-200">{contact.connect.location}</h4>
+                    <p className="text-gray-400">{contact.connect.rotterdam}</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
                   <MessageSquare className="h-6 w-6 text-purple-600 mr-3 flex-shrink-0" />
                   <div>
-                    <h4 className="font-bold text-gray-200">Social</h4>
+                    <h4 className="font-bold text-gray-200">{contact.connect.social}</h4>
                     <div className="flex space-x-4 mt-2">
                       <a href="#" className="text-gray-400 hover:text-white transition duration-300">Twitter</a>
                       <a href="#" className="text-gray-400 hover:text-white transition duration-300">LinkedIn</a>
@@ -313,12 +317,12 @@ export function ContactSection() {
               </div>
               
               <div className="mt-8 pt-8 border-t border-gray-700">
-                <h4 className="font-bold text-lg mb-4">Newsletter</h4>
-                <p className="text-gray-400 mb-4">Stay updated with our latest innovations and product launches.</p>
+                <h4 className="font-bold text-lg mb-4">{contact.newsletter.title}</h4>
+                <p className="text-gray-400 mb-4">{contact.newsletter.description}</p>
                 <form onSubmit={handleSubscribe} className="flex">
                   <Input
                     type="email"
-                    placeholder="Your email"
+                    placeholder={contact.newsletter.placeholder}
                     value={newsletter}
                     onChange={(e) => setNewsletter(e.target.value)}
                     className="flex-grow px-4 py-2 bg-gray-700 border border-gray-600 rounded-l-md text-white focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -330,7 +334,7 @@ export function ContactSection() {
                   >
                     {isSubscribing ? (
                       <Loader2 className="h-4 w-4 animate-spin" />
-                    ) : "Subscribe"}
+                    ) : contact.newsletter.button}
                   </Button>
                 </form>
               </div>

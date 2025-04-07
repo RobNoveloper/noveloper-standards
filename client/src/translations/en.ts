@@ -182,6 +182,8 @@ export const en = {
   contact: {
     title: 'Get in Touch',
     subtitle: 'Ready to transform your business?',
+    getStarted: 'Get Started',
+    readyTransform: 'Ready to transform your ideas into reality without breaking the bank?',
     form: {
       name: 'Name',
       email: 'Email',
@@ -192,13 +194,39 @@ export const en = {
       messagePlaceholder: 'Tell us about your project or ask a question',
       success: 'Thank you! Your message has been sent. We\'ll get back to you soon.',
       error: 'Sorry, there was a problem sending your message. Please try again.',
+      sending: 'Sending...',
+      validationError: {
+        required: {
+          name: 'Name is required',
+          email: 'Email is required',
+          message: 'Message is required'
+        },
+        invalid: {
+          email: 'Please enter a valid email',
+          message: 'Message is too short'
+        },
+        general: 'Failed to send message. Please try again later.'
+      }
+    },
+    connect: {
+      title: 'Connect With Us',
+      email: 'Email',
+      location: 'Location',
+      social: 'Social',
+      rotterdam: 'Rotterdam, Netherlands',
     },
     newsletter: {
-      title: 'Subscribe to our newsletter',
+      title: 'Newsletter',
+      description: 'Stay updated with our latest innovations and product launches.',
       placeholder: 'Your email',
       button: 'Subscribe',
       success: 'Thank you for subscribing!',
       error: 'Sorry, there was a problem. Please try again.',
+      validationError: {
+        required: 'Please enter your email address.',
+        invalid: 'Please enter a valid email address.',
+        general: 'There was a problem subscribing. Please try again later.'
+      }
     },
   },
 

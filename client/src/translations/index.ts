@@ -19,7 +19,56 @@ type TranslationSet = {
   philosophy: typeof en.philosophy;
   workflow: typeof en.workflow;
   benefits: typeof en.benefits;
-  contact: typeof en.contact;
+  contact: {
+    title: string;
+    subtitle: string;
+    getStarted: string;
+    readyTransform: string;
+    form: {
+      name: string;
+      email: string;
+      message: string;
+      submit: string;
+      namePlaceholder: string;
+      emailPlaceholder: string;
+      messagePlaceholder: string;
+      success: string;
+      error: string;
+      sending: string;
+      validationError: {
+        required: {
+          name: string;
+          email: string;
+          message: string;
+        };
+        invalid: {
+          email: string;
+          message: string;
+        };
+        general: string;
+      };
+    };
+    connect: {
+      title: string;
+      email: string;
+      location: string;
+      social: string;
+      rotterdam: string;
+    };
+    newsletter: {
+      title: string;
+      description: string;
+      placeholder: string;
+      button: string;
+      success: string;
+      error: string;
+      validationError: {
+        required: string;
+        invalid: string;
+        general: string;
+      };
+    };
+  };
   footer: typeof en.footer;
   languageToggle: typeof en.languageToggle;
   notFound: typeof en.notFound;
