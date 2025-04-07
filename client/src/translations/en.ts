@@ -5,7 +5,6 @@ export const en = {
     about: 'About',
     products: 'Solutions',
     philosophy: 'Philosophy',
-    workflow: 'Workflow',
     benefits: 'Benefits',
     contact: 'Contact',
   },
@@ -122,7 +121,7 @@ export const en = {
   
   // Workflow Section
   workflow: {
-    title: 'Our Infinity Workflow',
+    title: 'How We Work',
     description: 'Our agile process creates a seamless flow between human creativity and AI capabilities, enabling continuous improvement and innovation in every project.',
     steps: {
       discovery: {

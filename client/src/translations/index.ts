@@ -10,7 +10,6 @@ type TranslationSet = {
     about: string;
     products: string;
     philosophy: string;
-    workflow: string;
     benefits: string;
     contact: string;
   };

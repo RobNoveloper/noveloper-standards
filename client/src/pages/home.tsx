@@ -7,7 +7,6 @@ import { AboutSection } from "@/components/about-section";
 import { BenefitsSection } from "@/components/benefits-section";
 import { InteractiveDemo } from "@/components/interactive-demo";
 import { ContactSection } from "@/components/contact-section";
-import { WorkflowSection } from "@/components/workflow-section";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
@@ -42,7 +41,6 @@ export default function Home() {
         <HeroSection />
         <PhilosophySection />
         <ProductsSection />
-        <WorkflowSection />
         <InteractiveDemo />
         <BenefitsSection />
         <AboutSection />

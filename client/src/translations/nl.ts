@@ -5,7 +5,6 @@ export const nl = {
     about: 'Over ons',
     products: 'Oplossingen',
     philosophy: 'Filosofie',
-    workflow: 'Werkwijze',
     benefits: 'Voordelen',
     contact: 'Contact',
   },
@@ -122,7 +121,7 @@ export const nl = {
   
   // Workflow Section
   workflow: {
-    title: 'Onze Oneindigheidsworkflow',
+    title: 'Hoe We Werken',
     description: 'Ons agile proces creëert een naadloze stroom tussen menselijke creativiteit en AI-mogelijkheden, waardoor continue verbetering en innovatie mogelijk is in elk project.',
     steps: {
       discovery: {

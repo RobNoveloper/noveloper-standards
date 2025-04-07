@@ -3,18 +3,27 @@ import { useReveal } from "@/lib/hooks";
 import { useLanguage } from "@/contexts/language-context";
 import { useTranslation } from "@/translations";
 
+interface WorkflowStepProps {
+  number: string;
+  title: string;
+  description: string;
+}
+
+function WorkflowStep({ number, title, description }: WorkflowStepProps) {
+  return (
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-all hover:shadow-lg border-t-4 border-purple-500">
+      <div className="text-purple-600 dark:text-purple-400 font-bold text-lg mb-1">{number}</div>
+      <h3 className="font-bold text-gray-800 dark:text-gray-200 text-lg mb-3">{title}</h3>
+      <p className="text-gray-600 dark:text-gray-400 text-sm">{description}</p>
+    </div>
+  );
+}
+
 export function AboutSection() {
   const [ref, inView] = useReveal<HTMLHeadingElement>();
   const { language } = useLanguage();
   const { t } = useTranslation(language);
-
-  const workflowSteps = [
-    { number: "01", title: t("about.workflow.step1.title"), description: t("about.workflow.step1.content") },
-    { number: "02", title: t("about.workflow.step2.title"), description: t("about.workflow.step2.content") },
-    { number: "03", title: t("about.workflow.step3.title"), description: t("about.workflow.step3.content") },
-    { number: "04", title: t("about.workflow.step4.title"), description: t("about.workflow.step4.content") },
-    { number: "05", title: t("about.workflow.step5.title"), description: t("about.workflow.step5.content") }
-  ];
+  const { workflow } = useTranslation(language);
 
   return (
     <section id="about" className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
@@ -59,13 +68,35 @@ export function AboutSection() {
                 {t("about.workflow.subtitle")}
               </p>
               
-              {/* Infinity Workflow Diagram */}
-              <div className="mt-8 mb-8 flex justify-center">
-                <img 
-                  src="/assets/infinity-workflow.svg" 
-                  alt="Noveloper Workflow" 
-                  className="w-full max-w-5xl" 
-                />
+              {/* Workflow Steps Cards */}
+              <div className="mt-8 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                  <WorkflowStep 
+                    number="01" 
+                    title={workflow.steps.discovery.title} 
+                    description={workflow.steps.discovery.description} 
+                  />
+                  <WorkflowStep 
+                    number="02" 
+                    title={workflow.steps.design.title} 
+                    description={workflow.steps.design.description} 
+                  />
+                  <WorkflowStep 
+                    number="03" 
+                    title={workflow.steps.build.title} 
+                    description={workflow.steps.build.description} 
+                  />
+                  <WorkflowStep 
+                    number="04" 
+                    title={workflow.steps.test.title} 
+                    description={workflow.steps.test.description} 
+                  />
+                  <WorkflowStep 
+                    number="05" 
+                    title={workflow.steps.launch.title} 
+                    description={workflow.steps.launch.description} 
+                  />
+                </div>
               </div>
             </div>
           </motion.div>
