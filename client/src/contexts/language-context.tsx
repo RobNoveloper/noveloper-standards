@@ -11,7 +11,7 @@ type LanguageContextType = {
 
 // Create the context with default values
 const LanguageContext = createContext<LanguageContextType>({
-  language: 'en',
+  language: 'nl',
   setLanguage: () => {},
 });
 
@@ -25,10 +25,10 @@ interface LanguageProviderProps {
 
 // Language provider component
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  // Try to get stored language preference, default to 'en'
+  // Try to get stored language preference, default to 'nl'
   const [language, setLanguage] = useState<Language>(() => {
     const stored = localStorage.getItem('language');
-    return (stored === 'nl' ? 'nl' : 'en') as Language;
+    return (stored === 'en' ? 'en' : 'nl') as Language;
   });
 
   // Update localStorage when language changes
