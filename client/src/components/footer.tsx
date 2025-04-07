@@ -1,17 +1,18 @@
 import { Link } from "wouter";
 import { Logo } from "./ui/logo";
 
-const products = [
-  { name: "DataFlow", href: "#" },
-  { name: "IdeaMaker", href: "#" },
-  { name: "VisualFlow", href: "#" },
-  { name: "Coming Soon", href: "#" }
+const solutions = [
+  { name: "Custom SaaS Applications", href: "#products" },
+  { name: "Excel Process Transformations", href: "#products" },
+  { name: "Interactive Experiences", href: "#products" }
 ];
 
 const company = [
+  { name: "Philosophy", href: "#philosophy" },
+  { name: "Solutions", href: "#products" },
+  { name: "Interactive Demo", href: "#interactive-demo" },
+  { name: "Why Choose Us", href: "#benefits" },
   { name: "About", href: "#about" },
-  { name: "Blog", href: "#" },
-  { name: "Careers", href: "#" },
   { name: "Contact", href: "#contact" }
 ];
 
@@ -52,11 +53,19 @@ export function Footer() {
           </div>
           
           <div>
-            <h3 className="text-lg font-bold mb-4">Products</h3>
+            <h3 className="text-lg font-bold mb-4">Solutions</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              {products.map((item) => (
+              {solutions.map((item) => (
                 <li key={item.name}>
-                  <a href={item.href} className="hover:text-white transition duration-300">
+                  <a href={item.href} className="hover:text-white transition duration-300"
+                     onClick={(e) => {
+                      if (item.href.startsWith('#')) {
+                        e.preventDefault();
+                        const element = document.querySelector(item.href);
+                        if (element) element.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                  >
                     {item.name}
                   </a>
                 </li>
