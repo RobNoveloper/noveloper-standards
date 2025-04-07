@@ -34,15 +34,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Add route to serve SVG logo files
   app.get('/api/logo/:variant', (req: Request, res: Response) => {
     const variant = req.params.variant;
-    let logoPath;
     
-    if (variant === 'transparent') {
-      logoPath = path.join(process.cwd(), 'public', 'noveloper-logo-transparent.svg');
+    if (variant === 'colored' || variant === 'gradient') {
+      // Generate the colored logo with gradient text dynamically
+      const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="360" height="80" viewBox="0 0 360 80">
+        <defs>
+          <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#000000" />
+            <stop offset="100%" stop-color="#4f46e5" />
+          </linearGradient>
+        </defs>
+        <g>
+          <!-- Logo mark -->
+          <rect x="10" y="10" width="20" height="60" rx="2" fill="black" />
+          <path d="M 30,10 L 57,10 L 57,54 L 30,10" fill="black" />
+          
+          <!-- Logo text with gradient -->
+          <text x="80" y="50" font-family="Arial, sans-serif" font-weight="800" font-size="28" fill="url(#textGradient)">NOVELOPER</text>
+        </g>
+      </svg>`;
+      
+      res.type('image/svg+xml').send(svgContent);
+    } else if (variant === 'transparent') {
+      const logoPath = path.join(process.cwd(), 'public', 'noveloper-logo-transparent.svg');
+      res.type('image/svg+xml').sendFile(logoPath);
     } else {
-      logoPath = path.join(process.cwd(), 'public', 'noveloper-logo.svg');
+      const logoPath = path.join(process.cwd(), 'public', 'noveloper-logo.svg');
+      res.type('image/svg+xml').sendFile(logoPath);
     }
-    
-    res.type('image/svg+xml').sendFile(logoPath);
   });
 
   // Handle contact form submissions
