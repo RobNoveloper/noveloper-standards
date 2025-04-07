@@ -17,9 +17,9 @@ const company = [
 ];
 
 const legal = [
-  { name: "Privacy Policy", href: "#" },
-  { name: "Terms of Service", href: "#" },
-  { name: "Cookie Policy", href: "#" }
+  { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Terms of Service", href: "/terms-of-service" },
+  { name: "Cookie Policy", href: "/cookie-policy" }
 ];
 
 const socialLinks = [
@@ -101,9 +101,9 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-gray-400">
               {legal.map((item) => (
                 <li key={item.name}>
-                  <a href={item.href} className="hover:text-white transition duration-300">
+                  <Link href={item.href} className="hover:text-white transition duration-300">
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
