@@ -231,4 +231,10 @@ export const en = {
     lastUpdated: 'Last updated',
     contactUs: 'Contact Us',
   },
+  
+  // Interactive Demo
+  interactiveDemo: {
+    title: 'Interactive Demo: Excel to Custom Application',
+    description: 'See how we transform complex Excel processes into powerful custom applications with our AI-driven approach',
+  },
 };

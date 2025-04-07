@@ -231,4 +231,10 @@ export const nl = {
     lastUpdated: 'Laatst bijgewerkt',
     contactUs: 'Neem Contact Op',
   },
+  
+  // Interactive Demo
+  interactiveDemo: {
+    title: 'Interactieve demo: van Excel naar maatwerkapplicatie',
+    description: 'Ontdek hoe we complexe Excel-processen omzetten in een intuitieve webapplicaties — met behulp van onze AI-gedreven aanpak',
+  },
 };

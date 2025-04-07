@@ -24,6 +24,7 @@ type TranslationSet = {
   languageToggle: typeof en.languageToggle;
   notFound: typeof en.notFound;
   legal: typeof en.legal;
+  interactiveDemo: typeof en.interactiveDemo;
 };
 type NestedObject = { [key: string]: NestedObject | string };
 
@@ -71,5 +72,6 @@ export function useTranslation(language: Language) {
     languageToggle: translations[language].languageToggle,
     notFound: translations[language].notFound,
     legal: translations[language].legal,
+    interactiveDemo: translations[language].interactiveDemo,
   };
 }

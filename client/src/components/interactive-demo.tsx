@@ -2,9 +2,13 @@ import { motion } from "framer-motion";
 import { useReveal } from "@/lib/hooks";
 import { FileSpreadsheet } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useLanguage } from "@/contexts/language-context";
+import { useTranslation } from "@/translations";
 
 export function InteractiveDemo() {
   const [ref, inView] = useReveal<HTMLHeadingElement>();
+  const { language } = useLanguage();
+  const t = useTranslation(language);
 
   return (
     <section id="interactive-demo" className="py-16 px-4 sm:px-6 lg:px-8 overflow-hidden relative">
@@ -19,7 +23,7 @@ export function InteractiveDemo() {
             transition={{ duration: 0.8 }}
             className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4"
           >
-            Interactive Demo: Excel to Custom Application
+            {t.interactiveDemo.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -27,8 +31,7 @@ export function InteractiveDemo() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="max-w-2xl mx-auto text-lg text-gray-600"
           >
-            See how we transform complex Excel processes into powerful custom applications
-            with our AI-driven approach
+            {t.interactiveDemo.description}
           </motion.p>
         </div>
         
