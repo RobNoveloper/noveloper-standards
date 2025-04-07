@@ -6,17 +6,17 @@ import { Button } from "@/components/ui/button";
 const philosophyCards = [
   {
     title: "Human + AI Partnership",
-    description: "We combine human creativity and business understanding with AI's capabilities to create custom software solutions at accessible subscription prices.",
+    description: "We combine human creativity and business understanding with AI's capabilities to create solutions that blend artistry with technology.",
     icon: Zap
   },
   {
     title: "Client-Centric Approach",
-    description: "We listen and translate your business challenges into custom software solutions, maintaining the human touch in consulting, architecting, and collaboration.",
+    description: "We listen and translate your business challenges into thoughtful digital solutions, maintaining the human touch in consulting, architecting, and collaboration.",
     icon: Smile
   },
   {
     title: "Accelerated Innovation",
-    description: "We build SaaS applications, BI tools, and interactive experiences faster than ever before, letting you realize your custom software vision quickly.",
+    description: "We build SaaS applications, BI tools, and interactive experiences faster than ever before, bringing your vision to life with unprecedented speed.",
     icon: Fingerprint
   }
 ];
@@ -80,7 +80,7 @@ export function PhilosophySection() {
               <div>
                 <h3 className="text-2xl font-bold mb-4">A New Kind of Studio</h3>
                 <p className="text-gray-600 mb-6">
-                  Noveloper is a fusion of "no developer" and "novel" — we build custom software without traditional coding, pioneering a creative approach to development that makes quality software accessible at subscription prices.
+                  Noveloper is a fusion of "no developer" and "novel" — we build custom software without traditional coding, pioneering a creative approach that transforms the development process into an intuitive, flowing experience.
                 </p>
                 <a 
                   href="#interactive-demo" 

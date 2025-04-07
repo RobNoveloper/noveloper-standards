@@ -5,7 +5,7 @@ import { LineChart, Lightbulb, PaintBucket, FileSpreadsheet } from "lucide-react
 const products = [
   {
     title: "Custom SaaS Applications",
-    description: "AI-driven software solutions tailor-made for your business needs, with the affordability of subscription pricing.",
+    description: "AI-driven software solutions tailor-made for your business needs, delivering powerful functionality with intuitive user experiences.",
     icon: LineChart
   },
   {

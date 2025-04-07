@@ -96,7 +96,7 @@ export function BenefitsSection() {
         >
           <div className="inline-block bg-gray-100 py-4 px-8 rounded-full">
             <div className="text-purple-600 font-medium">
-              Custom Software at SaaS Prices. Enterprise quality, subscription affordability.
+              Disruptive Innovation. Enterprise Quality. Beautiful Design.
             </div>
           </div>
           

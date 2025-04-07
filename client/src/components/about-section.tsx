@@ -4,9 +4,9 @@ import { Check, Euro, Target, Clock } from "lucide-react";
 
 const features = [
   "AI-powered creative solutions that feel magical to use",
-  "Custom applications at affordable subscription pricing",
-  "Interactive experiences that transform business processes",
-  "Visually stunning interfaces with intuitive user experiences"
+  "Digital experiences that solve real business problems",
+  "Interactive interfaces that transform business processes",
+  "Visually stunning designs with intuitive user experiences"
 ];
 
 const workflowSteps = [
@@ -67,7 +67,7 @@ export function AboutSection() {
           >
             <h3 className="text-2xl font-bold mb-4">Our Value Proposition</h3>
             <p className="text-gray-600 mb-6">
-              We transform how businesses access custom software by making it affordable through a simple subscription model:
+              We're redefining the creative development process to deliver exceptional digital solutions that provide lasting business value:
             </p>
             <ul className="space-y-4">
               {features.map((feature, index) => (
@@ -93,7 +93,7 @@ export function AboutSection() {
             <div className="bg-white p-8 rounded-xl shadow-md">
               <h3 className="text-2xl font-bold mb-4">Our Process</h3>
               <p className="text-gray-600 mb-6">
-                We blend creative innovation with business expertise to develop applications that are both visually stunning and functionally powerful — all while maintaining affordability through our subscription model.
+                We blend creative innovation with business expertise to develop applications that are both visually stunning and functionally powerful — creating exceptional user experiences that drive real business results.
               </p>
               <div className="space-y-4">
                 {workflowSteps.map((step) => (
