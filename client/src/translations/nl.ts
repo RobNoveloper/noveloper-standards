@@ -240,5 +240,16 @@ export const nl = {
     trackingExample: 'Maandelijkse kosten tracker voorbeeld',
     beforeTab: 'Before: Excel',
     afterTab: 'After: Maatwerkapplicatie',
+    issuesTitle: 'Beperkingen van werken in Excel:',
+    issuesList: [
+      'Handmatig goedkeuringsproces via e-mail',
+      'Geen realtime inzicht voor het management',
+      'Problemen met versiebeheer',
+      'Complexe formules voor rapportages'
+    ],
+    demoFooter: [
+      'Deze demo laat zien hoe we bedrijfsprocessen omzetten in maatwerkapplicaties.',
+      'Ervaar de kracht van AI-gedreven softwareontwikkeling.'
+    ]
   },
 };

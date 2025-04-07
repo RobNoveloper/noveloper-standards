@@ -105,12 +105,11 @@ export function InteractiveDemo() {
                     </div>
                     
                     <div className="mt-4 text-center text-xs text-gray-500">
-                      <p>Issues with Excel approach:</p>
+                      <p>{t.interactiveDemo.issuesTitle}</p>
                       <ul className="text-left list-disc list-inside mt-1">
-                        <li>Manual approval process via email</li>
-                        <li>No real-time visibility for management</li>  
-                        <li>Version control problems</li>
-                        <li>Complex formulas for reporting</li>
+                        {t.interactiveDemo.issuesList.map((issue, index) => (
+                          <li key={index}>{issue}</li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -221,8 +220,9 @@ export function InteractiveDemo() {
               
               <div className="mt-8 text-center">
                 <div className="text-sm text-gray-600 bg-purple-50 p-4 rounded-lg inline-block">
-                  <p>This demo illustrates how we transform business processes into custom applications.</p>
-                  <p>Experience the power of AI-driven software development.</p>
+                  {t.interactiveDemo.demoFooter.map((line, index) => (
+                    <p key={index}>{line}</p>
+                  ))}
                 </div>
               </div>
             </div>

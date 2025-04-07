@@ -240,5 +240,16 @@ export const en = {
     trackingExample: 'Monthly Expense Tracking Example',
     beforeTab: 'Before: Excel Process',
     afterTab: 'After: Custom Application',
+    issuesTitle: 'Issues with Excel approach:',
+    issuesList: [
+      'Manual approval process via email',
+      'No real-time visibility for management',
+      'Version control problems',
+      'Complex formulas for reporting'
+    ],
+    demoFooter: [
+      'This demo illustrates how we transform business processes into custom applications.',
+      'Experience the power of AI-driven software development.'
+    ]
   },
 };
