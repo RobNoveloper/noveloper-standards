@@ -36,7 +36,7 @@ This guide explains how to deploy the Noveloper website using a split deployment
 3. Configure the following settings:
    - **Root Directory**: `/`
    - **Build Command**: `npm run build`
-   - **Start Command**: `NODE_ENV=production node railway-start.mjs`
+   - **Start Command**: `NODE_ENV=production node railway-start.cjs`
    - **Health Check Path**: `/`
    - **Health Check Timeout**: 300 seconds
 4. Set environment variables:
