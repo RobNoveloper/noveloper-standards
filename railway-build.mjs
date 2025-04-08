@@ -50,6 +50,19 @@ try {
   const targetPath = path.resolve(__dirname, 'dist', 'index.js');
   fs.copyFileSync(startFilePath, targetPath);
   
+  // Also copy railway-start.js as railway-start.mjs
+  const mjsStartPath = path.resolve(__dirname, 'railway-start.mjs');
+  if (fs.existsSync(mjsStartPath)) {
+    const mjsTargetPath = path.resolve(__dirname, 'dist', 'railway-start.mjs');
+    fs.copyFileSync(mjsStartPath, mjsTargetPath);
+    console.log(`Copied railway-start.mjs to ${mjsTargetPath}`);
+  } else {
+    console.log('railway-start.mjs not found, copying railway-start.js as railway-start.mjs');
+    const mjsTargetPath = path.resolve(__dirname, 'dist', 'railway-start.mjs');
+    fs.copyFileSync(startFilePath, mjsTargetPath);
+    console.log(`Copied railway-start.js to ${mjsTargetPath} as railway-start.mjs`);
+  }
+  
   console.log(`Copied railway-start.js to ${targetPath}`);
   
   // Copy railway-email.js to dist/
