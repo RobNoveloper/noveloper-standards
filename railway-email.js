@@ -14,10 +14,19 @@ const mailerSend = process.env.MAILERSEND_API_KEY
 
 // The email address that will be shown as the sender
 // Using the verified Noveloper domain email
-const defaultSender = new Sender("hello@noveloper.ai", "Noveloper");
+let defaultSender;
+try {
+  defaultSender = new Sender("hello@noveloper.ai", "Noveloper");
+  console.log("Sender email configured: hello@noveloper.ai");
+  console.log("IMPORTANT: Make sure this domain is verified in MailerSend dashboard");
+} catch (error) {
+  console.error("Error creating sender:", error);
+  // Fallback to a simpler sender
+  defaultSender = { email: "hello@noveloper.ai", name: "Noveloper" };
+}
 
 // The email address that will receive contact form submissions
-const defaultRecipient = "rob@sumxholding.nl";
+const defaultRecipient = "rob@noveloper.ai";
 
 /**
  * Sends a contact form submission via email
@@ -61,6 +70,23 @@ ${formData.message}
     return true;
   } catch (error) {
     console.error("MailerSend contact form email error:", error);
+    
+    // Log detailed error for debugging
+    if (error instanceof Error) {
+      console.error("Error details:", {
+        message: error.message,
+        stack: error.stack,
+        name: error.name,
+        cause: error.cause
+      });
+      
+      // Special handling for common MailerSend errors
+      if (error.message.includes("domain") || error.message.includes("sender")) {
+        console.error("This appears to be a domain verification error. Make sure the sender domain is verified in MailerSend.");
+      } else if (error.message.includes("authorization") || error.message.includes("authenticated")) {
+        console.error("This appears to be an API key issue. Check that your API key is valid and has the necessary permissions.");
+      }
+    }
     return false;
   }
 }
@@ -115,6 +141,23 @@ The Noveloper Team
     return true;
   } catch (error) {
     console.error("MailerSend newsletter email error:", error);
+    
+    // Log detailed error for debugging
+    if (error instanceof Error) {
+      console.error("Error details:", {
+        message: error.message,
+        stack: error.stack,
+        name: error.name,
+        cause: error.cause
+      });
+      
+      // Special handling for common MailerSend errors
+      if (error.message.includes("domain") || error.message.includes("sender")) {
+        console.error("This appears to be a domain verification error. Make sure the sender domain is verified in MailerSend.");
+      } else if (error.message.includes("authorization") || error.message.includes("authenticated")) {
+        console.error("This appears to be an API key issue. Check that your API key is valid and has the necessary permissions.");
+      }
+    }
     return false;
   }
 }
