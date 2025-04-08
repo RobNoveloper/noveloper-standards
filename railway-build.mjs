@@ -1,69 +1,53 @@
-#!/usr/bin/env node
+// Build script for Railway deployment
+// This script builds the production version of the application with ESM support
 
-/**
- * Railway build script
- * This script prepares the backend for Railway deployment
- */
-
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Ensure dist directory exists
-console.log('Creating dist directory if it doesn\'t exist...');
-try {
-  if (!fs.existsSync('dist')) {
-    fs.mkdirSync('dist');
-  }
-} catch (err) {
-  console.error('Error creating dist directory:', err);
-}
-
-// Copy necessary files to dist
-console.log('Copying railway-start.mjs to dist...');
-try {
-  fs.copyFileSync('railway-start.mjs', path.join('dist', 'railway-start.mjs'));
-} catch (err) {
-  console.error('Error copying railway-start.mjs:', err);
-}
-
-console.log('Copying railway-email.js to dist...');
-try {
-  fs.copyFileSync('railway-email.js', path.join('dist', 'railway-email.js'));
-} catch (err) {
-  console.error('Error copying railway-email.js:', err);
-}
-
-// Create proper index.js entry point in dist
-console.log('Creating standalone dist/index.js...');
-try {
-  const indexContent = `// Railway deployment entry point
-import { fileURLToPath } from 'url';
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-// Import the server startup module
-import('./railway-start.mjs').catch(err => {
-  console.error('Failed to import railway-start.mjs:', err);
-  process.exit(1);
-});
-`;
-  fs.writeFileSync(path.join('dist', 'index.js'), indexContent);
-} catch (err) {
-  console.error('Error creating dist/index.js:', err);
+// Get the directory name of the current module
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+console.log('Starting Railway build process...');
+
+// Create dist directory if it doesn't exist
+if (!fs.existsSync('dist')) {
+  fs.mkdirSync('dist');
 }
 
-// List dist directory contents
-console.log('Dist directory contents:');
 try {
-  const files = fs.readdirSync('dist');
-  console.log(files);
-} catch (err) {
-  console.error('Error listing dist directory:', err);
+  // Build the backend
+  console.log('Building backend...');
+  execSync('npx tsc', { stdio: 'inherit' });
+  
+  // Create the server index file for direct Railway execution
+  console.log('Creating standalone server file...');
+  
+  // Read in the railway-start.js file
+  const startFilePath = path.resolve(__dirname, 'railway-start.js');
+  if (!fs.existsSync(startFilePath)) {
+    throw new Error(`railway-start.js not found at ${startFilePath}`);
+  }
+  
+  // Copy railway-start.js to dist/index.js
+  const targetPath = path.resolve(__dirname, 'dist', 'index.js');
+  fs.copyFileSync(startFilePath, targetPath);
+  
+  console.log(`Copied railway-start.js to ${targetPath}`);
+  
+  // Copy railway-email.js to dist/
+  const emailFilePath = path.resolve(__dirname, 'railway-email.js');
+  if (fs.existsSync(emailFilePath)) {
+    const emailTargetPath = path.resolve(__dirname, 'dist', 'railway-email.js');
+    fs.copyFileSync(emailFilePath, emailTargetPath);
+    console.log(`Copied railway-email.js to ${emailTargetPath}`);
+  } else {
+    console.warn('Warning: railway-email.js not found, email functionality may not work');
+  }
+  
+  console.log('Railway build completed successfully!');
+} catch (error) {
+  console.error('Railway build failed:', error);
+  process.exit(1);
 }
-
-console.log('Railway build script completed');
