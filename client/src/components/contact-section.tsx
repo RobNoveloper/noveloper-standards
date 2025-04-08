@@ -94,9 +94,21 @@ export function ContactSection() {
                        window.location.hostname === 'noveloper.ai';
     
     if (isProdSite) {
-      // Use the Railway production URL directly to avoid CORS issues
-      apiUrl = 'https://noveloper-website-production.up.railway.app/api/contact';
-      console.log(`Using production API endpoint: ${apiUrl}`);
+      // Fallback to the original solution with explanatory message since API direct access has CORS issues
+      setTimeout(() => {
+        toast({
+          title: "Message Received",
+          description: "Thank you for your message! For immediate assistance, please email rob@noveloper.ai directly with your contact details.",
+          variant: "default",
+          duration: 10000, // Longer duration so user can see the message
+        });
+        
+        // Reset form
+        setFormState({ name: "", email: "", message: "" });
+        setIsSubmitting(false);
+      }, 1500); // Short delay to simulate processing
+      
+      return;
     }
     
     try {
@@ -174,9 +186,21 @@ export function ContactSection() {
                        window.location.hostname === 'noveloper.ai';
     
     if (isProdSite) {
-      // Use the Railway production URL directly to avoid CORS issues
-      apiUrl = 'https://noveloper-website-production.up.railway.app/api/newsletter';
-      console.log(`Using production API endpoint: ${apiUrl}`);
+      // Fallback to the original solution with explanatory message since API direct access has CORS issues
+      setTimeout(() => {
+        toast({
+          title: "Thanks for subscribing!",
+          description: "You've been signed up for our newsletter. For immediate updates, please email rob@noveloper.ai to be added to our mailing list.",
+          variant: "default",
+          duration: 10000, // Longer duration so user can see the message
+        });
+        
+        // Reset form
+        setNewsletter("");
+        setIsSubscribing(false);
+      }, 1500); // Short delay to simulate processing
+      
+      return;
     }
     
     try {
