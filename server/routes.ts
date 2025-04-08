@@ -26,7 +26,8 @@ const setCorsHeaders = (res: Response, origin: string | undefined) => {
     'https://localhost:5173',
     'https://noveloper-website.vercel.app',
     'https://noveloper-website-git-main.vercel.app',
-    'https://noveloper-website-robnoveloper.vercel.app'
+    'https://noveloper-website-robnoveloper.vercel.app',
+    'https://noveloper-website-production.up.railway.app'
   ];
 
   let corsOrigin = '*';
@@ -34,7 +35,8 @@ const setCorsHeaders = (res: Response, origin: string | undefined) => {
   // If origin is provided and is in allowed list or has noveloper.ai domain, use it
   if (origin && (allowedOrigins.includes(origin) || 
                  origin.endsWith('.noveloper.ai') || 
-                 origin.endsWith('.vercel.app'))) {
+                 origin.endsWith('.vercel.app') ||
+                 origin.endsWith('.railway.app'))) {
     corsOrigin = origin;
   }
   
