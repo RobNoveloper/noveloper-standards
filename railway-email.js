@@ -46,6 +46,16 @@ const defaultRecipient = "rob@noveloper.ai";
  * Sends a contact form submission via email
  */
 async function sendContactFormEmail(formData) {
+  // Add extensive environment diagnostic info to debug production issues
+  console.log("DIAGNOSTIC INFO - Environment (Contact Form):");
+  console.log(`- NODE_ENV: ${process.env.NODE_ENV || 'not set'}`);
+  console.log(`- API Key exists: ${!!process.env.MAILERSEND_API_KEY}`);
+  if (process.env.MAILERSEND_API_KEY) {
+    // NEVER log the full API key, just diagnostic info
+    console.log(`- API Key length: ${process.env.MAILERSEND_API_KEY.length} characters`);
+    console.log(`- API Key prefix: ${process.env.MAILERSEND_API_KEY.substring(0, 4)}...`);
+  }
+  
   if (!mailerSend) {
     console.error("Cannot send email: MailerSend API key not configured");
     return false;
@@ -54,7 +64,17 @@ async function sendContactFormEmail(formData) {
   console.log("Preparing to send contact form email from:", formData.name, formData.email);
   
   try {
+    console.log("DIAGNOSTIC INFO - Contact Form Sender:");
+    console.log(`- Using sender email: ${defaultSender.email}`);
+    console.log(`- Sender object type: ${typeof defaultSender}`);
+    console.log(`- Is Sender instance: ${defaultSender instanceof Sender}`);
+    
     const recipients = [new Recipient(defaultRecipient, "Noveloper Team")];
+    
+    console.log("DIAGNOSTIC INFO - Contact Form Recipients:");
+    console.log(`- Recipient email: ${defaultRecipient}`);
+    console.log(`- Recipients object type: ${typeof recipients}`);
+    console.log(`- Is Array: ${Array.isArray(recipients)}`);
 
     // Structure the email
     const emailParams = new EmailParams()
@@ -76,12 +96,37 @@ ${formData.message}
 <h3>Message:</h3>
 <p>${formData.message.replace(/\n/g, '<br>')}</p>
       `);
+      
+    console.log("DIAGNOSTIC INFO - Contact Form Email Params:");
+    console.log(`- Email params type: ${typeof emailParams}`);
+    console.log(`- Email params properties: ${Object.keys(emailParams).join(', ')}`);
 
-    // Send the email
+    // Send the email - with enhanced error trapping
     console.log("Attempting to send contact form email to:", defaultRecipient);
-    const response = await mailerSend.email.send(emailParams);
-    console.log("MailerSend API response (contact form):", response);
-    return true;
+    
+    let response;
+    try {
+      response = await mailerSend.email.send(emailParams);
+      console.log("MailerSend API response (contact form):", response);
+      return true;
+    } catch (apiError) {
+      console.error("CRITICAL: Inner MailerSend API call failed for contact form:", apiError);
+      
+      // Detailed API error diagnostics
+      if (apiError.response && apiError.response.data) {
+        console.error("API Response data (contact form):", apiError.response.data);
+      }
+      
+      if (apiError.request) {
+        console.error("API Request details (contact form):", {
+          url: apiError.request.url || 'unknown',
+          method: apiError.request.method || 'unknown',
+          status: apiError.request.status || 'unknown'
+        });
+      }
+      
+      throw apiError; // Re-throw to be caught by outer try/catch
+    }
   } catch (error) {
     console.error("MailerSend contact form email error:", error);
     
@@ -100,6 +145,15 @@ ${formData.message}
       } else if (error.message.includes("authorization") || error.message.includes("authenticated")) {
         console.error("This appears to be an API key issue. Check that your API key is valid and has the necessary permissions.");
       }
+      
+      // Try to extract more specific error messages
+      try {
+        if (error.response && error.response.data) {
+          console.error("API error response data (contact form):", error.response.data);
+        }
+      } catch (e) {
+        console.error("Could not extract response data (contact form):", e);
+      }
     }
     return false;
   }
@@ -109,6 +163,16 @@ ${formData.message}
  * Sends a newsletter subscription confirmation
  */
 async function sendNewsletterConfirmation(email) {
+  // Add extensive environment diagnostic info to debug production issues
+  console.log("DIAGNOSTIC INFO - Environment:");
+  console.log(`- NODE_ENV: ${process.env.NODE_ENV || 'not set'}`);
+  console.log(`- API Key exists: ${!!process.env.MAILERSEND_API_KEY}`);
+  if (process.env.MAILERSEND_API_KEY) {
+    // NEVER log the full API key, just diagnostic info
+    console.log(`- API Key length: ${process.env.MAILERSEND_API_KEY.length} characters`);
+    console.log(`- API Key prefix: ${process.env.MAILERSEND_API_KEY.substring(0, 4)}...`);
+  }
+  
   if (!mailerSend) {
     console.error("Cannot send email: MailerSend API key not configured");
     return false;
@@ -117,10 +181,20 @@ async function sendNewsletterConfirmation(email) {
   console.log("Preparing to send newsletter confirmation to:", email);
   
   try {
+    console.log("DIAGNOSTIC INFO - Sender:");
+    console.log(`- Using sender email: ${defaultSender.email}`);
+    console.log(`- Sender object type: ${typeof defaultSender}`);
+    console.log(`- Is Sender instance: ${defaultSender instanceof Sender}`);
+    
     // Send only to the subscriber
     const recipients = [
       new Recipient(email)
     ];
+    
+    console.log("DIAGNOSTIC INFO - Recipients:");
+    console.log(`- Recipient email: ${email}`);
+    console.log(`- Recipients object type: ${typeof recipients}`);
+    console.log(`- Is Array: ${Array.isArray(recipients)}`);
     
     // Log admin notification
     console.log(`ADMIN NOTIFICATION: New newsletter subscription from ${email}`);
@@ -148,11 +222,36 @@ The Noveloper Team
 <p>Best regards,<br>The Noveloper Team</p>
       `);
 
-    // Send the email
+    console.log("DIAGNOSTIC INFO - Email Params:");
+    console.log(`- Email params type: ${typeof emailParams}`);
+    console.log(`- Email params properties: ${Object.keys(emailParams).join(', ')}`);
+    
+    // Send the email - with enhanced error trapping
     console.log("Attempting to send newsletter confirmation email to:", email);
-    const response = await mailerSend.email.send(emailParams);
-    console.log("MailerSend API response (newsletter):", response);
-    return true;
+    
+    let response;
+    try {
+      response = await mailerSend.email.send(emailParams);
+      console.log("MailerSend API response (newsletter):", response);
+      return true;
+    } catch (apiError) {
+      console.error("CRITICAL: Inner MailerSend API call failed:", apiError);
+      
+      // Detailed API error diagnostics
+      if (apiError.response && apiError.response.data) {
+        console.error("API Response data:", apiError.response.data);
+      }
+      
+      if (apiError.request) {
+        console.error("API Request details:", {
+          url: apiError.request.url || 'unknown',
+          method: apiError.request.method || 'unknown',
+          status: apiError.request.status || 'unknown'
+        });
+      }
+      
+      throw apiError; // Re-throw to be caught by outer try/catch
+    }
   } catch (error) {
     console.error("MailerSend newsletter email error:", error);
     
@@ -170,6 +269,15 @@ The Noveloper Team
         console.error("This appears to be a domain verification error. Make sure the sender domain is verified in MailerSend.");
       } else if (error.message.includes("authorization") || error.message.includes("authenticated")) {
         console.error("This appears to be an API key issue. Check that your API key is valid and has the necessary permissions.");
+      }
+      
+      // Try to extract more specific error messages
+      try {
+        if (error.response && error.response.data) {
+          console.error("API error response data:", error.response.data);
+        }
+      } catch (e) {
+        console.error("Could not extract response data:", e);
       }
     }
     return false;
