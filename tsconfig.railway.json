@@ -5,7 +5,9 @@
     "noImplicitAny": false,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "forceConsistentCasingInFileNames": false
+    "forceConsistentCasingInFileNames": false,
+    "noEmitOnError": false,
+    "checkJs": false
   },
   "include": ["server/**/*", "shared/**/*"],
   "exclude": ["node_modules", "client/**/*"]
