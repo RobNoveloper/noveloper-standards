@@ -11,45 +11,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// CORS middleware for handling cross-origin requests
-app.use((req, res, next) => {
-  // Get the origin from the request headers
-  const origin = req.headers.origin;
-  
-  // Define allowed origins
-  const allowedOrigins = [
-    'https://www.noveloper.ai', 
-    'https://noveloper.ai', 
-    'http://localhost:5173', 
-    'https://localhost:5173',
-    'https://noveloper-website.vercel.app',
-    'https://noveloper-website-git-main.vercel.app',
-    'https://noveloper-website-robnoveloper.vercel.app'
-  ];
-  
-  // Set CORS headers for all requests
-  // Use the requesting origin if it's in our allowed list, otherwise use '*'
-  if (origin && (allowedOrigins.includes(origin) || 
-                origin.endsWith('.noveloper.ai') || 
-                origin.endsWith('.vercel.app'))) {
-    res.header('Access-Control-Allow-Origin', origin);
-  } else {
-    res.header('Access-Control-Allow-Origin', '*');
-  }
-  
-  // Set other CORS headers
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Origin, X-Requested-With, Accept');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  
-  // Log the CORS headers in production for debugging
-  if (process.env.NODE_ENV === 'production') {
-    console.log(`CORS headers for ${req.path}: origin=${origin}, response header=${res.getHeader('Access-Control-Allow-Origin')}`);
-  }
-  
-  next();
-});
-
 // Helper function to ensure CORS headers are always set
 const ensureCorsHeaders = (req, res) => {
   const origin = req.headers.origin;
@@ -80,6 +41,13 @@ const ensureCorsHeaders = (req, res) => {
     console.log(`[${req.method}] ${req.path} - Origin: ${origin || 'none'}, CORS Response: ${res.getHeader('Access-Control-Allow-Origin')}`);
   }
 };
+
+// CORS middleware for handling cross-origin requests
+app.use((req, res, next) => {
+  // Ensure CORS headers are set for all requests
+  ensureCorsHeaders(req, res);
+  next();
+});
 
 // Dedicated handler for OPTIONS preflight requests - with highest priority for Railway's routing system
 app.options('*', (req, res) => {
@@ -160,37 +128,6 @@ app.get('/api/logo/:variant', (req, res) => {
     requestedVariant: variant
   });
 });
-
-// Helper function to ensure CORS headers are always set
-const ensureCorsHeaders = (req, res) => {
-  const origin = req.headers.origin;
-  const allowedOrigins = [
-    'https://www.noveloper.ai', 
-    'https://noveloper.ai', 
-    'http://localhost:5173', 
-    'https://localhost:5173',
-    'https://noveloper-website.vercel.app',
-    'https://noveloper-website-git-main.vercel.app',
-    'https://noveloper-website-robnoveloper.vercel.app'
-  ];
-  
-  // Double-check CORS headers are set for each response
-  if (origin && (allowedOrigins.includes(origin) || 
-                origin.endsWith('.noveloper.ai') || 
-                origin.endsWith('.vercel.app'))) {
-    res.header('Access-Control-Allow-Origin', origin);
-  } else {
-    res.header('Access-Control-Allow-Origin', '*');
-  }
-  
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Origin, X-Requested-With, Accept');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  
-  if (process.env.NODE_ENV === 'production') {
-    console.log(`[${req.method}] ${req.path} - Origin: ${origin || 'none'}, CORS Response: ${res.getHeader('Access-Control-Allow-Origin')}`);
-  }
-};
 
 // Initialize emailService with fallback
 let emailService = {
