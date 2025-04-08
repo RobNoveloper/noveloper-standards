@@ -12,6 +12,47 @@ const mailerSend = process.env.MAILERSEND_API_KEY
   ? new MailerSend({ apiKey: process.env.MAILERSEND_API_KEY })
   : null;
 
+// Immediately check if MailerSend can be reached - this tests network connectivity
+async function testMailerSendConnectivity() {
+  if (!mailerSend) {
+    console.error("Cannot test connectivity: MailerSend API key not configured");
+    return false;
+  }
+  
+  try {
+    console.log("Testing MailerSend API connectivity...");
+    
+    // Attempt to fetch user info - a simple API call that should work
+    // if the API key is valid and the network is accessible
+    const response = await fetch('https://api.mailersend.com/v1/me', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${process.env.MAILERSEND_API_KEY}`,
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    const data = await response.json();
+    console.log("MailerSend connectivity test results:", {
+      status: response.status,
+      statusText: response.statusText,
+      success: response.ok,
+      dataReceived: !!data
+    });
+    
+    if (!response.ok) {
+      console.error("MailerSend API connectivity test failed:", data);
+      return false;
+    }
+    
+    console.log("MailerSend API is accessible!");
+    return true;
+  } catch (error) {
+    console.error("ERROR: MailerSend connectivity test failed with exception:", error);
+    return false;
+  }
+}
+
 // The email address that will be shown as the sender
 // Using the verified Noveloper domain email
 let defaultSender;
@@ -19,6 +60,15 @@ try {
   // Check API key and log initial status
   if (process.env.MAILERSEND_API_KEY) {
     console.log("MailerSend API Key exists. Length:", process.env.MAILERSEND_API_KEY.length, "characters");
+    
+    // Start the connectivity test asynchronously
+    testMailerSendConnectivity()
+      .then(isConnected => {
+        console.log("MailerSend API connectivity:", isConnected ? "SUCCESSFUL" : "FAILED");
+      })
+      .catch(error => {
+        console.error("Error testing MailerSend connectivity:", error);
+      });
   } else {
     console.error("WARNING: MAILERSEND_API_KEY is missing. Email functions will not work.");
   }
