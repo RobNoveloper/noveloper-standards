@@ -18,10 +18,10 @@ const mailerSend = process.env.MAILERSEND_API_KEY
   : null;
 
 // Default sender using verified Noveloper domain
-const defaultSender = new Sender("hello@noveloper.ai", "Noveloper");
+const defaultSender = new Sender("rob@noveloper.ai", "Noveloper");
 
 // Default recipient for contact form submissions
-const defaultRecipient = "rob@sumxholding.nl";
+const defaultRecipient = "rob@noveloper.ai";
 
 /**
  * Contact form data structure

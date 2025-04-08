@@ -16,13 +16,13 @@ const mailerSend = process.env.MAILERSEND_API_KEY
 // Using the verified Noveloper domain email
 let defaultSender;
 try {
-  defaultSender = new Sender("hello@noveloper.ai", "Noveloper");
-  console.log("Sender email configured: hello@noveloper.ai");
+  defaultSender = new Sender("rob@noveloper.ai", "Noveloper");
+  console.log("Sender email configured: rob@noveloper.ai");
   console.log("IMPORTANT: Make sure this domain is verified in MailerSend dashboard");
 } catch (error) {
   console.error("Error creating sender:", error);
   // Fallback to a simpler sender
-  defaultSender = { email: "hello@noveloper.ai", name: "Noveloper" };
+  defaultSender = { email: "rob@noveloper.ai", name: "Noveloper" };
 }
 
 // The email address that will receive contact form submissions
