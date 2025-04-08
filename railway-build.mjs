@@ -38,12 +38,19 @@ try {
   console.error('Error copying railway-email.js:', err);
 }
 
-// Create simple index.js export in dist
-console.log('Creating simplified dist/index.js...');
+// Create proper index.js entry point in dist
+console.log('Creating standalone dist/index.js...');
 try {
-  const indexContent = `// Railway deployment build
-// This is a simple export file that loads the railway-start.mjs module
-export * from './railway-start.mjs';
+  const indexContent = `// Railway deployment entry point
+import { fileURLToPath } from 'url';
+import path from 'path';
+import fs from 'fs';
+
+// Import the server startup module
+import('./railway-start.mjs').catch(err => {
+  console.error('Failed to import railway-start.mjs:', err);
+  process.exit(1);
+});
 `;
   fs.writeFileSync(path.join('dist', 'index.js'), indexContent);
 } catch (err) {

@@ -163,30 +163,61 @@ app.post('/api/newsletter', async (req, res) => {
 });
 
 // Serve static files from dist/client if they exist
-// Simpler approach to find the client distribution files
+// Very cautious approach to find the client distribution files
+// Absolute safety checks to avoid the TypeError ERR_INVALID_ARG_TYPE
+const safeResolve = (...parts) => {
+  // Ensure all path parts are defined strings
+  const validParts = parts.filter(part => typeof part === 'string');
+  if (validParts.length !== parts.length) {
+    console.warn('Invalid path parts detected, some parts were filtered');
+  }
+  try {
+    return path.resolve(...validParts);
+  } catch (err) {
+    console.error(`Path resolution error: ${err.message}`);
+    return null;
+  }
+};
+
+// Define potential client paths with safety
 const potentialClientPaths = [
-  path.resolve(__dirname, 'dist/client'),
-  path.resolve(process.cwd(), 'dist/client'),
-  '/app/dist/client',
-  '/opt/render/project/dist/client'
+  safeResolve(__dirname, 'dist', 'client'),
+  safeResolve(process.cwd(), 'dist', 'client')
 ];
+
+// Add absolute paths only if they're valid strings
+if (typeof '/app/dist/client' === 'string') {
+  potentialClientPaths.push('/app/dist/client');
+}
+
+if (typeof '/opt/render/project/dist/client' === 'string') {
+  potentialClientPaths.push('/opt/render/project/dist/client');
+}
+
+// Filter out any potential null values from safeResolve
+const validPaths = potentialClientPaths.filter(p => p !== null);
 
 // Log all paths we're checking
 console.log('Checking for client dist in these locations:');
-potentialClientPaths.forEach(p => console.log(` - ${p}`));
+validPaths.forEach(p => console.log(` - ${p}`));
 
 // Find a valid client dist path
 let clientDistPath = null;
 
-for (const pathToCheck of potentialClientPaths) {
+for (const pathToCheck of validPaths) {
   try {
-    // Make sure path exists before trying to access it
-    if (pathToCheck && fs.existsSync(pathToCheck)) {
+    // Perform multiple validation checks
+    if (
+      pathToCheck !== null && 
+      typeof pathToCheck === 'string' && 
+      pathToCheck.length > 0 &&
+      fs.existsSync(pathToCheck)
+    ) {
       clientDistPath = pathToCheck;
       console.log(`✓ Found client dist at: ${clientDistPath}`);
       break;
     } else {
-      console.log(`✗ Path doesn't exist: ${pathToCheck}`);
+      console.log(`✗ Path doesn't exist or is invalid: ${pathToCheck}`);
     }
   } catch (err) {
     console.log(`✗ Error checking path ${pathToCheck}: ${err.message}`);
