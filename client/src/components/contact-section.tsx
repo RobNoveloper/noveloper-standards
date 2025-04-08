@@ -209,6 +209,7 @@ export function ContactSection() {
       });
       
       const data = await response.json() as ApiResponse;
+      console.log("Newsletter API response:", data);
       
       if (data.success) {
         toast({
@@ -220,6 +221,14 @@ export function ContactSection() {
         // Reset form
         setNewsletter("");
       } else {
+        // Log detailed error information
+        console.error("Newsletter subscription failed:", {
+          success: data.success,
+          message: data.message,
+          errors: data.errors,
+          additionalInfo: data
+        });
+        
         toast({
           title: "Error",
           description: data.message || contact.newsletter.error,
@@ -227,7 +236,15 @@ export function ContactSection() {
         });
       }
     } catch (error) {
+      // More detailed error logging
       console.error("Error subscribing to newsletter:", error);
+      console.error("Details:", {
+        type: error instanceof Error ? error.name : typeof error,
+        message: error instanceof Error ? error.message : String(error),
+        stack: error instanceof Error ? error.stack : undefined,
+        url: apiUrl
+      });
+      
       toast({
         title: "Error",
         description: contact.newsletter.validationError.general,
