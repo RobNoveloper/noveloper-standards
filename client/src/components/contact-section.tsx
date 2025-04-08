@@ -3,14 +3,13 @@
  * 
  * This component handles the contact form, newsletter subscription, and displays contact information.
  * 
- * API INTEGRATION PLAN:
- * - Current Implementation: Uses direct email fallback with clear user messaging due to CORS limitations
- * - Future Implementation: Will integrate with api.noveloper.ai subdomain for proper CORS-compliant API calls
- * - When api.noveloper.ai is set up:
- *   1. Remove the isProdSite conditional blocks with the setTimeout fallbacks
- *   2. Use the getApiEndpoint helper function for API URLs
+ * API INTEGRATION:
+ * - COMPLETED: The api.noveloper.ai subdomain has been set up and integrated
+ * - The component now uses the getApiEndpoint helper function to direct API requests properly:
+ *   - In development: Calls local API endpoints
+ *   - In production: Calls api.noveloper.ai endpoints
  * 
- * For setup instructions on api.noveloper.ai, see API-SUBDOMAIN-SETUP.txt
+ * This setup eliminates CORS issues since both the frontend and API are on the same root domain.
  */
 
 import { motion } from "framer-motion";
@@ -101,14 +100,11 @@ export function ContactSection() {
     
     setIsSubmitting(true);
     
-    // Determine API URL based on environment
-    let apiUrl = '/api/contact';
-    
-    // Use the deployed API URL for production websites
+    // Get the appropriate API URL based on environment
     const isProdSite = window.location.hostname === 'www.noveloper.ai' || 
                        window.location.hostname === 'noveloper.ai';
                        
-    // This will be used once the api.noveloper.ai subdomain is set up
+    // Use the api.noveloper.ai subdomain in production
     const getApiEndpoint = (endpoint: string): string => {
       if (isProdSite) {
         return `https://api.noveloper.ai${endpoint}`;
@@ -116,26 +112,8 @@ export function ContactSection() {
       return endpoint;
     };
     
-    if (isProdSite) {
-      // Temporary fallback with instruction message while API subdomain is being set up
-      setTimeout(() => {
-        toast({
-          title: "Message Received - Direct Email Fallback",
-          description: "⚠️ Live form submission is being set up (api.noveloper.ai). For now, please email rob@noveloper.ai directly with your details. We'll confirm when we receive your message!",
-          variant: "default",
-          duration: 10000, // Longer duration so user can see the message
-        });
-        
-        // Console logging for development purposes
-        console.log("Using direct email fallback. Online form submission will be active once api.noveloper.ai is set up.");
-        
-        // Reset form
-        setFormState({ name: "", email: "", message: "" });
-        setIsSubmitting(false);
-      }, 1500); // Short delay to simulate processing
-      
-      return;
-    }
+    // Set the API URL using the helper function
+    const apiUrl = getApiEndpoint('/api/contact');
     
     try {
       console.log(`Submitting contact form to: ${apiUrl}`);
@@ -204,14 +182,11 @@ export function ContactSection() {
     
     setIsSubscribing(true);
     
-    // Determine API URL based on environment
-    let apiUrl = '/api/newsletter';
-    
-    // Use the deployed API URL for production websites
+    // Get the appropriate API URL based on environment
     const isProdSite = window.location.hostname === 'www.noveloper.ai' || 
-                       window.location.hostname === 'noveloper.ai';
+                      window.location.hostname === 'noveloper.ai';
                        
-    // This will be used once the api.noveloper.ai subdomain is set up
+    // Use the api.noveloper.ai subdomain in production
     const getApiEndpoint = (endpoint: string): string => {
       if (isProdSite) {
         return `https://api.noveloper.ai${endpoint}`;
@@ -219,26 +194,8 @@ export function ContactSection() {
       return endpoint;
     };
     
-    if (isProdSite) {
-      // Temporary fallback with instruction message while API subdomain is being set up
-      setTimeout(() => {
-        toast({
-          title: "Newsletter Subscription - Direct Email Fallback",
-          description: "⚠️ Live subscription is being set up (api.noveloper.ai). For now, please email rob@noveloper.ai with subject 'Newsletter' to be added to our mailing list.",
-          variant: "default",
-          duration: 10000, // Longer duration so user can see the message
-        });
-        
-        // Console logging for development purposes
-        console.log("Using direct email fallback for newsletter. Online subscription will be active once api.noveloper.ai is set up.");
-        
-        // Reset form
-        setNewsletter("");
-        setIsSubscribing(false);
-      }, 1500); // Short delay to simulate processing
-      
-      return;
-    }
+    // Set the API URL using the helper function
+    const apiUrl = getApiEndpoint('/api/newsletter');
     
     try {
       console.log(`Submitting newsletter subscription to: ${apiUrl}`);

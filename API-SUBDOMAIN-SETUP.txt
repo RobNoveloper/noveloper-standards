@@ -1,6 +1,10 @@
 # Setting Up a Custom API Subdomain for Noveloper
 
-This document outlines the process for setting up `api.noveloper.ai` as a custom domain for your Railway backend to properly resolve CORS issues.
+✅ COMPLETED: The api.noveloper.ai subdomain has been successfully set up and the code has been updated to use it!
+
+✅ COMPLETED: The api.noveloper.ai subdomain has been successfully set up and the code has been updated to use it!
+
+This document outlines the process that was followed to set up `api.noveloper.ai` as a custom domain for your Railway backend to properly resolve CORS issues.
 
 ## Current Architecture
 - Frontend: Hosted on Vercel (www.noveloper.ai)
