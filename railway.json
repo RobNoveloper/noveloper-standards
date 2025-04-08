@@ -5,7 +5,7 @@
     "buildCommand": "npm install && node railway-build.mjs"
   },
   "deploy": {
-    "startCommand": "NODE_ENV=production node railway-start.js",
+    "startCommand": "NODE_ENV=production node railway-start.cjs",
     "healthcheckPath": "/api/health",
     "healthcheckTimeout": 300,
     "restartPolicyType": "ON_FAILURE",

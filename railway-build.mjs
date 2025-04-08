@@ -40,30 +40,22 @@ try {
   // Create the server index file for direct Railway execution
   console.log('Creating standalone server file...');
   
-  // Read in the railway-start.js file
-  const startFilePath = path.resolve(__dirname, 'railway-start.js');
+  // Read in the railway-start.cjs file
+  const startFilePath = path.resolve(__dirname, 'railway-start.cjs');
   if (!fs.existsSync(startFilePath)) {
-    throw new Error(`railway-start.js not found at ${startFilePath}`);
+    throw new Error(`railway-start.cjs not found at ${startFilePath}`);
   }
   
-  // Copy railway-start.js to dist/index.js
+  // Copy railway-start.cjs to dist/index.js
   const targetPath = path.resolve(__dirname, 'dist', 'index.js');
   fs.copyFileSync(startFilePath, targetPath);
   
-  // Also copy railway-start.js as railway-start.mjs
-  const mjsStartPath = path.resolve(__dirname, 'railway-start.mjs');
-  if (fs.existsSync(mjsStartPath)) {
-    const mjsTargetPath = path.resolve(__dirname, 'dist', 'railway-start.mjs');
-    fs.copyFileSync(mjsStartPath, mjsTargetPath);
-    console.log(`Copied railway-start.mjs to ${mjsTargetPath}`);
-  } else {
-    console.log('railway-start.mjs not found, copying railway-start.js as railway-start.mjs');
-    const mjsTargetPath = path.resolve(__dirname, 'dist', 'railway-start.mjs');
-    fs.copyFileSync(startFilePath, mjsTargetPath);
-    console.log(`Copied railway-start.js to ${mjsTargetPath} as railway-start.mjs`);
-  }
+  // Also copy railway-start.cjs to dist/railway-start.cjs
+  const cjsTargetPath = path.resolve(__dirname, 'dist', 'railway-start.cjs');
+  fs.copyFileSync(startFilePath, cjsTargetPath);
+  console.log(`Copied railway-start.cjs to ${cjsTargetPath}`);
   
-  console.log(`Copied railway-start.js to ${targetPath}`);
+  console.log(`Copied railway-start.cjs to ${targetPath}`);
   
   // Copy railway-email.js to dist/
   const emailFilePath = path.resolve(__dirname, 'railway-email.js');
