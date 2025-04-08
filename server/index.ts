@@ -8,16 +8,31 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Enable CORS for API routes
-app.use('/api', cors({
-  origin: [
-    'https://www.noveloper.ai', 
-    'https://noveloper.ai', 
-    'http://localhost:5173', 
-    'https://localhost:5173',
-    'https://noveloper-website.vercel.app',
-    'https://noveloper-website-git-main.vercel.app',
-    'https://noveloper-website-robnoveloper.vercel.app'
-  ],
+app.use(cors({
+  origin: function(origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      'https://www.noveloper.ai', 
+      'https://noveloper.ai', 
+      'http://localhost:5173', 
+      'https://localhost:5173',
+      'https://noveloper-website.vercel.app',
+      'https://noveloper-website-git-main.vercel.app',
+      'https://noveloper-website-robnoveloper.vercel.app',
+      'https://noveloper-studio-1-rob389.replit.app'
+    ];
+    
+    // Check if the origin is allowed
+    if (allowedOrigins.indexOf(origin) !== -1 || 
+        origin.endsWith('.noveloper.ai') || 
+        origin.endsWith('.vercel.app')) {
+      return callback(null, true);
+    }
+    
+    return callback(null, false);
+  },
   methods: ['GET', 'POST', 'OPTIONS'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -43,7 +58,8 @@ if (process.env.NODE_ENV === "production") {
       "https://noveloper-website-production.up.railway.app " +
       "https://noveloper-website.vercel.app " +
       "https://noveloper-website-git-main.vercel.app " +
-      "https://noveloper-website-robnoveloper.vercel.app; " + 
+      "https://noveloper-website-robnoveloper.vercel.app " +
+      "https://*.noveloper.ai https://*.vercel.app https://*.replit.app; " + 
       "frame-src 'none'; " +
       "object-src 'none';"
     );
