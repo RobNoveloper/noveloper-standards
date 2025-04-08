@@ -54,8 +54,8 @@ This guide explains how to deploy the Noveloper website using a split deployment
 4. Update the Railway URL in `vercel.json` to match your actual Railway deployment URL
 5. Configure the deployment:
    - **Framework Preset**: Vite
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist/client`
+   - **Build Command**: `vite build`
+   - **Output Directory**: `dist/public`
 6. Deploy the project
 
 ### 4. Domain Configuration

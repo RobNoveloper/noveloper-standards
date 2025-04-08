@@ -9,7 +9,15 @@ app.use(express.urlencoded({ extended: false }));
 
 // Enable CORS for API routes
 app.use('/api', cors({
-  origin: ['https://www.noveloper.ai', 'https://noveloper.ai', 'http://localhost:5173', 'https://localhost:5173'],
+  origin: [
+    'https://www.noveloper.ai', 
+    'https://noveloper.ai', 
+    'http://localhost:5173', 
+    'https://localhost:5173',
+    'https://noveloper-website.vercel.app',
+    'https://noveloper-website-git-main.vercel.app',
+    'https://noveloper-website-robnoveloper.vercel.app'
+  ],
   methods: ['GET', 'POST', 'OPTIONS'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -31,7 +39,11 @@ if (process.env.NODE_ENV === "production") {
       "style-src 'self' 'unsafe-inline'; " +
       "img-src 'self' data: https:; " +
       "font-src 'self'; " +
-      "connect-src 'self' https://api.mailersend.com https://api.noveloper.ai https://noveloper-website-production.up.railway.app; " + 
+      "connect-src 'self' https://api.mailersend.com https://api.noveloper.ai " +
+      "https://noveloper-website-production.up.railway.app " +
+      "https://noveloper-website.vercel.app " +
+      "https://noveloper-website-git-main.vercel.app " +
+      "https://noveloper-website-robnoveloper.vercel.app; " + 
       "frame-src 'none'; " +
       "object-src 'none';"
     );
