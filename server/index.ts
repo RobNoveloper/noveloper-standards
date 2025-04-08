@@ -7,10 +7,17 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Enable CORS for API routes
+// Enable CORS for API routes - with more permissive settings for Railway deployment
 app.use(cors({
   origin: function(origin, callback) {
-    // Allow requests with no origin (like mobile apps, curl requests)
+    // In production, allow all origins temporarily to debug CORS issues
+    // This is safe for a public API that doesn't handle sensitive operations
+    if (process.env.NODE_ENV === 'production') {
+      console.log(`CORS request from origin: ${origin}`);
+      return callback(null, true);
+    }
+    
+    // For development, be more restrictive
     if (!origin) return callback(null, true);
     
     const allowedOrigins = [
@@ -35,7 +42,7 @@ app.use(cors({
   },
   methods: ['GET', 'POST', 'OPTIONS'],
   credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With']
 }));
 
 // Add security headers for production
