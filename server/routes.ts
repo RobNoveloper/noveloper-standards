@@ -27,11 +27,28 @@ export async function registerRoutes(app: Express): Promise<Server> {
       ? 'configured' 
       : 'not configured';
     
-    res.status(200).json({ 
+    // Add more diagnostic information
+    const healthInfo = { 
       status: 'healthy', 
       timestamp: new Date().toISOString(),
-      emailService: emailServiceStatus
-    });
+      emailService: emailServiceStatus,
+      environment: process.env.NODE_ENV || 'development',
+      apiEndpoint: process.env.API_URL || 'not set',
+      headers: Object.keys(req.headers).reduce((acc, key) => {
+        // Don't include sensitive header values
+        acc[key] = key.toLowerCase().includes('auth') ? '[REDACTED]' : req.headers[key];
+        return acc;
+      }, {} as Record<string, any>),
+      connectionInfo: {
+        ip: req.ip,
+        protocol: req.protocol,
+        hostname: req.hostname,
+        path: req.path,
+        originalUrl: req.originalUrl
+      } 
+    };
+    
+    res.status(200).json(healthInfo);
   });
 
   // use storage to perform CRUD operations on the storage interface
@@ -70,30 +87,61 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Handle contact form submissions
   app.post('/api/contact', async (req: Request, res: Response) => {
     try {
+      console.log("Received contact form submission request", { 
+        contentType: req.headers['content-type'],
+        bodySize: req.body ? JSON.stringify(req.body).length : 0,
+        hasBody: !!req.body
+      });
+      
+      if (!req.body) {
+        return res.status(400).json({ 
+          success: false, 
+          message: "Missing request body. Please ensure you're sending valid JSON." 
+        });
+      }
+      
       // Validate form data
       const formData = contactFormSchema.parse(req.body);
       
-      // For demonstration purposes, we'll log the form data instead of sending an email
-      console.log("Contact form submission:", formData);
+      // Log the form data with sensitive information redacted
+      console.log("Contact form submission:", {
+        name: formData.name,
+        email: formData.email.substring(0, 3) + '***@' + formData.email.split('@')[1],
+        messageLength: formData.message.length
+      });
       
       // Send the contact form email
       const success = await sendContactFormEmail(formData);
       
       if (success) {
+        console.log("Successfully sent contact form email");
         res.status(200).json({ success: true, message: "Your message has been sent successfully!" });
       } else {
+        console.error("Failed to send contact form email - API returned failure");
         res.status(500).json({ success: false, message: "Failed to send message. Please try again later." });
       }
     } catch (error) {
       if (error instanceof z.ZodError) {
         // Return validation errors
+        console.warn("Contact form validation errors", error.errors);
         res.status(400).json({ 
           success: false, 
           message: "Please correct the errors in the form.",
           errors: error.errors.map(e => ({ field: e.path.join('.'), message: e.message }))
         });
       } else {
+        // Detailed error logging for debugging
         console.error("Contact form error:", error);
+        
+        if (error instanceof Error) {
+          console.error("Error details:", {
+            name: error.name,
+            message: error.message,
+            stack: error.stack,
+            cause: (error as any).cause
+          });
+        }
+        
         // More detailed error message to help with debugging
         const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
         res.status(500).json({ 
@@ -108,30 +156,59 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Handle newsletter subscriptions
   app.post('/api/newsletter', async (req: Request, res: Response) => {
     try {
+      console.log("Received newsletter submission request", { 
+        contentType: req.headers['content-type'],
+        bodySize: req.body ? JSON.stringify(req.body).length : 0,
+        hasBody: !!req.body
+      });
+      
+      if (!req.body) {
+        return res.status(400).json({ 
+          success: false, 
+          message: "Missing request body. Please ensure you're sending valid JSON." 
+        });
+      }
+      
       // Validate email
       const { email } = newsletterSchema.parse(req.body);
       
-      // For demonstration purposes, we'll log the email instead of sending a confirmation
-      console.log("Newsletter subscription:", email);
+      // Log the subscription with sensitive information redacted
+      console.log("Newsletter subscription:", 
+        email.substring(0, 3) + '***@' + email.split('@')[1]
+      );
       
       // Send the newsletter confirmation email
       const success = await sendNewsletterConfirmation(email);
       
       if (success) {
+        console.log("Successfully sent newsletter confirmation email");
         res.status(200).json({ success: true, message: "You've been subscribed to our newsletter!" });
       } else {
+        console.error("Failed to send newsletter confirmation email - API returned failure");
         res.status(500).json({ success: false, message: "Failed to subscribe. Please try again later." });
       }
     } catch (error) {
       if (error instanceof z.ZodError) {
         // Return validation errors
+        console.warn("Newsletter validation errors", error.errors);
         res.status(400).json({ 
           success: false, 
           message: "Please enter a valid email address",
           errors: error.errors.map(e => ({ field: e.path.join('.'), message: e.message }))
         });
       } else {
+        // Detailed error logging for debugging
         console.error("Newsletter subscription error:", error);
+        
+        if (error instanceof Error) {
+          console.error("Error details:", {
+            name: error.name,
+            message: error.message,
+            stack: error.stack,
+            cause: (error as any).cause
+          });
+        }
+        
         // More detailed error message to help with debugging
         const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
         res.status(500).json({ 

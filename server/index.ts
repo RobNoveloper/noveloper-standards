@@ -1,10 +1,19 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Enable CORS for API routes
+app.use('/api', cors({
+  origin: ['https://www.noveloper.ai', 'https://noveloper.ai', 'http://localhost:5173', 'https://localhost:5173'],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Add security headers for production
 if (process.env.NODE_ENV === "production") {
@@ -22,7 +31,7 @@ if (process.env.NODE_ENV === "production") {
       "style-src 'self' 'unsafe-inline'; " +
       "img-src 'self' data: https:; " +
       "font-src 'self'; " +
-      "connect-src 'self' https://api.mailersend.com; " + 
+      "connect-src 'self' https://api.mailersend.com https://api.noveloper.ai https://noveloper-website-production.up.railway.app; " + 
       "frame-src 'none'; " +
       "object-src 'none';"
     );
