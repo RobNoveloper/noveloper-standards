@@ -86,7 +86,14 @@ export function ContactSection() {
     
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/contact', {
+      // Get the base URL - use Railway in production, relative path in development
+      const baseUrl = window.location.hostname === 'www.noveloper.ai' 
+        ? 'https://noveloper-website-production.up.railway.app' 
+        : '';
+      
+      console.log(`Submitting contact form to: ${baseUrl}/api/contact`);
+      
+      const response = await fetch(`${baseUrl}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formState)
@@ -150,7 +157,14 @@ export function ContactSection() {
     
     setIsSubscribing(true);
     try {
-      const response = await fetch('/api/newsletter', {
+      // Get the base URL - use Railway in production, relative path in development
+      const baseUrl = window.location.hostname === 'www.noveloper.ai' 
+        ? 'https://noveloper-website-production.up.railway.app' 
+        : '';
+      
+      console.log(`Submitting newsletter subscription to: ${baseUrl}/api/newsletter`);
+      
+      const response = await fetch(`${baseUrl}/api/newsletter`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: newsletter })
