@@ -16,13 +16,27 @@ const mailerSend = process.env.MAILERSEND_API_KEY
 // Using the verified Noveloper domain email
 let defaultSender;
 try {
+  // Check API key and log initial status
+  if (process.env.MAILERSEND_API_KEY) {
+    console.log("MailerSend API Key exists. Length:", process.env.MAILERSEND_API_KEY.length, "characters");
+  } else {
+    console.error("WARNING: MAILERSEND_API_KEY is missing. Email functions will not work.");
+  }
+  
   defaultSender = new Sender("rob@noveloper.ai", "Noveloper");
-  console.log("Sender email configured: rob@noveloper.ai");
-  console.log("IMPORTANT: Make sure this domain is verified in MailerSend dashboard");
+  console.log("Sender email configured successfully: rob@noveloper.ai");
+  console.log("IMPORTANT: Make sure 'noveloper.ai' domain is verified in MailerSend dashboard");
 } catch (error) {
   console.error("Error creating sender:", error);
+  console.error("Error details:", {
+    name: error.name,
+    message: error.message,
+    stack: error.stack?.split("\n").slice(0, 3).join("\n")
+  });
+  
   // Fallback to a simpler sender
   defaultSender = { email: "rob@noveloper.ai", name: "Noveloper" };
+  console.log("Using fallback sender object due to error");
 }
 
 // The email address that will receive contact form submissions

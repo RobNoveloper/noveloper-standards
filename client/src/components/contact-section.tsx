@@ -101,7 +101,7 @@ export function ContactSection() {
     setIsSubmitting(true);
     
     // Get the appropriate API URL based on environment
-    // If we're on the production site, use the full Railway URL
+    // If we're on the production site, use the API subdomain
     // If we're in development, use the local endpoint
     const isProdSite = window.location.hostname === 'www.noveloper.ai' || 
                        window.location.hostname === 'noveloper.ai';
@@ -109,9 +109,9 @@ export function ContactSection() {
     // Helper function to determine the correct API endpoint URL
     const getApiEndpoint = (endpoint: string): string => {
       if (isProdSite) {
-        // In production, use the same Railway backend to avoid CORS issues
-        // This ensures we're using the same backend regardless of the domain
-        return `https://noveloper-website-production.up.railway.app${endpoint}`;
+        // In production, use the dedicated API subdomain
+        // This ensures we're using the correct subdomain for API requests
+        return `https://api.noveloper.ai${endpoint}`;
       }
       // In development, use the local API endpoint
       return endpoint;
@@ -188,7 +188,7 @@ export function ContactSection() {
     setIsSubscribing(true);
     
     // Get the appropriate API URL based on environment
-    // If we're on the production site, use the full Railway URL
+    // If we're on the production site, use the API subdomain
     // If we're in development, use the local endpoint
     const isProdSite = window.location.hostname === 'www.noveloper.ai' || 
                       window.location.hostname === 'noveloper.ai';
@@ -196,9 +196,9 @@ export function ContactSection() {
     // Helper function to determine the correct API endpoint URL
     const getApiEndpoint = (endpoint: string): string => {
       if (isProdSite) {
-        // In production, use the same Railway backend to avoid CORS issues
-        // This ensures we're using the same backend regardless of the domain
-        return `https://noveloper-website-production.up.railway.app${endpoint}`;
+        // In production, use the dedicated API subdomain
+        // This ensures we're using the correct subdomain for API requests
+        return `https://api.noveloper.ai${endpoint}`;
       }
       // In development, use the local API endpoint
       return endpoint;

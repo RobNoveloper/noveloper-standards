@@ -28,9 +28,13 @@ const ensureCorsHeaders = (req, res) => {
   if (origin && (allowedOrigins.includes(origin) || 
                 origin.endsWith('.noveloper.ai') || 
                 origin.endsWith('.vercel.app'))) {
+    // Always allow the specific origin for cross-domain requests
     res.header('Access-Control-Allow-Origin', origin);
+    console.log(`Setting CORS Origin: ${origin} (matched allowed domain)`);
   } else {
+    // In development or for unrecognized origins, use * 
     res.header('Access-Control-Allow-Origin', '*');
+    console.log(`Setting CORS Origin: * (fallback for unrecognized origin: ${origin || 'none'})`);
   }
   
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
