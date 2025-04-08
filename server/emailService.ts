@@ -14,7 +14,7 @@ const mailerSend = process.env.MAILERSEND_API_KEY
 const defaultSender = new Sender("hello@noveloper.ai", "Noveloper");
 
 // The email address that will receive contact form submissions
-const defaultRecipient = "rob@sumxholding.nl";
+const defaultRecipient = "rob@noveloper.ai";
 
 export interface ContactFormData {
   name: string;
@@ -64,6 +64,14 @@ ${formData.message}
     return true;
   } catch (error) {
     console.error("MailerSend contact form email error:", error);
+    // Log detailed error for debugging
+    if (error instanceof Error) {
+      console.error("Error details:", {
+        message: error.message,
+        stack: error.stack,
+        name: error.name
+      });
+    }
     return false;
   }
 }
@@ -119,6 +127,14 @@ The Noveloper Team
     return true;
   } catch (error) {
     console.error("MailerSend newsletter email error:", error);
+    // Log detailed error for debugging
+    if (error instanceof Error) {
+      console.error("Error details:", {
+        message: error.message,
+        stack: error.stack,
+        name: error.name
+      });
+    }
     return false;
   }
 }

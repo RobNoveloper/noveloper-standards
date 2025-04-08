@@ -22,7 +22,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Health check endpoint for Railway
   app.get('/api/health', (req: Request, res: Response) => {
-    res.status(200).json({ status: 'healthy', timestamp: new Date().toISOString() });
+    // Include email service status in health check
+    const emailServiceStatus = process.env.MAILERSEND_API_KEY 
+      ? 'configured' 
+      : 'not configured';
+    
+    res.status(200).json({ 
+      status: 'healthy', 
+      timestamp: new Date().toISOString(),
+      emailService: emailServiceStatus
+    });
   });
 
   // use storage to perform CRUD operations on the storage interface
@@ -85,7 +94,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       } else {
         console.error("Contact form error:", error);
-        res.status(500).json({ success: false, message: "An unexpected error occurred." });
+        // More detailed error message to help with debugging
+        const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
+        res.status(500).json({ 
+          success: false, 
+          message: "Failed to send message. Please try again later.", 
+          error: errorMessage
+        });
       }
     }
   });
@@ -117,7 +132,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       } else {
         console.error("Newsletter subscription error:", error);
-        res.status(500).json({ success: false, message: "An unexpected error occurred." });
+        // More detailed error message to help with debugging
+        const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
+        res.status(500).json({ 
+          success: false, 
+          message: "Failed to subscribe. Please try again later.", 
+          error: errorMessage
+        });
       }
     }
   });
