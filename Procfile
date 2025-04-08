@@ -1,1 +1,1 @@
-web: npm run build && NODE_ENV=production node dist/index.js
+web: node railway-start.js
