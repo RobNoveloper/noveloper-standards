@@ -163,34 +163,59 @@ app.post('/api/newsletter', async (req, res) => {
 });
 
 // Serve static files from dist/client if they exist
-// Check multiple possible paths for the client dist directory
-const possibleClientPaths = [
-  path.join(__dirname, 'dist', 'client'), 
-  path.join(process.cwd(), 'dist', 'client'),
-  '/app/dist/client'  // Docker/Railway path
+// Simpler approach to find the client distribution files
+const potentialClientPaths = [
+  path.resolve(__dirname, 'dist/client'),
+  path.resolve(process.cwd(), 'dist/client'),
+  '/app/dist/client',
+  '/opt/render/project/dist/client'
 ];
 
+// Log all paths we're checking
+console.log('Checking for client dist in these locations:');
+potentialClientPaths.forEach(p => console.log(` - ${p}`));
+
+// Find a valid client dist path
 let clientDistPath = null;
 
-// Find the first valid path
-for (const testPath of possibleClientPaths) {
+for (const pathToCheck of potentialClientPaths) {
   try {
-    if (fs.existsSync(testPath)) {
-      clientDistPath = testPath;
-      console.log(`Found client dist at: ${clientDistPath}`);
+    // Make sure path exists before trying to access it
+    if (pathToCheck && fs.existsSync(pathToCheck)) {
+      clientDistPath = pathToCheck;
+      console.log(`✓ Found client dist at: ${clientDistPath}`);
       break;
+    } else {
+      console.log(`✗ Path doesn't exist: ${pathToCheck}`);
     }
   } catch (err) {
-    console.log(`Path check error for ${testPath}:`, err.message);
+    console.log(`✗ Error checking path ${pathToCheck}: ${err.message}`);
   }
 }
 
-// Serve static files if a valid path was found
+// Safety check for the Railway environment
+try {
+  // In Railway, list the app directory contents to help debug
+  if (process.env.RAILWAY_ENVIRONMENT) {
+    console.log('Running in Railway environment, listing /app directory:');
+    const appDirContents = fs.readdirSync('/app');
+    console.log('/app contents:', appDirContents);
+    
+    if (fs.existsSync('/app/dist')) {
+      console.log('Listing /app/dist directory:');
+      console.log('/app/dist contents:', fs.readdirSync('/app/dist'));
+    }
+  }
+} catch (err) {
+  console.log('Error listing Railway directories:', err.message);
+}
+
+// Serve static files only if a valid path was found
 if (clientDistPath) {
   app.use(express.static(clientDistPath));
   console.log(`Serving static files from ${clientDistPath}`);
 } else {
-  console.warn('No client dist directory found to serve static files');
+  console.warn('No client dist directory found for static files - API mode only');
 }
 
 // Start the server

@@ -24,13 +24,12 @@ const defaultSender = new Sender("hello@noveloper.ai", "Noveloper");
 const defaultRecipient = "rob@sumxholding.nl";
 
 /**
- * Contact form data interface
+ * Contact form data structure
+ * @typedef {Object} ContactFormData
+ * @property {string} name - The sender's name
+ * @property {string} email - The sender's email
+ * @property {string} message - The message content
  */
-export interface ContactFormData {
-  name: string;
-  email: string;
-  message: string;
-}
 
 /**
  * Sends a contact form submission via email
