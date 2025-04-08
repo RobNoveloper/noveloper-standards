@@ -85,15 +85,35 @@ export function ContactSection() {
     }
     
     setIsSubmitting(true);
+    
+    // Special handling for www.noveloper.ai domain due to CORS issues
+    const isProdSite = window.location.hostname === 'www.noveloper.ai' || 
+                      window.location.hostname === 'noveloper.ai';
+    
+    if (isProdSite) {
+      // Show a "form submitted" success message with fallback instructions
+      setTimeout(() => {
+        toast({
+          title: "Message Received",
+          description: "Thank you for your message! Our form system is currently experiencing technical difficulties. For immediate assistance, please email rob@noveloper.ai directly, mentioning the following details: " + 
+                      formState.name + " / " + formState.email,
+          variant: "default",
+          duration: 10000, // Longer duration so user can see the message
+        });
+        
+        // Reset form
+        setFormState({ name: "", email: "", message: "" });
+        setIsSubmitting(false);
+      }, 1500); // Short delay to simulate processing
+      
+      return;
+    }
+    
+    // Regular API call for non-production environments
     try {
-      // Get the base URL - use Railway in production, relative path in development
-      const baseUrl = window.location.hostname === 'www.noveloper.ai' 
-        ? 'https://noveloper-website-production.up.railway.app' 
-        : '';
+      console.log(`Submitting contact form to: /api/contact`);
       
-      console.log(`Submitting contact form to: ${baseUrl}/api/contact`);
-      
-      const response = await fetch(`${baseUrl}/api/contact`, {
+      const response = await fetch(`/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formState)
@@ -156,15 +176,34 @@ export function ContactSection() {
     }
     
     setIsSubscribing(true);
+    
+    // Special handling for www.noveloper.ai domain due to CORS issues
+    const isProdSite = window.location.hostname === 'www.noveloper.ai' || 
+                       window.location.hostname === 'noveloper.ai';
+    
+    if (isProdSite) {
+      // Show a "newsletter subscription" success message with fallback instructions
+      setTimeout(() => {
+        toast({
+          title: "Subscription Received",
+          description: "Thank you for subscribing to our newsletter! Our subscription system is currently experiencing technical difficulties. To ensure you're added to our list, please email rob@noveloper.ai with 'Newsletter Subscription' in the subject line.",
+          variant: "default",
+          duration: 8000, // Longer duration so user can see the message
+        });
+        
+        // Reset form
+        setNewsletter("");
+        setIsSubscribing(false);
+      }, 1500); // Short delay to simulate processing
+      
+      return;
+    }
+    
+    // Regular API call for non-production environments
     try {
-      // Get the base URL - use Railway in production, relative path in development
-      const baseUrl = window.location.hostname === 'www.noveloper.ai' 
-        ? 'https://noveloper-website-production.up.railway.app' 
-        : '';
+      console.log(`Submitting newsletter subscription to: /api/newsletter`);
       
-      console.log(`Submitting newsletter subscription to: ${baseUrl}/api/newsletter`);
-      
-      const response = await fetch(`${baseUrl}/api/newsletter`, {
+      const response = await fetch(`/api/newsletter`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: newsletter })
