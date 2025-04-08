@@ -16,12 +16,52 @@ const newsletterSchema = z.object({
   email: z.string().email("Please enter a valid email address")
 });
 
+// Helper to set CORS headers explicitly on every API response
+const setCorsHeaders = (res: Response, origin: string | undefined) => {
+  // Allow requests from all Noveloper domains and common development domains
+  const allowedOrigins = [
+    'https://www.noveloper.ai', 
+    'https://noveloper.ai', 
+    'http://localhost:5173', 
+    'https://localhost:5173',
+    'https://noveloper-website.vercel.app',
+    'https://noveloper-website-git-main.vercel.app',
+    'https://noveloper-website-robnoveloper.vercel.app'
+  ];
+
+  let corsOrigin = '*';
+  
+  // If origin is provided and is in allowed list or has noveloper.ai domain, use it
+  if (origin && (allowedOrigins.includes(origin) || 
+                 origin.endsWith('.noveloper.ai') || 
+                 origin.endsWith('.vercel.app'))) {
+    corsOrigin = origin;
+  }
+  
+  // Set explicit CORS headers on every response
+  res.header('Access-Control-Allow-Origin', corsOrigin);
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Origin, X-Requested-With, Accept');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  
+  // Log CORS origins in production for debugging
+  if (process.env.NODE_ENV === 'production') {
+    console.log(`Setting CORS headers for origin: ${origin || 'undefined'} -> ${corsOrigin}`);
+  }
+};
+
 export async function registerRoutes(app: Express): Promise<Server> {
-  // put application routes here
-  // prefix all routes with /api
+  // pre-flight OPTIONS handler for all API routes
+  app.options('/api/*', (req: Request, res: Response) => {
+    setCorsHeaders(res, req.headers.origin);
+    res.status(204).end();
+  });
 
   // Health check endpoint for Railway
   app.get('/api/health', (req: Request, res: Response) => {
+    // Set CORS headers
+    setCorsHeaders(res, req.headers.origin);
+    
     // Include email service status in health check
     const emailServiceStatus = process.env.MAILERSEND_API_KEY 
       ? 'configured' 
@@ -34,6 +74,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       emailService: emailServiceStatus,
       environment: process.env.NODE_ENV || 'development',
       apiEndpoint: process.env.API_URL || 'not set',
+      cors: {
+        origin: req.headers.origin || 'not provided',
+        responseHeaders: {
+          'access-control-allow-origin': res.getHeader('Access-Control-Allow-Origin')
+        }
+      },
       headers: Object.keys(req.headers).reduce((acc, key) => {
         // Don't include sensitive header values
         acc[key] = key.toLowerCase().includes('auth') ? '[REDACTED]' : req.headers[key];
@@ -70,6 +116,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // Add route to serve SVG logo files
   app.get('/api/logo/:variant', (req: Request, res: Response) => {
+    // Set CORS headers
+    setCorsHeaders(res, req.headers.origin);
+    
     const variant = req.params.variant;
     
     if (variant === 'colored' || variant === 'gradient') {
@@ -87,10 +136,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Handle contact form submissions
   app.post('/api/contact', async (req: Request, res: Response) => {
     try {
+      // Set CORS headers
+      setCorsHeaders(res, req.headers.origin);
+      
       console.log("Received contact form submission request", { 
         contentType: req.headers['content-type'],
         bodySize: req.body ? JSON.stringify(req.body).length : 0,
-        hasBody: !!req.body
+        hasBody: !!req.body,
+        origin: req.headers.origin || 'not provided'
       });
       
       if (!req.body) {
@@ -203,10 +256,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Handle newsletter subscriptions
   app.post('/api/newsletter', async (req: Request, res: Response) => {
     try {
+      // Set CORS headers
+      setCorsHeaders(res, req.headers.origin);
+      
       console.log("Received newsletter submission request", { 
         contentType: req.headers['content-type'],
         bodySize: req.body ? JSON.stringify(req.body).length : 0,
-        hasBody: !!req.body
+        hasBody: !!req.body,
+        origin: req.headers.origin || 'not provided'
       });
       
       if (!req.body) {

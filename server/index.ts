@@ -7,17 +7,15 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Enable CORS for API routes - with more permissive settings for Railway deployment
+// Enable CORS for API routes
 app.use(cors({
   origin: function(origin, callback) {
-    // In production, allow all origins temporarily to debug CORS issues
-    // This is safe for a public API that doesn't handle sensitive operations
+    // Always log CORS requests in production to help debug issues
     if (process.env.NODE_ENV === 'production') {
       console.log(`CORS request from origin: ${origin}`);
-      return callback(null, true);
     }
     
-    // For development, be more restrictive
+    // For non-browser requests or same-origin requests
     if (!origin) return callback(null, true);
     
     const allowedOrigins = [
@@ -31,10 +29,15 @@ app.use(cors({
       'https://noveloper-studio-1-rob389.replit.app'
     ];
     
-    // Check if the origin is allowed
+    // Always allow requests from our own domains
     if (allowedOrigins.indexOf(origin) !== -1 || 
         origin.endsWith('.noveloper.ai') || 
         origin.endsWith('.vercel.app')) {
+      return callback(null, true);
+    }
+    
+    // In production, be more permissive to debug issues
+    if (process.env.NODE_ENV === 'production') {
       return callback(null, true);
     }
     
@@ -42,8 +45,11 @@ app.use(cors({
   },
   methods: ['GET', 'POST', 'OPTIONS'],
   credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With']
+  allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With', 'Accept']
 }));
+
+// Add preflight OPTIONS handler for all routes to ensure CORS works properly
+app.options('*', cors());
 
 // Add security headers for production
 if (process.env.NODE_ENV === "production") {
