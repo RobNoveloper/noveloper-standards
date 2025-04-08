@@ -160,10 +160,21 @@ app.post('/api/newsletter', async (req, res) => {
 });
 
 // Serve static files from dist/client if they exist
-const clientDistPath = path.join(__dirname, 'dist', 'client');
-if (fs.existsSync(clientDistPath)) {
-  app.use(express.static(clientDistPath));
-  console.log(`Serving static files from ${clientDistPath}`);
+// Add defensive programming to prevent undefined path errors
+try {
+  // Make sure __dirname is defined before using it
+  const basePath = __dirname || '.';
+  const clientDistPath = path.join(basePath, 'dist', 'client');
+  
+  // Check if path exists before attempting to serve
+  if (fs.existsSync(clientDistPath)) {
+    app.use(express.static(clientDistPath));
+    console.log(`Serving static files from ${clientDistPath}`);
+  } else {
+    console.log(`Static file path not found: ${clientDistPath}`);
+  }
+} catch (error) {
+  console.error('Error setting up static file serving:', error);
 }
 
 // Start the server
