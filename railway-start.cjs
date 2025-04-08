@@ -147,12 +147,20 @@ let emailService = {
 
 // For compatibility, we'll use CommonJS require for the email service
 try {
-  // First try to require the module directly (Railway deployment)
-  emailService = require('./railway-email.js');
-  console.log('Email service loaded successfully via require');
+  // First try to require the CJS version of the module (Railway deployment)
+  emailService = require('./railway-email.cjs');
+  console.log('Email service loaded successfully via require (.cjs version)');
 } catch (error) {
-  console.warn('Email service not available via require:', error.message);
-  // Keep the fallback implementation
+  console.warn('Failed to load .cjs version:', error.message);
+  
+  // Try the .js version as a fallback
+  try {
+    emailService = require('./railway-email.js');
+    console.log('Email service loaded successfully via require (.js version)');
+  } catch (jsError) {
+    console.warn('Email service not available via both .cjs and .js:', jsError.message);
+    // Keep the fallback implementation
+  }
 }
 
 // API routes
