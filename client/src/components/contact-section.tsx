@@ -1,3 +1,18 @@
+/**
+ * Contact Section Component
+ * 
+ * This component handles the contact form, newsletter subscription, and displays contact information.
+ * 
+ * API INTEGRATION PLAN:
+ * - Current Implementation: Uses direct email fallback with clear user messaging due to CORS limitations
+ * - Future Implementation: Will integrate with api.noveloper.ai subdomain for proper CORS-compliant API calls
+ * - When api.noveloper.ai is set up:
+ *   1. Remove the isProdSite conditional blocks with the setTimeout fallbacks
+ *   2. Use the getApiEndpoint helper function for API URLs
+ * 
+ * For setup instructions on api.noveloper.ai, see API-SUBDOMAIN-SETUP.txt
+ */
+
 import { motion } from "framer-motion";
 import { useReveal } from "@/lib/hooks";
 import { Mail, MapPin, MessageSquare, Loader2 } from "lucide-react";
@@ -92,16 +107,27 @@ export function ContactSection() {
     // Use the deployed API URL for production websites
     const isProdSite = window.location.hostname === 'www.noveloper.ai' || 
                        window.location.hostname === 'noveloper.ai';
+                       
+    // This will be used once the api.noveloper.ai subdomain is set up
+    const getApiEndpoint = (endpoint: string): string => {
+      if (isProdSite) {
+        return `https://api.noveloper.ai${endpoint}`;
+      }
+      return endpoint;
+    };
     
     if (isProdSite) {
-      // Fallback to the original solution with explanatory message since API direct access has CORS issues
+      // Temporary fallback with instruction message while API subdomain is being set up
       setTimeout(() => {
         toast({
-          title: "Message Received",
-          description: "Thank you for your message! For immediate assistance, please email rob@noveloper.ai directly with your contact details.",
+          title: "Message Received - Direct Email Fallback",
+          description: "⚠️ Live form submission is being set up (api.noveloper.ai). For now, please email rob@noveloper.ai directly with your details. We'll confirm when we receive your message!",
           variant: "default",
           duration: 10000, // Longer duration so user can see the message
         });
+        
+        // Console logging for development purposes
+        console.log("Using direct email fallback. Online form submission will be active once api.noveloper.ai is set up.");
         
         // Reset form
         setFormState({ name: "", email: "", message: "" });
@@ -184,16 +210,27 @@ export function ContactSection() {
     // Use the deployed API URL for production websites
     const isProdSite = window.location.hostname === 'www.noveloper.ai' || 
                        window.location.hostname === 'noveloper.ai';
+                       
+    // This will be used once the api.noveloper.ai subdomain is set up
+    const getApiEndpoint = (endpoint: string): string => {
+      if (isProdSite) {
+        return `https://api.noveloper.ai${endpoint}`;
+      }
+      return endpoint;
+    };
     
     if (isProdSite) {
-      // Fallback to the original solution with explanatory message since API direct access has CORS issues
+      // Temporary fallback with instruction message while API subdomain is being set up
       setTimeout(() => {
         toast({
-          title: "Thanks for subscribing!",
-          description: "You've been signed up for our newsletter. For immediate updates, please email rob@noveloper.ai to be added to our mailing list.",
+          title: "Newsletter Subscription - Direct Email Fallback",
+          description: "⚠️ Live subscription is being set up (api.noveloper.ai). For now, please email rob@noveloper.ai with subject 'Newsletter' to be added to our mailing list.",
           variant: "default",
           duration: 10000, // Longer duration so user can see the message
         });
+        
+        // Console logging for development purposes
+        console.log("Using direct email fallback for newsletter. Online subscription will be active once api.noveloper.ai is set up.");
         
         // Reset form
         setNewsletter("");
