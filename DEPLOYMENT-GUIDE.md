@@ -50,7 +50,7 @@ This guide explains how to deploy the Noveloper website using a split deployment
 
 1. Connect your GitHub repository to Vercel
 2. Create a new project using the repository
-3. Rename `vercel-frontend.json` to `vercel.json` in the repo
+3. Use the `vercel.json` file in the repository
 4. Update the Railway URL in `vercel.json` to match your actual Railway deployment URL
 5. Configure the deployment:
    - **Framework Preset**: Vite
