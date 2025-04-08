@@ -201,6 +201,37 @@ This guide addresses common deployment issues and their solutions for the Novelo
    - Look for specific errors during the build process
    - Check for missing dependencies or environment variables
 
+### Problem: Vercel deploy hook not working
+
+#### Symptoms:
+- Deploy hook stops triggering new deployments after configuration changes
+- No response or error when calling the deploy hook URL
+- GitHub pushes don't trigger automatic deployments
+
+#### Solutions:
+1. **Recreate the deploy hook**:
+   - Go to your Vercel project dashboard
+   - Navigate to Settings > Git > Deploy Hooks
+   - Create a new deploy hook (or regenerate the existing one)
+   - Use the new webhook URL for your deployments
+
+2. **Check for configuration conflicts**:
+   - Ensure your `vercel.json` configuration is valid
+   - Verify there are no conflicting build settings between `vercel.json` and project settings
+   - Check that the branch name is correctly specified in the deploy hook settings
+
+3. **Test the deploy hook manually**:
+   - Use curl to test the deploy hook:
+   ```bash
+   curl -X POST https://api.vercel.com/v1/integrations/deploy/xxxx
+   ```
+   - Check Vercel's deployment logs for any errors related to the hook
+
+4. **Verify GitHub integration**:
+   - If using GitHub integration, check the repository permissions
+   - Ensure the GitHub app has the necessary access to your repository
+   - Re-link the GitHub repository if needed
+
 ## After Deployment: Verification Checklist
 
 1. Visit the Railway health endpoint: `https://your-railway-app.up.railway.app/api/health`
@@ -217,3 +248,34 @@ This guide addresses common deployment issues and their solutions for the Novelo
 2. Configure Vercel notifications for build issues
 3. Set up Uptime monitoring for both Railway and Vercel endpoints
 4. Monitor MailerSend delivery statistics dashboard
+
+### Problem: Vercel deploy hook not working
+
+#### Symptoms:
+- Deploy hook stops triggering new deployments after configuration changes
+- No response or error when calling the deploy hook URL
+- GitHub pushes don't trigger automatic deployments
+
+#### Solutions:
+1. **Recreate the deploy hook**:
+   - Go to your Vercel project dashboard
+   - Navigate to Settings > Git > Deploy Hooks
+   - Create a new deploy hook (or regenerate the existing one)
+   - Use the new webhook URL for your deployments
+
+2. **Check for configuration conflicts**:
+   - Ensure your `vercel.json` configuration is valid
+   - Verify there are no conflicting build settings between `vercel.json` and project settings
+   - Check that the branch name is correctly specified in the deploy hook settings
+
+3. **Test the deploy hook manually**:
+   - Use curl to test the deploy hook:
+   ```bash
+   curl -X POST https://api.vercel.com/v1/integrations/deploy/xxxx
+   ```
+   - Check Vercel's deployment logs for any errors related to the hook
+
+4. **Verify GitHub integration**:
+   - If using GitHub integration, check the repository permissions
+   - Ensure the GitHub app has the necessary access to your repository
+   - Re-link the GitHub repository if needed
