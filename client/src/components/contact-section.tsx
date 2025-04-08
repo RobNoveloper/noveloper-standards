@@ -101,15 +101,19 @@ export function ContactSection() {
     setIsSubmitting(true);
     
     // Get the appropriate API URL based on environment
+    // If we're on the production site, use the full Railway URL
+    // If we're in development, use the local endpoint
     const isProdSite = window.location.hostname === 'www.noveloper.ai' || 
                        window.location.hostname === 'noveloper.ai';
                        
-    // Use the direct Railway URL in production since api.noveloper.ai has CORS issues
+    // Helper function to determine the correct API endpoint URL
     const getApiEndpoint = (endpoint: string): string => {
       if (isProdSite) {
-        // Use direct Railway URL instead of api.noveloper.ai to avoid CORS issues
+        // In production, use the same Railway backend to avoid CORS issues
+        // This ensures we're using the same backend regardless of the domain
         return `https://noveloper-website-production.up.railway.app${endpoint}`;
       }
+      // In development, use the local API endpoint
       return endpoint;
     };
     
@@ -184,15 +188,19 @@ export function ContactSection() {
     setIsSubscribing(true);
     
     // Get the appropriate API URL based on environment
+    // If we're on the production site, use the full Railway URL
+    // If we're in development, use the local endpoint
     const isProdSite = window.location.hostname === 'www.noveloper.ai' || 
                       window.location.hostname === 'noveloper.ai';
                        
-    // Use the direct Railway URL in production since api.noveloper.ai has CORS issues
+    // Helper function to determine the correct API endpoint URL
     const getApiEndpoint = (endpoint: string): string => {
       if (isProdSite) {
-        // Use direct Railway URL instead of api.noveloper.ai to avoid CORS issues
+        // In production, use the same Railway backend to avoid CORS issues
+        // This ensures we're using the same backend regardless of the domain
         return `https://noveloper-website-production.up.railway.app${endpoint}`;
       }
+      // In development, use the local API endpoint
       return endpoint;
     };
     

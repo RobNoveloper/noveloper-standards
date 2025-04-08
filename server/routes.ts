@@ -46,10 +46,14 @@ const setCorsHeaders = (res: Response, origin: string | undefined) => {
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Origin, X-Requested-With, Accept');
   res.header('Access-Control-Allow-Credentials', 'true');
   
-  // Log CORS origins in production for debugging
-  if (process.env.NODE_ENV === 'production') {
-    console.log(`Setting CORS headers for origin: ${origin || 'undefined'} -> ${corsOrigin}`);
-  }
+  // Enhanced logging for CORS debugging - always log this regardless of environment
+  console.log("CORS Headers Set:", { 
+    requestOrigin: origin || 'unknown',
+    allowedCorsOrigin: corsOrigin,
+    environment: process.env.NODE_ENV || 'development',
+    isRailway: !!process.env.RAILWAY_STATIC_URL,
+    isProduction: process.env.NODE_ENV === 'production'
+  });
 };
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -165,10 +169,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         messageLength: formData.message.length
       });
 
-      // Check for test mode - enables testing without relying on email service
-      const isTestMode = process.env.NODE_ENV !== 'production' || 
-                          req.query.test === 'true' ||
-                          !process.env.MAILERSEND_API_KEY;
+      // Check for test mode - but only use it in development, not on railway
+      const isTestMode = (process.env.NODE_ENV !== 'production' && 
+                          !process.env.RAILWAY_STATIC_URL) || 
+                          req.query.test === 'true';
       
       if (isTestMode) {
         console.log("TEST MODE: Skipping actual email sending. Form data would have been sent to: rob@noveloper.ai");
@@ -287,10 +291,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         email.substring(0, 3) + '***@' + email.split('@')[1]
       );
       
-      // Check for test mode - enables testing without relying on email service
-      const isTestMode = process.env.NODE_ENV !== 'production' || 
-                          req.query.test === 'true' ||
-                          !process.env.MAILERSEND_API_KEY;
+      // Check for test mode - but only use it in development, not on railway
+      const isTestMode = (process.env.NODE_ENV !== 'production' && 
+                          !process.env.RAILWAY_STATIC_URL) || 
+                          req.query.test === 'true';
       
       if (isTestMode) {
         console.log("TEST MODE: Skipping actual email sending for newsletter subscription:", email);
