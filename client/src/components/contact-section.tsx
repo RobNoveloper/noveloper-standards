@@ -104,10 +104,11 @@ export function ContactSection() {
     const isProdSite = window.location.hostname === 'www.noveloper.ai' || 
                        window.location.hostname === 'noveloper.ai';
                        
-    // Use the api.noveloper.ai subdomain in production
+    // Use the direct Railway URL in production since api.noveloper.ai has CORS issues
     const getApiEndpoint = (endpoint: string): string => {
       if (isProdSite) {
-        return `https://api.noveloper.ai${endpoint}`;
+        // Use direct Railway URL instead of api.noveloper.ai to avoid CORS issues
+        return `https://noveloper-website-production.up.railway.app${endpoint}`;
       }
       return endpoint;
     };
