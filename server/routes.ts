@@ -166,12 +166,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
 
       // Check for test mode - enables testing without relying on email service
-      // Always enable test mode for noveloper.ai domain while we're troubleshooting
       const isTestMode = process.env.NODE_ENV !== 'production' || 
                           req.query.test === 'true' ||
-                          !process.env.MAILERSEND_API_KEY || 
-                          String(req.headers.host).includes('noveloper.ai') ||
-                          String(req.headers.origin).includes('noveloper.ai');
+                          !process.env.MAILERSEND_API_KEY;
       
       if (isTestMode) {
         console.log("TEST MODE: Skipping actual email sending. Form data would have been sent to: rob@noveloper.ai");
@@ -217,6 +214,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
           success: false, 
           message: "Your message was received, but we couldn't send a confirmation email. Please contact rob@noveloper.ai directly.",
           error_details: "Email delivery failed after multiple attempts",
+          debug_info: {
+            mailersend_configured: !!process.env.MAILERSEND_API_KEY,
+            environment: process.env.NODE_ENV || 'development',
+            sender_domain: 'noveloper.ai',
+            time: new Date().toISOString()
+          },
           fallback_mode: true
         });
       }
@@ -284,12 +287,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       );
       
       // Check for test mode - enables testing without relying on email service
-      // Always enable test mode for noveloper.ai domain while we're troubleshooting
       const isTestMode = process.env.NODE_ENV !== 'production' || 
                           req.query.test === 'true' ||
-                          !process.env.MAILERSEND_API_KEY || 
-                          String(req.headers.host).includes('noveloper.ai') ||
-                          String(req.headers.origin).includes('noveloper.ai');
+                          !process.env.MAILERSEND_API_KEY;
       
       if (isTestMode) {
         console.log("TEST MODE: Skipping actual email sending for newsletter subscription:", email);
@@ -333,7 +333,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         res.status(200).json({ 
           success: false, 
           message: "You've been subscribed, but we couldn't send a confirmation email. You'll receive future newsletters.",
-          error_details: "Email delivery failed after multiple attempts", 
+          error_details: "Email delivery failed after multiple attempts",
+          debug_info: {
+            mailersend_configured: !!process.env.MAILERSEND_API_KEY,
+            environment: process.env.NODE_ENV || 'development',
+            sender_domain: 'noveloper.ai',
+            time: new Date().toISOString()
+          },
           fallback_mode: true
         });
       }

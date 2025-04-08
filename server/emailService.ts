@@ -25,7 +25,32 @@ try {
 
 // The email address that will be shown as the sender
 // Using a verified Noveloper domain email (needs domain verification in MailerSend)
-const defaultSender = new Sender("hello@noveloper.ai", "Noveloper");
+
+// Initialize with default sender
+const createSender = (): Sender => {
+  try {
+    // Primary sender (requires domain verification in MailerSend)
+    const sender = new Sender("hello@noveloper.ai", "Noveloper");
+    console.log("Configured sender: hello@noveloper.ai");
+    console.log("WARNING: Make sure 'noveloper.ai' domain is verified in your MailerSend account");
+    return sender;
+  } catch (error) {
+    console.error("Error configuring sender with hello@noveloper.ai:", error);
+    
+    try {
+      // Fallback to a generic sender that might work without domain verification
+      const fallbackSender = new Sender("noreply@mail.mailersend.net", "Noveloper");
+      console.log("Using fallback sender: noreply@mail.mailersend.net");
+      return fallbackSender;
+    } catch (fallbackError) {
+      console.error("Error configuring fallback sender:", fallbackError);
+      throw new Error("Failed to configure any email sender");
+    }
+  }
+};
+
+// Create the sender
+const defaultSender = createSender();
 
 // The email address that will receive contact form submissions
 const defaultRecipient = "rob@noveloper.ai";
