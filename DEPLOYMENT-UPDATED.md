@@ -57,7 +57,7 @@ No additional environment variables are needed for the frontend, as all API call
 
 1. In Vercel, go to your project settings
 2. Navigate to "Domains"
-3. Add your domain (e.g., noveloper.com)
+3. Add your domain (e.g., noveloper.ai)
 4. Follow Vercel's instructions to set up the required DNS records
 
 ## 4. Updating the Application
@@ -75,6 +75,7 @@ No additional environment variables are needed for the frontend, as all API call
 - Verify the health endpoint is accessible: `/api/health`
 - Check Railway logs for any server errors
 - Ensure the database connection string is correct
+- If encountering ESM/CommonJS errors, verify all imports use proper ESM syntax
 
 ### Frontend Issues:
 
@@ -87,3 +88,10 @@ No additional environment variables are needed for the frontend, as all API call
 If needed, you can revert to a full-stack Vercel deployment by:
 1. Renaming the original `vercel.json` back
 2. Removing the Railway deployment
+
+## Important Notes for Railway Deployment
+
+1. The application is now using a modern ESM module approach with `railway-start.mjs`
+2. Email functionality is handled through MailerSend, ensure your API keys are properly configured
+3. Database connections use Supabase Session Pooler for better connection stability
+4. The directory structure accommodates both local development and production deployment

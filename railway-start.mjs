@@ -1,10 +1,15 @@
-// This is a standalone server for Railway deployment
+// This is a standalone server for Railway deployment in ESM format
 // It doesn't rely on the ESM bundled version
 
 // Import required modules
-const express = require('express');
-const fs = require('fs');
-const path = require('path');
+import express from 'express';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Get current directory in ESM context
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Create Express application
 const app = express();
@@ -74,15 +79,13 @@ let emailService = {
   }
 };
 
-// Dynamically import email service using ESM syntax
-(async function() {
-  try {
-    emailService = await import('./railway-email.js');
-    console.log('Email service loaded successfully');
-  } catch (error) {
-    console.error('Failed to load email service:', error);
-  }
-})();
+// Dynamically import email service
+try {
+  emailService = await import('./railway-email.js');
+  console.log('Email service loaded successfully');
+} catch (error) {
+  console.error('Failed to load email service:', error);
+}
 
 // API routes
 app.post('/api/contact', async (req, res) => {
@@ -160,10 +163,34 @@ app.post('/api/newsletter', async (req, res) => {
 });
 
 // Serve static files from dist/client if they exist
-const clientDistPath = path.join(__dirname, 'dist', 'client');
-if (fs.existsSync(clientDistPath)) {
+// Check multiple possible paths for the client dist directory
+const possibleClientPaths = [
+  path.join(__dirname, 'dist', 'client'), 
+  path.join(process.cwd(), 'dist', 'client'),
+  '/app/dist/client'  // Docker/Railway path
+];
+
+let clientDistPath = null;
+
+// Find the first valid path
+for (const testPath of possibleClientPaths) {
+  try {
+    if (fs.existsSync(testPath)) {
+      clientDistPath = testPath;
+      console.log(`Found client dist at: ${clientDistPath}`);
+      break;
+    }
+  } catch (err) {
+    console.log(`Path check error for ${testPath}:`, err.message);
+  }
+}
+
+// Serve static files if a valid path was found
+if (clientDistPath) {
   app.use(express.static(clientDistPath));
   console.log(`Serving static files from ${clientDistPath}`);
+} else {
+  console.warn('No client dist directory found to serve static files');
 }
 
 // Start the server

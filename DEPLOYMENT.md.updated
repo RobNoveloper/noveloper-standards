@@ -17,7 +17,7 @@ This guide explains how to deploy the Noveloper website using a combination of R
 3. Configure the following settings:
    - Root Directory: `/`
    - Build Command: `npm run build`
-   - Start Command: `NODE_ENV=production node railway-start.mjs`
+   - Start Command: `NODE_ENV=production node railway-start.js`
    - Health Check Path: `/`
    - Health Check Timeout: 300 seconds
 
@@ -72,6 +72,7 @@ No additional environment variables are needed for the frontend, as all API call
 
 ### Backend Connection Issues:
 
+- Verify the base endpoint is accessible: `/`
 - Verify the health endpoint is accessible: `/api/health`
 - Check Railway logs for any server errors
 - Ensure the database connection string is correct
