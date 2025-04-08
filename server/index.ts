@@ -83,11 +83,14 @@ app.use((req, res, next) => {
   // Use the PORT environment variable provided by Railway in production
   // or default to port 5000 in development
   const port = process.env.PORT || 5000;
+  console.log(`About to start server on port: ${port}`);
+  console.log(`Environment: NODE_ENV=${process.env.NODE_ENV}`);
   server.listen({
     port: Number(port),
     host: "0.0.0.0",
     reusePort: true,
   }, () => {
     log(`serving on port ${port}`);
+    console.log(`Server is now listening on port ${port}`);
   });
 })();
