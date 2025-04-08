@@ -30,12 +30,12 @@ try {
 const createSender = (): Sender => {
   try {
     // Primary sender (requires domain verification in MailerSend)
-    const sender = new Sender("hello@noveloper.ai", "Noveloper");
-    console.log("Configured sender: hello@noveloper.ai");
+    const sender = new Sender("rob@noveloper.ai", "Noveloper");
+    console.log("Configured sender: rob@noveloper.ai");
     console.log("WARNING: Make sure 'noveloper.ai' domain is verified in your MailerSend account");
     return sender;
   } catch (error) {
-    console.error("Error configuring sender with hello@noveloper.ai:", error);
+    console.error("Error configuring sender with rob@noveloper.ai:", error);
     
     try {
       // Fallback to a generic sender that might work without domain verification

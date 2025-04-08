@@ -217,6 +217,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           debug_info: {
             mailersend_configured: !!process.env.MAILERSEND_API_KEY,
             environment: process.env.NODE_ENV || 'development',
+            sender_email: 'rob@noveloper.ai',
             sender_domain: 'noveloper.ai',
             time: new Date().toISOString()
           },
@@ -337,6 +338,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           debug_info: {
             mailersend_configured: !!process.env.MAILERSEND_API_KEY,
             environment: process.env.NODE_ENV || 'development',
+            sender_email: 'rob@noveloper.ai',
             sender_domain: 'noveloper.ai',
             time: new Date().toISOString()
           },
