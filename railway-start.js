@@ -74,15 +74,15 @@ let emailService = {
   }
 };
 
-// Dynamically import email service using ESM syntax
-(async function() {
-  try {
-    emailService = await import('./railway-email.js');
-    console.log('Email service loaded successfully');
-  } catch (error) {
-    console.error('Failed to load email service:', error);
-  }
-})();
+// For compatibility, we'll use CommonJS require for the email service
+try {
+  // First try to require the module directly (Railway deployment)
+  emailService = require('./railway-email.js');
+  console.log('Email service loaded successfully via require');
+} catch (error) {
+  console.warn('Email service not available via require:', error.message);
+  // Keep the fallback implementation
+}
 
 // API routes
 app.post('/api/contact', async (req, res) => {
@@ -159,23 +159,9 @@ app.post('/api/newsletter', async (req, res) => {
   }
 });
 
-// Serve static files from dist/client if they exist
-// Add defensive programming to prevent undefined path errors
-try {
-  // Make sure __dirname is defined before using it
-  const basePath = __dirname || '.';
-  const clientDistPath = path.join(basePath, 'dist', 'client');
-  
-  // Check if path exists before attempting to serve
-  if (fs.existsSync(clientDistPath)) {
-    app.use(express.static(clientDistPath));
-    console.log(`Serving static files from ${clientDistPath}`);
-  } else {
-    console.log(`Static file path not found: ${clientDistPath}`);
-  }
-} catch (error) {
-  console.error('Error setting up static file serving:', error);
-}
+// In Railway API-only mode, we don't need to serve static files
+// This avoids path resolution issues in ESM context
+console.log('Running in API-only mode, static file serving is disabled');
 
 // Start the server
 const port = process.env.PORT || 8080;

@@ -1,7 +1,7 @@
 // Simplified email module for Railway deployment
 // This uses MailerSend to send emails
 
-import { MailerSend, EmailParams, Recipient, Sender } from 'mailersend';
+const { MailerSend, EmailParams, Recipient, Sender } = require('mailersend');
 
 if (!process.env.MAILERSEND_API_KEY) {
   console.warn("WARNING: MAILERSEND_API_KEY environment variable is not set. Email sending will not work.");
@@ -22,7 +22,7 @@ const defaultRecipient = "rob@sumxholding.nl";
 /**
  * Sends a contact form submission via email
  */
-export async function sendContactFormEmail(formData) {
+async function sendContactFormEmail(formData) {
   if (!mailerSend) {
     console.error("Cannot send email: MailerSend API key not configured");
     return false;
@@ -68,7 +68,7 @@ ${formData.message}
 /**
  * Sends a newsletter subscription confirmation
  */
-export async function sendNewsletterConfirmation(email) {
+async function sendNewsletterConfirmation(email) {
   if (!mailerSend) {
     console.error("Cannot send email: MailerSend API key not configured");
     return false;
@@ -118,3 +118,9 @@ The Noveloper Team
     return false;
   }
 }
+
+// Export the functions for CommonJS
+module.exports = {
+  sendContactFormEmail,
+  sendNewsletterConfirmation
+};
