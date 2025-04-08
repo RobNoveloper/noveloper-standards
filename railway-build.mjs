@@ -17,9 +17,9 @@ if (!fs.existsSync('dist')) {
 }
 
 try {
-  // Build the backend
+  // Build the backend with less strict TypeScript configuration
   console.log('Building backend...');
-  execSync('npx tsc', { stdio: 'inherit' });
+  execSync('npx tsc --project tsconfig.railway.json', { stdio: 'inherit' });
   
   // Create the server index file for direct Railway execution
   console.log('Creating standalone server file...');

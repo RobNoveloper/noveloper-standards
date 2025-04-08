@@ -4,12 +4,13 @@ import { IncomingMessage, ServerResponse } from 'http';
 import { Server } from 'http';
 
 // This fixes the type error in server/vite.ts
+// We're declaring that 'allowedHosts' can specifically be 'true'
 declare module 'vite' {
-  interface ServerOptions {
+  export interface ServerOptions {
     middlewareMode?: boolean;
     hmr?: {
       server?: Server<typeof IncomingMessage, typeof ServerResponse>;
     };
-    allowedHosts?: boolean | string[] | true;
+    allowedHosts?: true | string[] | undefined;
   }
 }
