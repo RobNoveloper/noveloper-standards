@@ -1,12 +1,12 @@
 {
   "version": 2,
   "framework": "vite",
-  "buildCommand": "node vercel-build.js && vite build",
+  "buildCommand": "echo \"Building for custom environment: $VERCEL_ENV\" && vite build",
   "outputDirectory": "dist/public",
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://noveloper-website-production.up.railway.app/api/:path*"
+      "destination": "${RAILWAY_API_URL}/api/:path*"
     },
     {
       "source": "/(.*)",
@@ -33,7 +33,8 @@
       ]
     }
   ],
-  "env": {
-    "NODE_ENV": "production"
+  "github": {
+    "enabled": true,
+    "silent": false
   }
 }
