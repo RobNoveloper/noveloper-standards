@@ -13,7 +13,7 @@ export function Header() {
   const { language } = useLanguage();
   const { t } = useTranslation(language);
 
-  // Navigation items with translation keys
+  // Navigation items with translation keys..
   const navItems = [
     { key: "nav.home", href: "#home" },
     { key: "nav.philosophy", href: "#philosophy" },
