@@ -23,7 +23,8 @@ This repository contains the full-stack application for the Noveloper website.
 
 - The frontend and API are deployed separately
 - Environment variables control API connections
-- Testing GitHub integration with Vercel (Updated: April 9, 2025)
+- Testing GitHub integration with Vercel (Updated: April 9, 2025 at 19:50)
+- Added Vercel Protection Bypass for Automation
 
 ## Contact
 
