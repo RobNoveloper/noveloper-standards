@@ -1,281 +1,57 @@
-# Noveloper Website Deployment Troubleshooting Guide
+# Deployment Troubleshooting Guide
 
-This guide addresses common deployment issues and their solutions for the Noveloper split architecture deployment (Vercel frontend, Railway backend).
+## Current Situation
 
-## Frontend-to-Backend API Connection Issues
+The Vercel deployments are not automatically triggered by GitHub pushes, despite the dashboard saying "Continuously generated from RobNoveloper/noveloper-website".
 
-### Problem: API calls from frontend to backend fail with CORS errors
+Instead, all recent deployments are happening via "Deploy Hook" as seen in the deployment history.
 
-#### Symptoms:
-- Console errors mentioning "Access-Control-Allow-Origin"
-- Contact form and newsletter submissions fail
-- Network tab shows 403 or failed OPTIONS requests
+## Solution: Deploy Hooks
 
-#### Solutions:
-1. **Update CORS configuration in the backend**:
-   - Edit `server/index.ts` to add your Vercel deployment URL to the list of allowed origins:
-   ```typescript
-   app.use('/api', cors({
-     origin: [
-       'https://www.noveloper.ai', 
-       'https://noveloper.ai', 
-       // Add your Vercel domain(s) here:
-       'https://noveloper-website.vercel.app',
-       'https://noveloper-website-git-main.vercel.app'
-     ],
-     methods: ['GET', 'POST', 'OPTIONS'],
-     credentials: true,
-     allowedHeaders: ['Content-Type', 'Authorization']
-   }));
-   ```
+Since Deploy Hooks are working, we should set up a specific hook for the development branch:
 
-2. **Update Content Security Policy**:
-   - Ensure the CSP in `server/index.ts` includes all necessary domains:
-   ```typescript
-   "connect-src 'self' https://api.mailersend.com https://api.noveloper.ai " +
-   "https://noveloper-website-production.up.railway.app " +
-   "https://noveloper-website.vercel.app;"
-   ```
+1. Go to Vercel dashboard → Project Settings → Git → Deploy Hooks
+2. Create a new Deploy Hook:
+   - Name: "Development Branch Deploy"
+   - Git Branch: "development"
+   - Environment: "Dev" (your custom environment)
+3. Copy the generated URL (it will look like `https://api.vercel.com/v1/integrations/deploy/...`)
 
-### Problem: API proxy in Vercel not working
+This will create a webhook URL that can be triggered via a simple CURL command to deploy the development branch.
 
-#### Symptoms:
-- Network requests to `/api/*` endpoints receive 404 errors
-- Client makes requests to Vercel domain instead of Railway
+## Using the Deploy Hook
 
-#### Solutions:
-1. **Check Vercel configuration**:
-   - Ensure `vercel.json` is properly configured with routes:
-   ```json
-   {
-     "version": 2,
-     "routes": [
-       {
-         "src": "/api/(.*)",
-         "dest": "https://your-railway-app.up.railway.app/api/$1"
-       },
-       {
-         "src": "/(.*)",
-         "dest": "/index.html"
-       }
-     ]
-   }
-   ```
+You can trigger a deployment with:
+```bash
+curl -X POST "https://api.vercel.com/v1/integrations/deploy/..."
+```
 
-2. **Verify the Railway URL is correct**:
-   - Railway deployment URLs follow the pattern `https://[project-name]-production.up.railway.app`
-   - Check the Railway dashboard for the exact URL
+## GitHub Actions Integration (Optional)
 
-3. **Test Railway API directly**:
-   - Try accessing `https://your-railway-app.up.railway.app/api/health` to confirm it's working
+For fully automated deployments, you could set up a GitHub Action that calls this webhook whenever there's a push to the development branch:
 
-## Email Service Issues
+```yaml
+name: Trigger Vercel Deployment
+on:
+  push:
+    branches:
+      - development
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel Deploy Hook
+        run: curl -X POST "https://api.vercel.com/v1/integrations/deploy/..."
+```
 
-### Problem: Emails not sending through MailerSend
+This would ensure deployments happen automatically even if the direct GitHub-to-Vercel integration isn't working.
 
-#### Symptoms:
-- Contact form appears to submit successfully but no emails arrive
-- Railway logs show MailerSend API errors
+## Testing the Connection
 
-#### Solutions:
-1. **Check MailerSend API Key**:
-   - Verify the `MAILERSEND_API_KEY` environment variable is set in Railway
-   - Ensure the API key has not expired or been revoked
+If you want to fix the GitHub integration instead:
 
-2. **Verify Domain Verification**:
-   - In MailerSend dashboard, confirm your domain (noveloper.ai) is verified
-   - Check that proper DKIM, SPF, and MX records are configured
+1. In Vercel → Settings → Git → Disconnect the GitHub repository
+2. Reconnect it following the prompts
+3. Make sure to grant Vercel permissions to the specific repository
 
-3. **Inspect Railway Logs**:
-   - Look for specific error messages from the MailerSend API
-   - Common issues include rate limiting, invalid recipients, or content problems
-
-4. **Test email service manually**:
-   - Use Railway's terminal to run a simple test script:
-   ```javascript
-   // test-email.js
-   const { sendContactFormEmail } = require('./server/emailService');
-   
-   async function test() {
-     const result = await sendContactFormEmail({
-       name: 'Test User',
-       email: 'test@example.com',
-       message: 'This is a test message'
-     });
-     console.log('Email send result:', result);
-   }
-   
-   test();
-   ```
-   - Run with `node test-email.js`
-
-## Database Connection Issues
-
-### Problem: Database queries failing
-
-#### Symptoms:
-- Server errors mentioning database connection failures
-- Railway logs showing Postgres errors
-
-#### Solutions:
-1. **Check DATABASE_URL environment variable**:
-   - Verify the connection string is correct and properly formatted
-   - Ensure you're using the Session Pooler URL for better reliability
-
-2. **Verify Supabase access**:
-   - Check IP allow list in Supabase settings
-   - Confirm the database is online and accessible
-
-3. **Test connection directly**:
-   - Use Railway's terminal to run a simple test:
-   ```javascript
-   // test-db.js
-   const { Pool } = require('pg');
-   
-   async function testConnection() {
-     const pool = new Pool({
-       connectionString: process.env.DATABASE_URL
-     });
-     
-     try {
-       const client = await pool.connect();
-       const result = await client.query('SELECT NOW()');
-       console.log('Database connection successful:', result.rows[0]);
-       client.release();
-     } catch (err) {
-       console.error('Database connection error:', err);
-     } finally {
-       await pool.end();
-     }
-   }
-   
-   testConnection();
-   ```
-   - Run with `node test-db.js`
-
-## Deployment Pipeline Issues
-
-### Problem: Railway deployment failing
-
-#### Symptoms:
-- Railway deployment shows errors in build or start phase
-- Application crashes immediately after deployment
-
-#### Solutions:
-1. **Check start command**:
-   - Ensure you're using the correct start command: `NODE_ENV=production node railway-start.cjs`
-   - Verify `railway-start.cjs` file is correctly formatted as CommonJS module
-
-2. **Inspect build logs**:
-   - Look for specific build errors, such as missing dependencies or failed compilation
-   - Verify the Node.js version is compatible (Railway uses Node.js 18 by default)
-
-3. **Examine application logs**:
-   - Check for runtime errors after startup
-   - Look for uncaught exceptions or unhandled promise rejections
-
-### Problem: Vercel deployment failing
-
-#### Symptoms:
-- Build fails in Vercel deployment logs
-- Site deploys but shows a 404 page or blank screen
-
-#### Solutions:
-1. **Check build command and output directory**:
-   - Build command should be `vite build`
-   - Output directory should be `dist/public`
-
-2. **Verify Vite configuration**:
-   - Check `vite.config.ts` has the correct output directory:
-   ```typescript
-   build: {
-     outDir: path.resolve(import.meta.dirname, "dist/public"),
-     emptyOutDir: true,
-   }
-   ```
-
-3. **Review framework preset**:
-   - Set framework preset to Vite in Vercel project settings
-
-4. **Inspect build logs**:
-   - Look for specific errors during the build process
-   - Check for missing dependencies or environment variables
-
-### Problem: Vercel deploy hook not working
-
-#### Symptoms:
-- Deploy hook stops triggering new deployments after configuration changes
-- No response or error when calling the deploy hook URL
-- GitHub pushes don't trigger automatic deployments
-
-#### Solutions:
-1. **Recreate the deploy hook**:
-   - Go to your Vercel project dashboard
-   - Navigate to Settings > Git > Deploy Hooks
-   - Create a new deploy hook (or regenerate the existing one)
-   - Use the new webhook URL for your deployments
-
-2. **Check for configuration conflicts**:
-   - Ensure your `vercel.json` configuration is valid
-   - Verify there are no conflicting build settings between `vercel.json` and project settings
-   - Check that the branch name is correctly specified in the deploy hook settings
-
-3. **Test the deploy hook manually**:
-   - Use curl to test the deploy hook:
-   ```bash
-   curl -X POST https://api.vercel.com/v1/integrations/deploy/xxxx
-   ```
-   - Check Vercel's deployment logs for any errors related to the hook
-
-4. **Verify GitHub integration**:
-   - If using GitHub integration, check the repository permissions
-   - Ensure the GitHub app has the necessary access to your repository
-   - Re-link the GitHub repository if needed
-
-## After Deployment: Verification Checklist
-
-1. Visit the Railway health endpoint: `https://your-railway-app.up.railway.app/api/health`
-2. Check the frontend on Vercel: `https://your-vercel-app.vercel.app`
-3. Test API communication by submitting the contact form
-4. Subscribe to the newsletter
-5. Verify you receive both types of emails
-6. Test language switching between English and Dutch
-7. Check mobile responsiveness
-
-## Monitoring Ongoing Issues
-
-1. Set up Railway alerts for deployment failures
-2. Configure Vercel notifications for build issues
-3. Set up Uptime monitoring for both Railway and Vercel endpoints
-4. Monitor MailerSend delivery statistics dashboard
-
-### Problem: Vercel deploy hook not working
-
-#### Symptoms:
-- Deploy hook stops triggering new deployments after configuration changes
-- No response or error when calling the deploy hook URL
-- GitHub pushes don't trigger automatic deployments
-
-#### Solutions:
-1. **Recreate the deploy hook**:
-   - Go to your Vercel project dashboard
-   - Navigate to Settings > Git > Deploy Hooks
-   - Create a new deploy hook (or regenerate the existing one)
-   - Use the new webhook URL for your deployments
-
-2. **Check for configuration conflicts**:
-   - Ensure your `vercel.json` configuration is valid
-   - Verify there are no conflicting build settings between `vercel.json` and project settings
-   - Check that the branch name is correctly specified in the deploy hook settings
-
-3. **Test the deploy hook manually**:
-   - Use curl to test the deploy hook:
-   ```bash
-   curl -X POST https://api.vercel.com/v1/integrations/deploy/xxxx
-   ```
-   - Check Vercel's deployment logs for any errors related to the hook
-
-4. **Verify GitHub integration**:
-   - If using GitHub integration, check the repository permissions
-   - Ensure the GitHub app has the necessary access to your repository
-   - Re-link the GitHub repository if needed
+This might resolve issues with the webhook communication between GitHub and Vercel.
