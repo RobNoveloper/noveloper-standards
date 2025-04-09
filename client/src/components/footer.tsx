@@ -1,3 +1,4 @@
+// Vercel automatic deployment test - April 9, 2025
 import { Link } from "wouter";
 import { Logo } from "./ui/logo";
 import { useLanguage } from "@/contexts/language-context";
