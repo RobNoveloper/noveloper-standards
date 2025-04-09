@@ -1,52 +1,70 @@
-# Vercel Deployment Troubleshooting Guide
+# Vercel Deployment Troubleshooting
 
-## Common Issues with GitHub Integration
+Based on Vercel's official documentation on deployment triggers, here are key troubleshooting steps:
 
-1. **Webhook Configuration**:
-   - Go to GitHub repository → Settings → Webhooks
-   - Verify Vercel webhook exists and is properly configured
-   - Check Recent Deliveries tab to see if webhooks are being sent and receiving successful responses
+## 1. Ensure GitHub Integration is Properly Set Up
 
-2. **Branch Permissions**:
-   - In Vercel dashboard → Your project → Settings → Git
-   - Make sure "Ignored Build Step" is not preventing builds
-   - Check if specific Production/Preview/Development branch settings are configured correctly
+- **Missing Webhook**: According to your check, there is no GitHub webhook. This is unusual and could be the root cause.
+  - When Vercel connects to GitHub properly, it should create a webhook automatically
+  - Solution: Try completely removing the GitHub integration and reconnecting:
+    1. Go to Vercel → Project → Settings → Git → Disconnect
+    2. Then go to Vercel → Dashboard → Add New → Project → Import Git Repository
+    3. Re-import your GitHub repository
 
-3. **Custom Environment Confusion**:
-   - If using custom environments (like Dev), verify that the environment is correctly linked to the specific branch
-   - Check that automatic deployments are enabled for this environment
+## 2. Check Deployment Settings in vercel.json
 
-## Manual Deployment Options:
+- We've updated your `vercel.json` to include explicit deployment settings:
+  ```json
+  "git": {
+    "deploymentEnabled": {
+      "main": true,
+      "development": true
+    }
+  },
+  "github": {
+    "enabled": true,
+    "silent": false,
+    "autoAlias": true
+  }
+  ```
+  This explicitly enables deployments for both main and development branches
 
-1. **Trigger Deploy via Vercel Dashboard**:
-   - Go to Vercel Dashboard → Your Project
-   - Click "Deployments" tab 
-   - Click "Deploy" button
-   - Select the branch you want to deploy
+## 3. Repository-Level Issue?
 
-2. **Disconnecting and Reconnecting Git Integration**:
-   - Go to Project Settings → Git Integration
-   - Remove the Git integration
-   - Re-add it following the prompts
-   - This often resolves webhook and permission issues
+- If specific to this repository, check:
+  - Repository size (should be under 3GB)
+  - Verify there are no GitHub deployment blocks or branch protection rules
+  - Ensure you have Admin permissions on the repository
 
-3. **Use Vercel CLI for Manual Deployment**:
-   - Install Vercel CLI: `npm i -g vercel`
-   - Login: `vercel login`
-   - Deploy: `vercel --prod` (for production) or just `vercel` (for preview)
+## 4. Force Re-Installation of GitHub App
 
-## Webhook Event Inspection:
+- Go to GitHub → Settings → Applications → Installed GitHub Apps
+- Find Vercel and click "Configure"
+- At the bottom click "Suspend" and then "Unsuspend" (this forces a refresh)
+- Go back to Vercel and reconnect your repository
 
-For deeper investigation of webhook deliveries:
-1. Open GitHub repository → Settings → Webhooks → Vercel webhook
-2. Check "Recent Deliveries" tab
-3. Inspect payload and response for errors
+## 5. Check Repository Visibility in App
 
-## Force Push to Update GitHub Hook:
+- On GitHub, go to Settings → Applications → Installed GitHub Apps → Vercel → Configure
+- Make sure the "Repository access" includes your repository
+- If it shows "Only select repositories", make sure yours is listed
 
-Sometimes Git hooks require a "force" trigger:
-```bash
-git commit --allow-empty -m "Force Vercel deployment" && git push origin main:development
+## 6. Github Push Webhook Test
+
+Vercel recommends the following test:
+
+```
+curl -X POST https://api.github.com/repos/{owner}/{repo}/dispatches \
+     -H "Accept: application/vnd.github.v3+json" \
+     -H "Authorization: token ghp_YOUR_PERSONAL_TOKEN" \
+     --data '{"event_type": "deployment_test"}'
 ```
 
-This pushes an empty commit which can trigger the webhook if it's properly configured.
+Replace {owner}, {repo} and ghp_YOUR_PERSONAL_TOKEN with your values. This simulates a GitHub webhook event.
+
+## 7. Contact Vercel Support
+
+If none of these steps resolve the issue:
+- Email: support@vercel.com
+- Include your Pro account details and project ID
+- Specifically mention: "GitHub webhook is missing after multiple reconnect attempts"

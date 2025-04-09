@@ -33,8 +33,15 @@
       ]
     }
   ],
+  "git": {
+    "deploymentEnabled": {
+      "main": true,
+      "development": true
+    }
+  },
   "github": {
     "enabled": true,
-    "silent": false
+    "silent": false,
+    "autoAlias": true
   }
 }
