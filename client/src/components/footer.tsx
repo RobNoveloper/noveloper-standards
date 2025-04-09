@@ -148,7 +148,7 @@ export function Footer() {
             <Logo size="sm" inverted={true} />
             <span className="text-sm text-gray-400 ml-3">
               © {new Date().getFullYear()} Noveloper. {t("footer.rights")}
-              {import.meta.env.VITE_API_BASE_URL?.includes('dev') && <span className="ml-2 px-2 py-0.5 bg-purple-800 text-white text-xs rounded-full">DEV</span>}
+              {import.meta.env.VITE_VERCEL_ENV === 'preview' && <span className="ml-2 px-2 py-0.5 bg-purple-800 text-white text-xs rounded-full">DEV</span>}
             </span>
           </div>
           
