@@ -146,7 +146,10 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center">
             <Logo size="sm" inverted={true} />
-            <span className="text-sm text-gray-400 ml-3">© {new Date().getFullYear()} Noveloper. {t("footer.rights")}</span>
+            <span className="text-sm text-gray-400 ml-3">
+              © {new Date().getFullYear()} Noveloper. {t("footer.rights")}
+              {import.meta.env.VITE_API_BASE_URL?.includes('dev') && <span className="ml-2 px-2 py-0.5 bg-purple-800 text-white text-xs rounded-full">DEV</span>}
+            </span>
           </div>
           
           <div className="flex space-x-6 mt-4 md:mt-0">

@@ -1,12 +1,12 @@
 {
   "version": 2,
   "framework": "vite",
-  "buildCommand": "node vercel-build.js && vite build",
+  "buildCommand": "echo 'USING DEVELOPMENT BRANCH BUILD CONFIG' && node vercel-build.js && vite build",
   "outputDirectory": "dist/public",
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://noveloper-website-production.up.railway.app/api/:path*"
+      "destination": "https://noveloper-website-development.up.railway.app/api/:path*"
     },
     {
       "source": "/(.*)",
@@ -34,6 +34,7 @@
     }
   ],
   "env": {
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "VITE_API_BASE_URL": "https://api-dev.noveloper.ai"
   }
 }

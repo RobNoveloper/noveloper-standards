@@ -1,12 +1,12 @@
 {
   "version": 2,
   "framework": "vite",
-  "buildCommand": "vite build",
+  "buildCommand": "echo 'USING DEVELOPMENT CONFIG FOR VERCEL BUILD' && node vercel-build.js && vite build",
   "outputDirectory": "dist/public",
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://noveloper-website-dev.up.railway.app/api/:path*"
+      "destination": "https://noveloper-website-development.up.railway.app/api/:path*"
     },
     {
       "source": "/(.*)",
