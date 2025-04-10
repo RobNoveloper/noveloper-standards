@@ -35,18 +35,18 @@ export function Logo({
         {/* SVG recreated based on inverted or regular mode */}
         <svg width="80%" height="80%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <g>
-            {/* Left rectangle - perfectly centered */}
+            {/* Left rectangle - perfectly centered with equal border spacing */}
             <rect 
               x="24" 
-              y="18" 
+              y="24" 
               width="24" 
-              height="64" 
+              height="52" 
               fill={inverted ? "black" : "white"} 
             />
             
-            {/* Right triangle - perfectly centered */}
+            {/* Right triangle - perfectly centered with equal border spacing */}
             <path 
-              d="M 48,18 L 72,18 L 72,73 L 48,18" 
+              d="M 48,24 L 72,24 L 72,68 L 48,24" 
               fill={inverted ? "black" : "white"} 
             />
           </g>
