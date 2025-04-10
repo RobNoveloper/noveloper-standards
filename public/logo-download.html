@@ -6,123 +6,190 @@
   <title>Noveloper Logo Download</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 2rem;
-      line-height: 1.6;
-    }
-    .logo-container {
-      margin: 2rem 0;
-      padding: 2rem;
-      border: 1px solid #eaeaea;
-      border-radius: 8px;
+      padding: 20px;
       background-color: white;
-    }
-    .dark-bg {
-      background-color: #1f2937;
-      color: white;
-    }
-    .dark-bg h2 {
-      color: white;
-    }
-    .btn {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      margin: 0.5rem 0;
-      background-color: #4f46e5;
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     h1 {
-      background: linear-gradient(to right, black, #4f46e5);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      display: inline-block;
+      text-align: center;
+      color: #333;
+      margin-bottom: 40px;
     }
     .logo-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
     }
-    @media (min-width: 768px) {
-      .logo-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    .logo-preview {
-      padding: 1rem;
+    .logo-card {
+      border: 1px solid #eaeaea;
       border-radius: 8px;
-      margin-bottom: 1rem;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
-    .light-bg {
-      background-color: #f3f4f6;
+    .logo-card h2 {
+      margin-top: 0;
+      color: #444;
+      font-size: 18px;
+    }
+    .logo-card p {
+      color: #666;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo-display {
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    .logo-display.inverted {
+      background-color: #222;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .logo-display.transparent {
+      background-image: linear-gradient(45deg, #f5f5f5 25%, transparent 25%),
+                       linear-gradient(-45deg, #f5f5f5 25%, transparent 25%),
+                       linear-gradient(45deg, transparent 75%, #f5f5f5 75%),
+                       linear-gradient(-45deg, transparent 75%, #f5f5f5 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      max-height: 120px;
+    }
+    .download-btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #5553B7;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: background-color 0.2s;
+    }
+    .download-btn:hover {
+      background-color: #4442a5;
+    }
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+    }
+    /* Added for React component preview */
+    .react-preview {
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 1px solid #eaeaea;
+    }
+    .react-preview h2 {
+      text-align: center;
+      margin-bottom: 30px;
     }
   </style>
 </head>
 <body>
-  <h1>Noveloper Logo Download</h1>
-  <p>Here are all the variants of the Noveloper logo. Click the download button under each logo to get the SVG file.</p>
-  
-  <div class="logo-grid">
-    <!-- Standard Logo -->
-    <div class="logo-container">
-      <h2>Standard Logo</h2>
-      <div class="logo-preview">
-        <img src="/api/logo/default" alt="Noveloper Standard Logo" width="300">
+  <div class="container">
+    <h1>Noveloper Logo Download</h1>
+    
+    <div class="logo-grid">
+      <!-- Standard Logo -->
+      <div class="logo-card">
+        <h2>Standard Logo</h2>
+        <p>Primary logo with black background</p>
+        <div class="logo-display">
+          <img src="/api/logo/default" alt="Noveloper Standard Logo">
+        </div>
+        <a href="/api/logo/default" download="noveloper-logo.svg" class="download-btn">Download SVG</a>
       </div>
-      <p>Black square with white logo elements and black text.</p>
-      <a href="/api/logo/default" download="noveloper-standard-logo.svg" class="btn">Download SVG</a>
+      
+      <!-- Colored Text Logo -->
+      <div class="logo-card">
+        <h2>Colored Text Logo</h2>
+        <p>Primary logo with gradient text</p>
+        <div class="logo-display">
+          <img src="/api/logo/colored" alt="Noveloper Colored Text Logo">
+        </div>
+        <a href="/api/logo/colored" download="noveloper-logo-colored.svg" class="download-btn">Download SVG</a>
+      </div>
+      
+      <!-- Transparent Logo -->
+      <div class="logo-card">
+        <h2>Transparent Logo</h2>
+        <p>Logo with transparent background</p>
+        <div class="logo-display transparent">
+          <img src="/api/logo/transparent" alt="Noveloper Transparent Logo">
+        </div>
+        <a href="/api/logo/transparent" download="noveloper-logo-transparent.svg" class="download-btn">Download SVG</a>
+      </div>
+      
+      <!-- Inverted Logo -->
+      <div class="logo-card">
+        <h2>Inverted Logo</h2>
+        <p>Logo for dark backgrounds</p>
+        <div class="logo-display inverted">
+          <img src="/api/logo/inverted" alt="Noveloper Inverted Logo">
+        </div>
+        <a href="/api/logo/inverted" download="noveloper-logo-inverted.svg" class="download-btn">Download SVG</a>
+      </div>
+      
+      <!-- Inverted Gradient Logo -->
+      <div class="logo-card">
+        <h2>Inverted Gradient Logo</h2>
+        <p>Inverted logo with gradient text for dark backgrounds</p>
+        <div class="logo-display inverted">
+          <img src="/api/logo/inverted-gradient" alt="Noveloper Inverted Gradient Logo">
+        </div>
+        <a href="/api/logo/inverted-gradient" download="noveloper-logo-inverted-gradient.svg" class="download-btn">Download SVG</a>
+      </div>
     </div>
     
-    <!-- Gradient Text Logo -->
-    <div class="logo-container">
-      <h2>Gradient Text Logo</h2>
-      <div class="logo-preview">
-        <img src="/api/logo/colored" alt="Noveloper Gradient Logo" width="300">
+    <div class="react-preview">
+      <h2>React Component Preview</h2>
+      <p style="text-align: center; margin-bottom: 20px;">
+        The logo as rendered by the React Logo component in the website header
+      </p>
+      <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+        <div>
+          <h3 style="text-align: center;">Standard Mode</h3>
+          <iframe src="/" style="width: 300px; height: 100px; border: 1px solid #eee; overflow: hidden;"></iframe>
+        </div>
+        <div>
+          <h3 style="text-align: center;">Developer Info</h3>
+          <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; font-family: monospace; font-size: 12px;">
+            <p>Rectangle: x="20" y="18" width="27" height="64"</p>
+            <p>Triangle: d="M 47,18 L 74,18 L 74,73 L 47,18"</p>
+            <p>Both elements have equal width (27 units)</p>
+            <p>No gap between shapes at x=47</p>
+          </div>
+        </div>
       </div>
-      <p>Black square with white logo elements and gradient text (black to purple).</p>
-      <a href="/api/logo/colored" download="noveloper-gradient-logo.svg" class="btn">Download SVG</a>
     </div>
     
-    <!-- Transparent Logo -->
-    <div class="logo-container">
-      <h2>Transparent Logo</h2>
-      <div class="logo-preview light-bg">
-        <img src="/api/logo/transparent" alt="Noveloper Transparent Logo" width="300">
-      </div>
-      <p>No background square, just the black logo elements and black text.</p>
-      <a href="/api/logo/transparent" download="noveloper-transparent-logo.svg" class="btn">Download SVG</a>
+    <div class="footer">
+      <p>© 2025 Noveloper - All Rights Reserved</p>
     </div>
-    
-    <!-- Inverted Logo -->
-    <div class="logo-container dark-bg">
-      <h2>Inverted Logo</h2>
-      <div class="logo-preview dark-bg">
-        <img src="/api/logo/inverted" alt="Noveloper Inverted Logo" width="300">
-      </div>
-      <p>Gray square with black logo elements and white text.</p>
-      <a href="/api/logo/inverted" download="noveloper-inverted-logo.svg" class="btn">Download SVG</a>
-    </div>
-    
-    <!-- Inverted Gradient Logo -->
-    <div class="logo-container dark-bg">
-      <h2>Inverted Gradient Logo</h2>
-      <div class="logo-preview dark-bg">
-        <img src="/api/logo/inverted-gradient" alt="Noveloper Inverted Gradient Logo" width="300">
-      </div>
-      <p>Gray square with black logo elements and gradient text (white to light purple).</p>
-      <a href="/api/logo/inverted-gradient" download="noveloper-inverted-gradient-logo.svg" class="btn">Download SVG</a>
-    </div>
-  </div>
-
-  <div class="logo-container" style="margin-top: 3rem;">
-    <h2>About These Logos</h2>
-    <p>All logo files have been updated to ensure consistent spacing between elements. The original issue with a gap between the logo elements has been fixed in all variants.</p>
-    <p>These SVG files can be used in any context, scaled to any size without loss of quality, and are suitable for both digital and print materials.</p>
   </div>
 </body>
 </html>
