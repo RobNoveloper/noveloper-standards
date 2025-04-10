@@ -19,6 +19,13 @@
       border-radius: 8px;
       background-color: white;
     }
+    .dark-bg {
+      background-color: #1f2937;
+      color: white;
+    }
+    .dark-bg h2 {
+      color: white;
+    }
     .btn {
       display: inline-block;
       padding: 0.5rem 1rem;
@@ -36,88 +43,86 @@
       background-clip: text;
       display: inline-block;
     }
+    .logo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 768px) {
+      .logo-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .logo-preview {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .light-bg {
+      background-color: #f3f4f6;
+    }
   </style>
 </head>
 <body>
   <h1>Noveloper Logo Download</h1>
-  <p>Here are the different versions of your logo. Right-click on any logo and select "Save Image As..." to download it.</p>
+  <p>Here are all the variants of the Noveloper logo. Click the download button under each logo to get the SVG file.</p>
   
-  <div class="logo-container">
-    <h2>Default Logo</h2>
-    <img src="/api/logo/default" alt="Noveloper Default Logo" width="300">
-    <br>
-    <a href="/api/logo/default" download="noveloper-default-logo.svg" class="btn">Download SVG</a>
-  </div>
-  
-  <div class="logo-container">
-    <h2>Gradient Logo</h2>
-    <svg xmlns="http://www.w3.org/2000/svg" width="360" height="80" viewBox="0 0 360 80">
-      <defs>
-        <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#000000" />
-          <stop offset="100%" stop-color="#4f46e5" />
-        </linearGradient>
-      </defs>
-      <g>
-        <!-- Logo mark -->
-        <rect x="10" y="10" width="20" height="60" rx="2" fill="black" />
-        <path d="M 30,10 L 57,10 L 57,54 L 30,10" fill="black" />
-        
-        <!-- Logo text with gradient -->
-        <text x="80" y="50" font-family="Arial, sans-serif" font-weight="800" font-size="28" fill="url(#textGradient)">NOVELOPER</text>
-      </g>
-    </svg>
-    <br>
-    <a href="#" id="download-gradient" class="btn">Download Gradient SVG</a>
-  </div>
-  
-  <div class="logo-container">
-    <h2>Logo with Transparent Background</h2>
-    <div style="background-color: #f3f4f6; padding: 1rem; border-radius: 4px;">
-      <img src="/api/logo/transparent" alt="Noveloper Transparent Logo" width="300">
+  <div class="logo-grid">
+    <!-- Standard Logo -->
+    <div class="logo-container">
+      <h2>Standard Logo</h2>
+      <div class="logo-preview">
+        <img src="/api/logo/default" alt="Noveloper Standard Logo" width="300">
+      </div>
+      <p>Black square with white logo elements and black text.</p>
+      <a href="/api/logo/default" download="noveloper-standard-logo.svg" class="btn">Download SVG</a>
     </div>
-    <br>
-    <a href="/api/logo/transparent" download="noveloper-transparent-logo.svg" class="btn">Download SVG</a>
+    
+    <!-- Gradient Text Logo -->
+    <div class="logo-container">
+      <h2>Gradient Text Logo</h2>
+      <div class="logo-preview">
+        <img src="/api/logo/colored" alt="Noveloper Gradient Logo" width="300">
+      </div>
+      <p>Black square with white logo elements and gradient text (black to purple).</p>
+      <a href="/api/logo/colored" download="noveloper-gradient-logo.svg" class="btn">Download SVG</a>
+    </div>
+    
+    <!-- Transparent Logo -->
+    <div class="logo-container">
+      <h2>Transparent Logo</h2>
+      <div class="logo-preview light-bg">
+        <img src="/api/logo/transparent" alt="Noveloper Transparent Logo" width="300">
+      </div>
+      <p>No background square, just the black logo elements and black text.</p>
+      <a href="/api/logo/transparent" download="noveloper-transparent-logo.svg" class="btn">Download SVG</a>
+    </div>
+    
+    <!-- Inverted Logo -->
+    <div class="logo-container dark-bg">
+      <h2>Inverted Logo</h2>
+      <div class="logo-preview dark-bg">
+        <img src="/api/logo/inverted" alt="Noveloper Inverted Logo" width="300">
+      </div>
+      <p>Gray square with black logo elements and white text.</p>
+      <a href="/api/logo/inverted" download="noveloper-inverted-logo.svg" class="btn">Download SVG</a>
+    </div>
+    
+    <!-- Inverted Gradient Logo -->
+    <div class="logo-container dark-bg">
+      <h2>Inverted Gradient Logo</h2>
+      <div class="logo-preview dark-bg">
+        <img src="/api/logo/inverted-gradient" alt="Noveloper Inverted Gradient Logo" width="300">
+      </div>
+      <p>Gray square with black logo elements and gradient text (white to light purple).</p>
+      <a href="/api/logo/inverted-gradient" download="noveloper-inverted-gradient-logo.svg" class="btn">Download SVG</a>
+    </div>
   </div>
 
-  <script>
-    // Function to convert SVG to data URL and trigger download
-    document.getElementById('download-gradient').addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      // Get the SVG content
-      const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="360" height="80" viewBox="0 0 360 80">
-        <defs>
-          <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#000000" />
-            <stop offset="100%" stop-color="#4f46e5" />
-          </linearGradient>
-        </defs>
-        <g>
-          <!-- Logo mark -->
-          <rect x="10" y="10" width="20" height="60" rx="2" fill="black" />
-          <path d="M 30,10 L 57,10 L 57,54 L 30,10" fill="black" />
-          
-          <!-- Logo text with gradient -->
-          <text x="80" y="50" font-family="Arial, sans-serif" font-weight="800" font-size="28" fill="url(#textGradient)">NOVELOPER</text>
-        </g>
-      </svg>`;
-      
-      // Convert to data URL
-      const svgBlob = new Blob([svgContent], {type: 'image/svg+xml'});
-      const url = URL.createObjectURL(svgBlob);
-      
-      // Create download link
-      const downloadLink = document.createElement('a');
-      downloadLink.href = url;
-      downloadLink.download = 'noveloper-gradient-logo.svg';
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      document.body.removeChild(downloadLink);
-      
-      // Clean up
-      URL.revokeObjectURL(url);
-    });
-  </script>
+  <div class="logo-container" style="margin-top: 3rem;">
+    <h2>About These Logos</h2>
+    <p>All logo files have been updated to ensure consistent spacing between elements. The original issue with a gap between the logo elements has been fixed in all variants.</p>
+    <p>These SVG files can be used in any context, scaled to any size without loss of quality, and are suitable for both digital and print materials.</p>
+  </div>
 </body>
 </html>

@@ -126,17 +126,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
     setCorsHeaders(res, req.headers.origin);
     
     const variant = req.params.variant;
+    let logoPath: string;
     
-    if (variant === 'colored' || variant === 'gradient') {
-      const logoPath = path.join(process.cwd(), 'public', 'noveloper-logo-colored.svg');
-      res.type('image/svg+xml').sendFile(logoPath);
-    } else if (variant === 'transparent') {
-      const logoPath = path.join(process.cwd(), 'public', 'noveloper-logo-transparent.svg');
-      res.type('image/svg+xml').sendFile(logoPath);
-    } else {
-      const logoPath = path.join(process.cwd(), 'public', 'noveloper-logo.svg');
-      res.type('image/svg+xml').sendFile(logoPath);
+    switch (variant) {
+      case 'colored':
+      case 'gradient':
+        logoPath = path.join(process.cwd(), 'public', 'noveloper-logo-colored.svg');
+        break;
+      case 'transparent':
+        logoPath = path.join(process.cwd(), 'public', 'noveloper-logo-transparent.svg');
+        break;
+      case 'inverted':
+        logoPath = path.join(process.cwd(), 'public', 'noveloper-logo-inverted.svg');
+        break;
+      case 'inverted-gradient':
+        logoPath = path.join(process.cwd(), 'public', 'noveloper-logo-inverted-gradient.svg');
+        break;
+      default:
+        logoPath = path.join(process.cwd(), 'public', 'noveloper-logo.svg');
     }
+    
+    res.type('image/svg+xml').sendFile(logoPath);
   });
 
   // Handle contact form submissions
