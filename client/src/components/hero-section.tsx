@@ -14,20 +14,21 @@ export function HeroSection() {
   return (
     <section 
       id="home" 
-      className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 flex items-center relative"
+      className="min-h-screen flex items-center justify-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden relative"
     >
       {/* Background gradients */}
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-72 h-72 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 opacity-10 blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 opacity-10 blur-3xl"></div>
+      <div className="absolute top-0 right-0 -mr-20 sm:-mr-40 -mt-40 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 opacity-10 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 -ml-20 sm:-ml-40 -mb-40 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 opacity-10 blur-3xl"></div>
       
       <div className="max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <motion.div
             ref={ref1}
             initial={{ opacity: 0, y: 20 }}
             animate={inView1 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8 }}
+            className="justify-self-center md:justify-self-end max-w-lg w-full"
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
               <span className="block">{language === "nl" ? "No code." : "No code."}</span>
@@ -70,11 +71,11 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView2 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex justify-center mt-8 md:mt-0"
+            className="justify-self-center md:justify-self-start max-w-md w-full"
           >
-            <div className="w-full max-w-md aspect-square rounded-xl shadow-xl relative overflow-hidden">
+            <div className="w-full aspect-square rounded-xl shadow-xl relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-20"></div>
-              <div className="flex flex-col items-center justify-center h-full p-4 text-center relative z-10">
+              <div className="flex flex-col items-center justify-center h-full p-6 text-center relative z-10">
                 <Logo size="lg" withText={false} className="mb-6" />
                 <div className="font-mono text-sm sm:text-base text-gray-800 overflow-hidden whitespace-nowrap border-r-2 border-gray-800 typing-animation px-2">
                   {language === "nl" ? "AI-gedreven creativiteit" : "AI-driven creativity"}
