@@ -14,7 +14,7 @@ export function HeroSection() {
   return (
     <section 
       id="home" 
-      className="min-h-screen flex items-center justify-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden relative"
+      className="min-h-screen flex items-center justify-center pt-28 sm:pt-32 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden relative"
     >
       {/* Background gradients */}
       <div className="absolute top-0 right-0 -mr-20 sm:-mr-40 -mt-40 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 opacity-10 blur-3xl"></div>
