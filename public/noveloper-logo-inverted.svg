@@ -5,11 +5,11 @@
     <!-- Gray square with rounded corners (exactly same shape) -->
     <rect x="0" y="0" width="60" height="60" rx="8" ry="8" fill="#9ca3af" />
     
-    <!-- Left black vertical rectangle (exactly same shape) -->
-    <rect x="10.8" y="10.8" width="16.2" height="38.4" fill="black" />
+    <!-- Left black vertical rectangle (moved slightly right) -->
+    <rect x="14.4" y="10.8" width="16.2" height="38.4" fill="black" />
     
-    <!-- Right triangle with vertical right side (exactly same shape) -->
-    <path d="M 32.4,10.8 L 49.2,10.8 L 49.2,43.2 L 32.4,10.8 Z" fill="black" />
+    <!-- Right triangle with vertical right side (moved slightly left) -->
+    <path d="M 30.6,10.8 L 45.6,10.8 L 45.6,43.2 L 30.6,10.8 Z" fill="black" />
   </g>
   
   <!-- Text "NOVELOPER" in white -->
