@@ -11,14 +11,16 @@ The standards repository is located at: [../noveloper-standards](../noveloper-st
 This dedicated repository contains:
 
 1. Complete development standards documentation
-2. Reusable code templates
-3. Configuration files
-4. Example implementations
+2. Collaboration guide that outlines working approach and expectations
+3. Reusable code templates
+4. Configuration files
+5. Example implementations
 
 ## How to Use
 
 When working on this project, refer to the standards repository for:
 
+- Collaboration approach and working style
 - Coding conventions
 - Component patterns
 - Architecture decisions
