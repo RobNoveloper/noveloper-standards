@@ -35,7 +35,7 @@ export const nl = {
     },
     workflow: {
       title: 'Hoe We Werken',
-      subtitle: 'Wij combineren creatieve innovatie met zakelijk inzicht om applicaties te onwikkelen die visueel aantrekkelijk én functioneel krachtig zijn — en zorgen voor uitzonderlijke gebruikerservaringen die echte resultaten opleveren.',
+      subtitle: 'Wij combineren creatieve innovatie met zakelijk inzicht om applicaties te ontwikkelen die visueel aantrekkelijk én functioneel krachtig zijn — en zorgen voor uitzonderlijke gebruikerservaringen die echte resultaten opleveren.',
       step1: {
         title: 'Verkenning',
         content: 'We verkennen jouw visie en zakelijke uitdagingen om kansen te ontdekken voor slimme digitale oplossingen.'
